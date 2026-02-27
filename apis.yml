@@ -1,0 +1,75 @@
+name: Google Cloud Storage
+description: Object storage service offering high durability, availability, and scalability for storing and accessing data on Google Cloud Platform
+image: https://cloud.google.com/images/social-icon-google-cloud-1200-630.png
+url: https://cloud.google.com/storage
+created: '2024-01-01'
+modified: '2024-01-01'
+tags:
+- storage
+- object storage
+- cloud storage
+- google cloud
+- gcp
+- file storage
+- blob storage
+apis:
+- name: Google Cloud Storage JSON API
+  description: RESTful API for interacting with Google Cloud Storage buckets and objects
+  image: https://cloud.google.com/images/storage/storage-icon.svg
+  humanURL: https://cloud.google.com/storage/docs/json_api
+  baseURL: https://storage.googleapis.com/storage/v1
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: OpenAPI
+    url: https://storage.googleapis.com/$discovery/rest?version=v1
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: Quotas
+    url: https://cloud.google.com/storage/quotas
+  - type: Status
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  contact:
+  - type: Support
+    url: https://cloud.google.com/storage/docs/getting-support
+  - type: Twitter
+    url: https://twitter.com/googlecloud
+- name: Google Cloud Storage XML API
+  description: Amazon S3-compatible XML API for Google Cloud Storage
+  image: https://cloud.google.com/images/storage/storage-icon.svg
+  humanURL: https://cloud.google.com/storage/docs/xml-api
+  baseURL: https://storage.googleapis.com
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/xml-api/overview
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication/hmackeys
+  - type: S3Compatibility
+    url: https://cloud.google.com/storage/docs/interoperability
+common:
+- type: GettingStarted
+  url: https://cloud.google.com/storage/docs/quickstarts
+- type: SDKs
+  url: https://cloud.google.com/storage/docs/reference/libraries
+- type: Console
+  url: https://console.cloud.google.com/storage
+- type: Blog
+  url: https://cloud.google.com/blog/products/storage-data-transfer
+- type: ChangeLog
+  url: https://cloud.google.com/storage/docs/release-notes
+- type: Samples
+  url: https://cloud.google.com/storage/docs/samples
+- type: BestPractices
+  url: https://cloud.google.com/storage/docs/best-practices
+- type: Security
+  url: https://cloud.google.com/storage/docs/security
+- type: Compliance
+  url: https://cloud.google.com/security/compliance
+maintainers:
+- name: Google Cloud Platform
+  email: cloud-storage-feedback@google.com
+  url: https://cloud.google.com
