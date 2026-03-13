@@ -1,0 +1,335 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "gcs": "https://cloud.google.com/storage/docs/json_api/v1/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+
+    "Bucket": {
+      "@id": "gcs:buckets",
+      "@type": "@id",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier"
+        },
+        "name": {
+          "@id": "schema:name"
+        },
+        "selfLink": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "projectNumber": {
+          "@id": "gcs:buckets/projectNumber"
+        },
+        "timeCreated": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updated": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "metageneration": {
+          "@id": "gcs:buckets/metageneration"
+        },
+        "location": {
+          "@id": "schema:locationCreated"
+        },
+        "locationType": {
+          "@id": "gcs:buckets/locationType"
+        },
+        "storageClass": {
+          "@id": "gcs:buckets/storageClass"
+        },
+        "etag": {
+          "@id": "gcs:buckets/etag"
+        },
+        "defaultEventBasedHold": {
+          "@id": "gcs:buckets/defaultEventBasedHold",
+          "@type": "xsd:boolean"
+        },
+        "rpo": {
+          "@id": "gcs:buckets/rpo"
+        },
+        "acl": {
+          "@id": "gcs:buckets/acl",
+          "@container": "@set"
+        },
+        "defaultObjectAcl": {
+          "@id": "gcs:buckets/defaultObjectAcl",
+          "@container": "@set"
+        },
+        "iamConfiguration": {
+          "@id": "gcs:buckets/iamConfiguration"
+        },
+        "encryption": {
+          "@id": "gcs:buckets/encryption"
+        },
+        "lifecycle": {
+          "@id": "gcs:buckets/lifecycle"
+        },
+        "logging": {
+          "@id": "gcs:buckets/logging"
+        },
+        "versioning": {
+          "@id": "gcs:buckets/versioning"
+        },
+        "website": {
+          "@id": "gcs:buckets/website"
+        },
+        "cors": {
+          "@id": "gcs:buckets/cors",
+          "@container": "@set"
+        },
+        "retentionPolicy": {
+          "@id": "gcs:buckets/retentionPolicy"
+        },
+        "softDeletePolicy": {
+          "@id": "gcs:buckets/softDeletePolicy"
+        },
+        "autoclass": {
+          "@id": "gcs:buckets/autoclass"
+        },
+        "hierarchicalNamespace": {
+          "@id": "gcs:buckets/hierarchicalNamespace"
+        },
+        "labels": {
+          "@id": "schema:keywords"
+        },
+        "customPlacementConfig": {
+          "@id": "gcs:buckets/customPlacementConfig"
+        },
+        "satisfiesPZS": {
+          "@id": "gcs:buckets/satisfiesPZS",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Object": {
+      "@id": "gcs:objects",
+      "@type": "@id",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier"
+        },
+        "name": {
+          "@id": "schema:name"
+        },
+        "selfLink": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "mediaLink": {
+          "@id": "schema:contentUrl",
+          "@type": "@id"
+        },
+        "bucket": {
+          "@id": "schema:isPartOf"
+        },
+        "generation": {
+          "@id": "schema:version"
+        },
+        "metageneration": {
+          "@id": "gcs:objects/metageneration"
+        },
+        "contentType": {
+          "@id": "schema:encodingFormat"
+        },
+        "timeCreated": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updated": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "timeDeleted": {
+          "@id": "gcs:objects/timeDeleted",
+          "@type": "xsd:dateTime"
+        },
+        "temporaryHold": {
+          "@id": "gcs:objects/temporaryHold",
+          "@type": "xsd:boolean"
+        },
+        "eventBasedHold": {
+          "@id": "gcs:objects/eventBasedHold",
+          "@type": "xsd:boolean"
+        },
+        "retentionExpirationTime": {
+          "@id": "schema:expires",
+          "@type": "xsd:dateTime"
+        },
+        "storageClass": {
+          "@id": "gcs:objects/storageClass"
+        },
+        "timeStorageClassUpdated": {
+          "@id": "gcs:objects/timeStorageClassUpdated",
+          "@type": "xsd:dateTime"
+        },
+        "size": {
+          "@id": "schema:contentSize"
+        },
+        "md5Hash": {
+          "@id": "gcs:objects/md5Hash"
+        },
+        "crc32c": {
+          "@id": "gcs:objects/crc32c"
+        },
+        "etag": {
+          "@id": "gcs:objects/etag"
+        },
+        "componentCount": {
+          "@id": "gcs:objects/componentCount",
+          "@type": "xsd:integer"
+        },
+        "contentEncoding": {
+          "@id": "gcs:objects/contentEncoding"
+        },
+        "contentDisposition": {
+          "@id": "gcs:objects/contentDisposition"
+        },
+        "contentLanguage": {
+          "@id": "schema:inLanguage"
+        },
+        "cacheControl": {
+          "@id": "gcs:objects/cacheControl"
+        },
+        "metadata": {
+          "@id": "gcs:objects/metadata"
+        },
+        "acl": {
+          "@id": "gcs:objects/acl",
+          "@container": "@set"
+        },
+        "owner": {
+          "@id": "schema:creator"
+        },
+        "customerEncryption": {
+          "@id": "gcs:objects/customerEncryption"
+        },
+        "kmsKeyName": {
+          "@id": "gcs:objects/kmsKeyName"
+        },
+        "customTime": {
+          "@id": "gcs:objects/customTime",
+          "@type": "xsd:dateTime"
+        },
+        "softDeleteTime": {
+          "@id": "gcs:objects/softDeleteTime",
+          "@type": "xsd:dateTime"
+        },
+        "hardDeleteTime": {
+          "@id": "gcs:objects/hardDeleteTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "BucketAccessControl": {
+      "@id": "gcs:bucketAccessControls",
+      "@type": "@id",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier"
+        },
+        "bucket": {
+          "@id": "schema:isPartOf"
+        },
+        "entity": {
+          "@id": "gcs:bucketAccessControls/entity"
+        },
+        "role": {
+          "@id": "schema:roleName"
+        },
+        "email": {
+          "@id": "schema:email"
+        },
+        "domain": {
+          "@id": "gcs:bucketAccessControls/domain"
+        },
+        "entityId": {
+          "@id": "gcs:bucketAccessControls/entityId"
+        },
+        "projectTeam": {
+          "@id": "gcs:bucketAccessControls/projectTeam"
+        }
+      }
+    },
+
+    "ObjectAccessControl": {
+      "@id": "gcs:objectAccessControls",
+      "@type": "@id",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier"
+        },
+        "bucket": {
+          "@id": "schema:isPartOf"
+        },
+        "object": {
+          "@id": "gcs:objectAccessControls/object"
+        },
+        "entity": {
+          "@id": "gcs:objectAccessControls/entity"
+        },
+        "role": {
+          "@id": "schema:roleName"
+        },
+        "email": {
+          "@id": "schema:email"
+        },
+        "domain": {
+          "@id": "gcs:objectAccessControls/domain"
+        },
+        "entityId": {
+          "@id": "gcs:objectAccessControls/entityId"
+        },
+        "projectTeam": {
+          "@id": "gcs:objectAccessControls/projectTeam"
+        }
+      }
+    },
+
+    "Notification": {
+      "@id": "gcs:notifications",
+      "@type": "@id",
+      "@context": {
+        "id": {
+          "@id": "schema:identifier"
+        },
+        "topic": {
+          "@id": "gcs:notifications/topic"
+        },
+        "event_types": {
+          "@id": "gcs:notifications/event_types",
+          "@container": "@set"
+        },
+        "object_name_prefix": {
+          "@id": "gcs:notifications/object_name_prefix"
+        },
+        "payload_format": {
+          "@id": "gcs:notifications/payload_format"
+        },
+        "selfLink": {
+          "@id": "schema:url",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ServiceAccount": {
+      "@id": "gcs:serviceAccount",
+      "@type": "@id",
+      "@context": {
+        "email_address": {
+          "@id": "schema:email"
+        }
+      }
+    }
+  }
+}
