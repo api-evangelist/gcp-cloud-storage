@@ -23,16 +23,16 @@ servers:
   - url: https://storage.googleapis.com/storage/v1
     description: Google Cloud Storage JSON API v1
 tags:
-  - name: Buckets
-    description: Operations for managing Cloud Storage buckets
-  - name: Objects
-    description: Operations for managing objects within Cloud Storage buckets
   - name: BucketAccessControls
     description: Operations for managing bucket-level access control lists
-  - name: ObjectAccessControls
-    description: Operations for managing object-level access control lists
+  - name: Buckets
+    description: Operations for managing Cloud Storage buckets
   - name: DefaultObjectAccessControls
     description: Operations for managing default object access controls on buckets
+  - name: ObjectAccessControls
+    description: Operations for managing object-level access control lists
+  - name: Objects
+    description: Operations for managing objects within Cloud Storage buckets
 security:
   - oauth2: []
   - bearerAuth: []

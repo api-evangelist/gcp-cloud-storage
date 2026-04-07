@@ -7,16 +7,16 @@ url: https://cloud.google.com/storage
 created: '2024-01-01'
 modified: '2026-03-03'
 tags:
-  - storage
-  - object storage
-  - cloud storage
-  - google cloud
-  - gcp
-  - file storage
-  - blob storage
-  - data
-  - backup
-  - archival
+  - Archival
+  - Backup
+  - Blob Storage
+  - Cloud Storage
+  - Data
+  - File Storage
+  - Gcp
+  - Google Cloud
+  - Object Storage
+  - Storage
 apis:
   - name: Google Cloud Storage JSON API
     description: >-
