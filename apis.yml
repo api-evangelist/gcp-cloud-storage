@@ -1,123 +1,127 @@
 name: Google Cloud Storage
-description: Object storage service offering high durability, availability, and scalability for storing and accessing data on Google Cloud Platform
+description: >-
+  Object storage service offering high durability, availability, and scalability for
+  storing and accessing data on Google Cloud Platform.
 image: https://cloud.google.com/images/social-icon-google-cloud-1200-630.png
 url: https://cloud.google.com/storage
 created: '2024-01-01'
 modified: '2026-03-03'
 tags:
-- storage
-- object storage
-- cloud storage
-- google cloud
-- gcp
-- file storage
-- blob storage
-- data
-- backup
-- archival
+  - storage
+  - object storage
+  - cloud storage
+  - google cloud
+  - gcp
+  - file storage
+  - blob storage
+  - data
+  - backup
+  - archival
 apis:
-- name: Google Cloud Storage JSON API
-  description: RESTful API for interacting with Google Cloud Storage buckets and objects
-  image: https://cloud.google.com/images/storage/storage-icon.svg
-  humanURL: https://cloud.google.com/storage/docs/json_api
-  baseURL: https://storage.googleapis.com/storage/v1
-  properties:
-  - type: Documentation
-    url: https://cloud.google.com/storage/docs/json_api
-  - type: OpenAPI
-    url: https://storage.googleapis.com/$discovery/rest?version=v1
-  - type: Authentication
-    url: https://cloud.google.com/storage/docs/authentication
-  - type: Pricing
-    url: https://cloud.google.com/storage/pricing
-  - type: Quotas
-    url: https://cloud.google.com/storage/quotas
-  - type: Status
-    url: https://status.cloud.google.com/
-  - type: TermsOfService
-    url: https://cloud.google.com/terms
+  - name: Google Cloud Storage JSON API
+    description: >-
+      RESTful API for interacting with Google Cloud Storage buckets and objects.
+    image: https://cloud.google.com/images/storage/storage-icon.svg
+    humanURL: https://cloud.google.com/storage/docs/json_api
+    baseURL: https://storage.googleapis.com/storage/v1
+    properties:
+      - type: Documentation
+        url: https://cloud.google.com/storage/docs/json_api
+      - type: OpenAPI
+        url: https://storage.googleapis.com/$discovery/rest?version=v1
+      - type: Authentication
+        url: https://cloud.google.com/storage/docs/authentication
+      - type: Pricing
+        url: https://cloud.google.com/storage/pricing
+      - type: Quotas
+        url: https://cloud.google.com/storage/quotas
+      - type: Status
+        url: https://status.cloud.google.com/
+      - type: TermsOfService
+        url: https://cloud.google.com/terms
+      - type: APIReference
+        url: https://cloud.google.com/storage/docs/json_api/v1
+      - type: IAMPermissions
+        url: https://cloud.google.com/storage/docs/access-control/iam-json
+      - type: Encryption
+        url: https://cloud.google.com/storage/docs/encryption
+      - type: AccessControl
+        url: https://cloud.google.com/storage/docs/access-control/iam
+      - type: OpenAPI
+        url: openapi/gcp-cloud-storage-json-api-openapi.yml
+    contact:
+      - type: Support
+        url: https://cloud.google.com/storage/docs/getting-support
+      - type: Twitter
+        url: https://twitter.com/googlecloud
+  - name: Google Cloud Storage XML API
+    description: >-
+      Amazon S3-compatible XML API for Google Cloud Storage.
+    image: https://cloud.google.com/images/storage/storage-icon.svg
+    humanURL: https://cloud.google.com/storage/docs/xml-api
+    baseURL: https://storage.googleapis.com
+    properties:
+      - type: Documentation
+        url: https://cloud.google.com/storage/docs/xml-api/overview
+      - type: Authentication
+        url: https://cloud.google.com/storage/docs/authentication/hmackeys
+      - type: S3Compatibility
+        url: https://cloud.google.com/storage/docs/interoperability
+      - type: APIReference
+        url: https://cloud.google.com/storage/docs/xml-api/reference-methods
+      - type: Headers
+        url: https://cloud.google.com/storage/docs/xml-api/reference-headers
+      - type: Pricing
+        url: https://cloud.google.com/storage/pricing
+      - type: Quotas
+        url: https://cloud.google.com/storage/quotas
+      - type: Status
+        url: https://status.cloud.google.com/
+      - type: TermsOfService
+        url: https://cloud.google.com/terms
+    contact:
+      - type: Support
+        url: https://cloud.google.com/storage/docs/getting-support
+      - type: Twitter
+        url: https://twitter.com/googlecloud
+common:
+  - type: GettingStarted
+    url: https://cloud.google.com/storage/docs/quickstarts
+  - type: SDKs
+    url: https://cloud.google.com/storage/docs/reference/libraries
+  - type: Console
+    url: https://console.cloud.google.com/storage
+  - type: Blog
+    url: https://cloud.google.com/blog/products/storage-data-transfer
+  - type: ChangeLog
+    url: https://cloud.google.com/storage/docs/release-notes
+  - type: Samples
+    url: https://cloud.google.com/storage/docs/samples
+  - type: BestPractices
+    url: https://cloud.google.com/storage/docs/best-practices
+  - type: Security
+    url: https://cloud.google.com/storage/docs/security
+  - type: Compliance
+    url: https://cloud.google.com/security/compliance
   - type: APIReference
-    url: https://cloud.google.com/storage/docs/json_api/v1
-  - type: IAMPermissions
-    url: https://cloud.google.com/storage/docs/access-control/iam-json
+    url: https://cloud.google.com/storage/docs/apis
+  - type: IAM
+    url: https://cloud.google.com/storage/docs/access-control/iam
   - type: Encryption
     url: https://cloud.google.com/storage/docs/encryption
-  - type: AccessControl
-    url: https://cloud.google.com/storage/docs/access-control/iam
-  - type: OpenAPI
-    url: openapi/gcp-cloud-storage-json-api-openapi.yml
-  contact:
-  - type: Support
-    url: https://cloud.google.com/storage/docs/getting-support
-  - type: Twitter
-    url: https://twitter.com/googlecloud
-- name: Google Cloud Storage XML API
-  description: Amazon S3-compatible XML API for Google Cloud Storage
-  image: https://cloud.google.com/images/storage/storage-icon.svg
-  humanURL: https://cloud.google.com/storage/docs/xml-api
-  baseURL: https://storage.googleapis.com
-  properties:
-  - type: Documentation
-    url: https://cloud.google.com/storage/docs/xml-api/overview
-  - type: Authentication
-    url: https://cloud.google.com/storage/docs/authentication/hmackeys
-  - type: S3Compatibility
-    url: https://cloud.google.com/storage/docs/interoperability
-  - type: APIReference
-    url: https://cloud.google.com/storage/docs/xml-api/reference-methods
-  - type: Headers
-    url: https://cloud.google.com/storage/docs/xml-api/reference-headers
-  - type: Pricing
-    url: https://cloud.google.com/storage/pricing
-  - type: Quotas
-    url: https://cloud.google.com/storage/quotas
-  - type: Status
-    url: https://status.cloud.google.com/
-  - type: TermsOfService
-    url: https://cloud.google.com/terms
-  contact:
-  - type: Support
-    url: https://cloud.google.com/storage/docs/getting-support
-  - type: Twitter
-    url: https://twitter.com/googlecloud
-common:
-- type: GettingStarted
-  url: https://cloud.google.com/storage/docs/quickstarts
-- type: SDKs
-  url: https://cloud.google.com/storage/docs/reference/libraries
-- type: Console
-  url: https://console.cloud.google.com/storage
-- type: Blog
-  url: https://cloud.google.com/blog/products/storage-data-transfer
-- type: ChangeLog
-  url: https://cloud.google.com/storage/docs/release-notes
-- type: Samples
-  url: https://cloud.google.com/storage/docs/samples
-- type: BestPractices
-  url: https://cloud.google.com/storage/docs/best-practices
-- type: Security
-  url: https://cloud.google.com/storage/docs/security
-- type: Compliance
-  url: https://cloud.google.com/security/compliance
-- type: APIReference
-  url: https://cloud.google.com/storage/docs/apis
-- type: IAM
-  url: https://cloud.google.com/storage/docs/access-control/iam
-- type: Encryption
-  url: https://cloud.google.com/storage/docs/encryption
-- type: CLI
-  url: https://cloud.google.com/storage/docs/discover-object-storage-gsutil
-- type: Terraform
-  url: https://cloud.google.com/storage/docs/terraform-for-cloud-storage
-- type: gRPC
-  url: https://cloud.google.com/storage/docs/enable-grpc-api
-- type: SLA
-  url: https://cloud.google.com/storage/sla
-- type: JSONSchema
-  url: json-schema/gcp-cloud-storage-bucket-schema.json
-- type: JSON-LD
-  url: json-ld/gcp-cloud-storage-context.jsonld
+  - type: CLI
+    url: https://cloud.google.com/storage/docs/discover-object-storage-gsutil
+  - type: Terraform
+    url: https://cloud.google.com/storage/docs/terraform-for-cloud-storage
+  - type: gRPC
+    url: https://cloud.google.com/storage/docs/enable-grpc-api
+  - type: SLA
+    url: https://cloud.google.com/storage/sla
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-bucket-schema.json
+  - type: JSON-LD
+    url: json-ld/gcp-cloud-storage-context.jsonld
 maintainers:
-- name: Kin Lane
-  email: kin@apievangelist.com
-  url: https://apievangelist.com
+  - name: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

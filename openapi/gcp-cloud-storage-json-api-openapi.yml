@@ -40,7 +40,7 @@ paths:
   /b:
     get:
       operationId: listBuckets
-      summary: List buckets
+      summary: Google Cloud Storage List buckets
       description: >-
         Retrieves a list of buckets for a given project. The authenticated
         user must have the storage.buckets.list permission for the specified
@@ -110,7 +110,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
     post:
       operationId: insertBucket
-      summary: Create a bucket
+      summary: Google Cloud Storage Create a bucket
       description: >-
         Creates a new bucket in the specified project. The authenticated
         user must have the storage.buckets.create permission for the
@@ -204,7 +204,7 @@ paths:
   /b/{bucket}:
     get:
       operationId: getBucket
-      summary: Get a bucket
+      summary: Google Cloud Storage Get a bucket
       description: >-
         Returns metadata for the specified bucket. The authenticated user
         must have the storage.buckets.get permission for the bucket.
@@ -264,7 +264,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateBucket
-      summary: Update a bucket
+      summary: Google Cloud Storage Update a bucket
       description: >-
         Updates a bucket. Changes to the bucket will be readable
         immediately after writing, but configuration changes may take
@@ -356,7 +356,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     patch:
       operationId: patchBucket
-      summary: Patch a bucket
+      summary: Google Cloud Storage Patch a bucket
       description: >-
         Patches a bucket. Changes to the bucket will be readable
         immediately after writing, but configuration changes may take
@@ -448,7 +448,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     delete:
       operationId: deleteBucket
-      summary: Delete a bucket
+      summary: Google Cloud Storage Delete a bucket
       description: >-
         Permanently deletes an empty bucket. The authenticated user must
         have the storage.buckets.delete permission for the bucket. The
@@ -500,7 +500,7 @@ paths:
   /b/{bucket}/lockRetentionPolicy:
     post:
       operationId: lockBucketRetentionPolicy
-      summary: Lock retention policy
+      summary: Google Cloud Storage Lock retention policy
       description: >-
         Locks retention policy on a bucket. This action is irreversible.
         Once locked, the retention policy cannot be removed or the
@@ -540,7 +540,7 @@ paths:
   /b/{bucket}/iam:
     get:
       operationId: getBucketIamPolicy
-      summary: Get bucket IAM policy
+      summary: Google Cloud Storage Get bucket IAM policy
       description: >-
         Returns an IAM policy for the specified bucket. The authenticated
         user must have the storage.buckets.getIamPolicy permission.
@@ -578,7 +578,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: setBucketIamPolicy
-      summary: Set bucket IAM policy
+      summary: Google Cloud Storage Set bucket IAM policy
       description: >-
         Updates an IAM policy for the specified bucket. The authenticated
         user must have the storage.buckets.setIamPolicy permission.
@@ -612,7 +612,7 @@ paths:
   /b/{bucket}/iam/testPermissions:
     get:
       operationId: testBucketIamPermissions
-      summary: Test bucket IAM permissions
+      summary: Google Cloud Storage Test bucket IAM permissions
       description: >-
         Tests a set of permissions on the given bucket to see which,
         if any, are held by the caller. The authenticated user must
@@ -663,7 +663,7 @@ paths:
   /b/{bucket}/o:
     get:
       operationId: listObjects
-      summary: List objects
+      summary: Google Cloud Storage List objects
       description: >-
         Retrieves a list of objects matching the criteria. The
         authenticated user must have the storage.objects.list permission
@@ -805,7 +805,7 @@ paths:
   /b/{bucket}/o/{object}:
     get:
       operationId: getObject
-      summary: Get an object
+      summary: Google Cloud Storage Get an object
       description: >-
         Retrieves an object or its metadata. The authenticated user must
         have the storage.objects.get permission for the object. By default,
@@ -921,7 +921,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     put:
       operationId: updateObject
-      summary: Update an object
+      summary: Google Cloud Storage Update an object
       description: >-
         Updates an object's metadata. This method replaces all mutable
         metadata fields of the object with the values in the request body.
@@ -1025,7 +1025,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     patch:
       operationId: patchObject
-      summary: Patch an object
+      summary: Google Cloud Storage Patch an object
       description: >-
         Patches an object's metadata. This method supports patch
         semantics where only the specified fields are updated.
@@ -1129,7 +1129,7 @@ paths:
           $ref: '#/components/responses/PreconditionFailed'
     delete:
       operationId: deleteObject
-      summary: Delete an object
+      summary: Google Cloud Storage Delete an object
       description: >-
         Deletes an object and its metadata. Deletions are permanent if
         versioning is not enabled for the bucket, or if the object is
@@ -1203,7 +1203,7 @@ paths:
   /b/{bucket}/o/{object}/compose:
     post:
       operationId: composeObject
-      summary: Compose objects
+      summary: Google Cloud Storage Compose objects
       description: >-
         Concatenates a list of existing objects into a new object in the
         same bucket. The composed object can contain no more than 32
@@ -1265,7 +1265,7 @@ paths:
   /b/{bucket}/o/{object}/copyTo/b/{destinationBucket}/o/{destinationObject}:
     post:
       operationId: copyObject
-      summary: Copy an object
+      summary: Google Cloud Storage Copy an object
       description: >-
         Copies a source object to a destination object. Optionally
         overrides metadata. This method creates a copy of an object
@@ -1432,7 +1432,7 @@ paths:
   /b/{bucket}/o/{object}/rewriteTo/b/{destinationBucket}/o/{destinationObject}:
     post:
       operationId: rewriteObject
-      summary: Rewrite an object
+      summary: Google Cloud Storage Rewrite an object
       description: >-
         Rewrites a source object to a destination object. Optionally
         overrides metadata. This method can copy objects across
@@ -1628,7 +1628,7 @@ paths:
   /b/{bucket}/o/watchAll:
     post:
       operationId: watchAllObjects
-      summary: Watch for object changes
+      summary: Google Cloud Storage Watch for object changes
       description: >-
         Watch for changes on all objects in a bucket. This method
         creates a notification channel that sends a notification
@@ -1669,7 +1669,7 @@ paths:
   /b/{bucket}/acl:
     get:
       operationId: listBucketAccessControls
-      summary: List bucket ACL entries
+      summary: Google Cloud Storage List bucket ACL entries
       description: >-
         Retrieves ACL entries on the specified bucket. The authenticated
         user must have the storage.buckets.getIamPolicy permission.
@@ -1701,7 +1701,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: insertBucketAccessControl
-      summary: Create a bucket ACL entry
+      summary: Google Cloud Storage Create a bucket ACL entry
       description: >-
         Creates a new ACL entry on the specified bucket. The authenticated
         user must have the storage.buckets.setIamPolicy permission.
@@ -1735,7 +1735,7 @@ paths:
   /b/{bucket}/acl/{entity}:
     get:
       operationId: getBucketAccessControl
-      summary: Get a bucket ACL entry
+      summary: Google Cloud Storage Get a bucket ACL entry
       description: >-
         Returns the ACL entry for the specified entity on the specified
         bucket.
@@ -1760,7 +1760,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateBucketAccessControl
-      summary: Update a bucket ACL entry
+      summary: Google Cloud Storage Update a bucket ACL entry
       description: Updates an ACL entry on the specified bucket.
       tags:
         - BucketAccessControls
@@ -1791,7 +1791,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: patchBucketAccessControl
-      summary: Patch a bucket ACL entry
+      summary: Google Cloud Storage Patch a bucket ACL entry
       description: Patches an ACL entry on the specified bucket.
       tags:
         - BucketAccessControls
@@ -1822,7 +1822,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteBucketAccessControl
-      summary: Delete a bucket ACL entry
+      summary: Google Cloud Storage Delete a bucket ACL entry
       description: >-
         Permanently deletes the ACL entry for the specified entity on
         the specified bucket.
@@ -1845,7 +1845,7 @@ paths:
   /b/{bucket}/defaultObjectAcl:
     get:
       operationId: listDefaultObjectAccessControls
-      summary: List default object ACL entries
+      summary: Google Cloud Storage List default object ACL entries
       description: >-
         Retrieves default object ACL entries on the specified bucket.
         These are applied to new objects when no ACL is provided.
@@ -1895,7 +1895,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: insertDefaultObjectAccessControl
-      summary: Create a default object ACL entry
+      summary: Google Cloud Storage Create a default object ACL entry
       description: >-
         Creates a new default object ACL entry on the specified bucket.
       tags:
@@ -1928,7 +1928,7 @@ paths:
   /b/{bucket}/defaultObjectAcl/{entity}:
     get:
       operationId: getDefaultObjectAccessControl
-      summary: Get a default object ACL entry
+      summary: Google Cloud Storage Get a default object ACL entry
       description: >-
         Returns the default object ACL entry for the specified entity
         on the specified bucket.
@@ -1953,7 +1953,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateDefaultObjectAccessControl
-      summary: Update a default object ACL entry
+      summary: Google Cloud Storage Update a default object ACL entry
       description: Updates a default object ACL entry on the specified bucket.
       tags:
         - DefaultObjectAccessControls
@@ -1984,7 +1984,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: patchDefaultObjectAccessControl
-      summary: Patch a default object ACL entry
+      summary: Google Cloud Storage Patch a default object ACL entry
       description: Patches a default object ACL entry on the specified bucket.
       tags:
         - DefaultObjectAccessControls
@@ -2015,7 +2015,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteDefaultObjectAccessControl
-      summary: Delete a default object ACL entry
+      summary: Google Cloud Storage Delete a default object ACL entry
       description: >-
         Permanently deletes the default object ACL entry for the
         specified entity on the specified bucket.
@@ -2038,7 +2038,7 @@ paths:
   /b/{bucket}/o/{object}/acl:
     get:
       operationId: listObjectAccessControls
-      summary: List object ACL entries
+      summary: Google Cloud Storage List object ACL entries
       description: >-
         Retrieves ACL entries on the specified object.
       tags:
@@ -2077,7 +2077,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     post:
       operationId: insertObjectAccessControl
-      summary: Create an object ACL entry
+      summary: Google Cloud Storage Create an object ACL entry
       description: Creates a new ACL entry on the specified object.
       tags:
         - ObjectAccessControls
@@ -2117,7 +2117,7 @@ paths:
   /b/{bucket}/o/{object}/acl/{entity}:
     get:
       operationId: getObjectAccessControl
-      summary: Get an object ACL entry
+      summary: Google Cloud Storage Get an object ACL entry
       description: Returns the ACL entry for the specified entity on the specified object.
       tags:
         - ObjectAccessControls
@@ -2148,7 +2148,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateObjectAccessControl
-      summary: Update an object ACL entry
+      summary: Google Cloud Storage Update an object ACL entry
       description: Updates an ACL entry on the specified object.
       tags:
         - ObjectAccessControls
@@ -2187,7 +2187,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     patch:
       operationId: patchObjectAccessControl
-      summary: Patch an object ACL entry
+      summary: Google Cloud Storage Patch an object ACL entry
       description: Patches an ACL entry on the specified object.
       tags:
         - ObjectAccessControls
@@ -2226,7 +2226,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteObjectAccessControl
-      summary: Delete an object ACL entry
+      summary: Google Cloud Storage Delete an object ACL entry
       description: >-
         Permanently deletes the ACL entry for the specified entity on
         the specified object.
@@ -2257,7 +2257,7 @@ paths:
   /channels/stop:
     post:
       operationId: stopChannel
-      summary: Stop a notification channel
+      summary: Google Cloud Storage Stop a notification channel
       description: >-
         Stop receiving object change notifications through a previously
         created watch channel.
