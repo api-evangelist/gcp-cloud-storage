@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ObjectAccessControl",
+  "type": "object",
+  "description": "An access-control entry for an object.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "The kind of item this is."
+    },
+    "id": {
+      "type": "string",
+      "description": "The ID of the access-control entry."
+    },
+    "selfLink": {
+      "type": "string",
+      "description": "The link to this access-control entry."
+    },
+    "bucket": {
+      "type": "string",
+      "description": "The name of the bucket."
+    },
+    "object": {
+      "type": "string",
+      "description": "The name of the object."
+    },
+    "generation": {
+      "type": "string",
+      "description": "The content generation of the object."
+    },
+    "entity": {
+      "type": "string",
+      "description": "The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+    },
+    "role": {
+      "type": "string",
+      "description": "The access permission for the entity."
+    },
+    "email": {
+      "type": "string",
+      "description": "The email address associated with the entity, if any."
+    },
+    "domain": {
+      "type": "string",
+      "description": "The domain associated with the entity, if any."
+    },
+    "entityId": {
+      "type": "string",
+      "description": "The ID for the entity, if any."
+    },
+    "etag": {
+      "type": "string",
+      "description": "HTTP 1.1 Entity tag for the access-control entry."
+    },
+    "projectTeam": {
+      "type": "object",
+      "description": "The project team associated with the entity, if any."
+    }
+  }
+}

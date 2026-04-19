@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Policy",
+  "type": "object",
+  "description": "An IAM policy for a Cloud Storage resource.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "The kind of item this is."
+    },
+    "resourceId": {
+      "type": "string",
+      "description": "The ID of the resource to which this policy belongs."
+    },
+    "version": {
+      "type": "integer",
+      "description": "The version of the policy. Valid values are 1 and 3. Any request that specifies conditional role bindings must specify version 3."
+    },
+    "etag": {
+      "type": "string",
+      "description": "HTTP 1.1 Entity tag for the policy. Used for optimistic concurrency control."
+    },
+    "bindings": {
+      "type": "array",
+      "description": "A list of members bound to a role."
+    }
+  }
+}

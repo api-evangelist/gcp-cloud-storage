@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ComposeRequest",
+  "type": "object",
+  "description": "A request to compose objects.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "The kind of item this is."
+    },
+    "sourceObjects": {
+      "type": "array",
+      "description": "The list of source objects that will be concatenated into a single object. Maximum 32 objects."
+    }
+  }
+}

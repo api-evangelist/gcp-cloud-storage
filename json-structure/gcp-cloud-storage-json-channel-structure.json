@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Channel",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "resourceId": {
+      "type": "string"
+    },
+    "resourceUri": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    },
+    "expiration": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "params": {
+      "type": "object"
+    },
+    "payload": {
+      "type": "boolean"
+    }
+  }
+}

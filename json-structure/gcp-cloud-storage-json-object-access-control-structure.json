@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ObjectAccessControl",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "bucket": {
+      "type": "string"
+    },
+    "object": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "string"
+    },
+    "entity": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "entityId": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "projectTeam": {
+      "type": "object"
+    }
+  }
+}

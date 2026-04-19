@@ -1,0 +1,12 @@
+name: gcp-cloud-storage API Vocabulary
+provider: gcp-cloud-storage
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 38
+schemas: 11
+tags:
+- BucketAccessControls
+- Buckets
+- DefaultObjectAccessControls
+- ObjectAccessControls
+- Objects

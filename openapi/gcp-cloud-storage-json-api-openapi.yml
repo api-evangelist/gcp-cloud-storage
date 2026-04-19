@@ -20,81 +20,81 @@ externalDocs:
   description: Google Cloud Storage JSON API Documentation
   url: https://cloud.google.com/storage/docs/json_api/v1
 servers:
-  - url: https://storage.googleapis.com/storage/v1
-    description: Google Cloud Storage JSON API v1
+- url: https://storage.googleapis.com/storage/v1
+  description: Google Cloud Storage JSON API v1
 tags:
-  - name: BucketAccessControls
-    description: Operations for managing bucket-level access control lists
-  - name: Buckets
-    description: Operations for managing Cloud Storage buckets
-  - name: DefaultObjectAccessControls
-    description: Operations for managing default object access controls on buckets
-  - name: ObjectAccessControls
-    description: Operations for managing object-level access control lists
-  - name: Objects
-    description: Operations for managing objects within Cloud Storage buckets
+- name: BucketAccessControls
+  description: Operations for managing bucket-level access control lists
+- name: Buckets
+  description: Operations for managing Cloud Storage buckets
+- name: DefaultObjectAccessControls
+  description: Operations for managing default object access controls on buckets
+- name: ObjectAccessControls
+  description: Operations for managing object-level access control lists
+- name: Objects
+  description: Operations for managing objects within Cloud Storage buckets
 security:
-  - oauth2: []
-  - bearerAuth: []
+- oauth2: []
+- bearerAuth: []
 paths:
   /b:
     get:
       operationId: listBuckets
-      summary: Google Cloud Storage List buckets
+      summary: Google Cloud Storage List Buckets
       description: >-
         Retrieves a list of buckets for a given project. The authenticated
         user must have the storage.buckets.list permission for the specified
         project.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - name: project
-          in: query
-          required: true
-          description: The project ID or project number to list buckets for.
-          schema:
-            type: string
-          example: my-project-id
-        - name: maxResults
-          in: query
-          required: false
-          description: >-
-            Maximum number of buckets to return in a single response.
-            The service uses this value or 1,000 items, whichever is smaller.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 1000
-            default: 1000
-        - name: pageToken
-          in: query
-          required: false
-          description: >-
-            A previously-returned page token representing part of the
-            larger set of results to view. The pageToken is an encoded
-            field that marks the name and generation of the last bucket
-            in the previous list response.
-          schema:
-            type: string
-        - name: prefix
-          in: query
-          required: false
-          description: Filter results to buckets whose names begin with this prefix.
-          schema:
-            type: string
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - name: project
+        in: query
+        required: true
+        description: The project ID or project number to list buckets for.
+        schema:
+          type: string
+        example: my-project-id
+      - name: maxResults
+        in: query
+        required: false
+        description: >-
+          Maximum number of buckets to return in a single response.
+          The service uses this value or 1,000 items, whichever is smaller.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 1000
+      - name: pageToken
+        in: query
+        required: false
+        description: >-
+          A previously-returned page token representing part of the
+          larger set of results to view. The pageToken is an encoded
+          field that marks the name and generation of the last bucket
+          in the previous list response.
+        schema:
+          type: string
+      - name: prefix
+        in: query
+        required: false
+        description: Filter results to buckets whose names begin with this prefix.
+        schema:
+          type: string
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with a list of buckets.
@@ -108,72 +108,75 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: insertBucket
-      summary: Google Cloud Storage Create a bucket
+      summary: Google Cloud Storage Create a Bucket
       description: >-
         Creates a new bucket in the specified project. The authenticated
         user must have the storage.buckets.create permission for the
         project. Bucket names must be globally unique across all of
         Cloud Storage.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - name: project
-          in: query
-          required: true
-          description: The project ID or project number to create the bucket in.
-          schema:
-            type: string
-          example: my-project-id
-        - name: predefinedAcl
-          in: query
-          required: false
-          description: Apply a predefined set of access controls to the bucket.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - private
-              - projectPrivate
-              - publicRead
-              - publicReadWrite
-        - name: predefinedDefaultObjectAcl
-          in: query
-          required: false
-          description: >-
-            Apply a predefined set of default object access controls
-            to the bucket.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - name: enableObjectRetention
-          in: query
-          required: false
-          description: >-
-            When set to true, object retention is enabled for this bucket.
-          schema:
-            type: boolean
-            default: false
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - name: project
+        in: query
+        required: true
+        description: The project ID or project number to create the bucket in.
+        schema:
+          type: string
+        example: my-project-id
+      - name: predefinedAcl
+        in: query
+        required: false
+        description: Apply a predefined set of access controls to the bucket.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - private
+          - projectPrivate
+          - publicRead
+          - publicReadWrite
+      - name: predefinedDefaultObjectAcl
+        in: query
+        required: false
+        description: >-
+          Apply a predefined set of default object access controls
+          to the bucket.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - name: enableObjectRetention
+        in: query
+        required: false
+        description: >-
+          When set to true, object retention is enabled for this bucket.
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -201,50 +204,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}:
     get:
       operationId: getBucket
-      summary: Google Cloud Storage Get a bucket
+      summary: Google Cloud Storage Get a Bucket
       description: >-
         Returns metadata for the specified bucket. The authenticated user
         must have the storage.buckets.get permission for the bucket.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the return of the bucket metadata conditional on
-            whether the bucket's current metageneration matches the
-            given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the return of the bucket metadata conditional on
-            whether the bucket's current metageneration does not match
-            the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the return of the bucket metadata conditional on
+          whether the bucket's current metageneration matches the
+          given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the return of the bucket metadata conditional on
+          whether the bucket's current metageneration does not match
+          the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with bucket metadata.
@@ -262,75 +268,78 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateBucket
-      summary: Google Cloud Storage Update a bucket
+      summary: Google Cloud Storage Update a Bucket
       description: >-
         Updates a bucket. Changes to the bucket will be readable
         immediately after writing, but configuration changes may take
         time to propagate. This method replaces all mutable properties
         of the bucket with the values in the request body.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the update conditional on whether the bucket's current
-            metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the update conditional on whether the bucket's current
-            metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: predefinedAcl
-          in: query
-          required: false
-          description: Apply a predefined set of access controls to the bucket.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - private
-              - projectPrivate
-              - publicRead
-              - publicReadWrite
-        - name: predefinedDefaultObjectAcl
-          in: query
-          required: false
-          description: >-
-            Apply a predefined set of default object access controls.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to full.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: full
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the update conditional on whether the bucket's current
+          metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the update conditional on whether the bucket's current
+          metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: predefinedAcl
+        in: query
+        required: false
+        description: Apply a predefined set of access controls to the bucket.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - private
+          - projectPrivate
+          - publicRead
+          - publicReadWrite
+      - name: predefinedDefaultObjectAcl
+        in: query
+        required: false
+        description: >-
+          Apply a predefined set of default object access controls.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to full.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: full
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -354,75 +363,78 @@ paths:
           $ref: '#/components/responses/NotFound'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: patchBucket
-      summary: Google Cloud Storage Patch a bucket
+      summary: Google Cloud Storage Patch a Bucket
       description: >-
         Patches a bucket. Changes to the bucket will be readable
         immediately after writing, but configuration changes may take
         time to propagate. This method supports patch semantics where
         only the specified fields are updated.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the patch conditional on whether the bucket's current
-            metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the patch conditional on whether the bucket's current
-            metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: predefinedAcl
-          in: query
-          required: false
-          description: Apply a predefined set of access controls to the bucket.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - private
-              - projectPrivate
-              - publicRead
-              - publicReadWrite
-        - name: predefinedDefaultObjectAcl
-          in: query
-          required: false
-          description: >-
-            Apply a predefined set of default object access controls.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to full.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: full
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the patch conditional on whether the bucket's current
+          metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the patch conditional on whether the bucket's current
+          metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: predefinedAcl
+        in: query
+        required: false
+        description: Apply a predefined set of access controls to the bucket.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - private
+          - projectPrivate
+          - publicRead
+          - publicReadWrite
+      - name: predefinedDefaultObjectAcl
+        in: query
+        required: false
+        description: >-
+          Apply a predefined set of default object access controls.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to full.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: full
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -446,36 +458,39 @@ paths:
           $ref: '#/components/responses/NotFound'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteBucket
-      summary: Google Cloud Storage Delete a bucket
+      summary: Google Cloud Storage Delete a Bucket
       description: >-
         Permanently deletes an empty bucket. The authenticated user must
         have the storage.buckets.delete permission for the bucket. The
         bucket must be empty before it can be deleted.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the deletion conditional on whether the bucket's
-            current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the deletion conditional on whether the bucket's
-            current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the deletion conditional on whether the bucket's
+          current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the deletion conditional on whether the bucket's
+          current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '204':
           description: Bucket deleted successfully. No content returned.
@@ -497,28 +512,31 @@ paths:
         '412':
           $ref: '#/components/responses/PreconditionFailed'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/lockRetentionPolicy:
     post:
       operationId: lockBucketRetentionPolicy
-      summary: Google Cloud Storage Lock retention policy
+      summary: Google Cloud Storage Lock Retention Policy
       description: >-
         Locks retention policy on a bucket. This action is irreversible.
         Once locked, the retention policy cannot be removed or the
         retention period shortened.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: ifMetagenerationMatch
-          in: query
-          required: true
-          description: >-
-            Makes the operation conditional on whether the bucket's
-            current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: true
+        description: >-
+          Makes the operation conditional on whether the bucket's
+          current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Retention policy locked successfully.
@@ -537,30 +555,33 @@ paths:
         '412':
           $ref: '#/components/responses/PreconditionFailed'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/iam:
     get:
       operationId: getBucketIamPolicy
-      summary: Google Cloud Storage Get bucket IAM policy
+      summary: Google Cloud Storage Get Bucket Iam Policy
       description: >-
         Returns an IAM policy for the specified bucket. The authenticated
         user must have the storage.buckets.getIamPolicy permission.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: optionsRequestedPolicyVersion
-          in: query
-          required: false
-          description: >-
-            The IAM policy format version to be returned. Valid values
-            are 1 and 3. Requests specifying an invalid value will be
-            rejected. Defaults to 1.
-          schema:
-            type: integer
-            enum:
-              - 1
-              - 3
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: optionsRequestedPolicyVersion
+        in: query
+        required: false
+        description: >-
+          The IAM policy format version to be returned. Valid values
+          are 1 and 3. Requests specifying an invalid value will be
+          rejected. Defaults to 1.
+        schema:
+          type: integer
+          enum:
+          - 1
+          - 3
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with the IAM policy.
@@ -576,17 +597,20 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: setBucketIamPolicy
-      summary: Google Cloud Storage Set bucket IAM policy
+      summary: Google Cloud Storage Set Bucket Iam Policy
       description: >-
         Updates an IAM policy for the specified bucket. The authenticated
         user must have the storage.buckets.setIamPolicy permission.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -609,30 +633,33 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/iam/testPermissions:
     get:
       operationId: testBucketIamPermissions
-      summary: Google Cloud Storage Test bucket IAM permissions
+      summary: Google Cloud Storage Test Bucket Iam Permissions
       description: >-
         Tests a set of permissions on the given bucket to see which,
         if any, are held by the caller. The authenticated user must
         have the storage.buckets.testIamPermissions permission.
       tags:
-        - Buckets
+      - Buckets
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: permissions
-          in: query
-          required: true
-          description: Permissions to test.
-          schema:
-            type: array
-            items:
-              type: string
-          example:
-            - storage.buckets.get
-            - storage.objects.list
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: permissions
+        in: query
+        required: true
+        description: Permissions to test.
+        schema:
+          type: array
+          items:
+            type: string
+        example:
+        - storage.buckets.get
+        - storage.objects.list
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with test results.
@@ -660,132 +687,135 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o:
     get:
       operationId: listObjects
-      summary: Google Cloud Storage List objects
+      summary: Google Cloud Storage List Objects
       description: >-
         Retrieves a list of objects matching the criteria. The
         authenticated user must have the storage.objects.list permission
         for the bucket. Lists objects in a bucket, optionally filtering
         by a prefix and delimiter to emulate directory listing.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: delimiter
-          in: query
-          required: false
-          description: >-
-            Returns results in a directory-like mode. Items will
-            contain only objects whose names, aside from the prefix,
-            do not contain delimiter. Objects whose names, aside from
-            the prefix, contain delimiter will have their name truncated
-            after the delimiter, returned in prefixes. Duplicate prefixes
-            are omitted.
-          schema:
-            type: string
-          example: /
-        - name: endOffset
-          in: query
-          required: false
-          description: >-
-            Filter results to objects whose names are lexicographically
-            before endOffset. If startOffset is also set, the objects
-            listed have names between startOffset (inclusive) and
-            endOffset (exclusive).
-          schema:
-            type: string
-        - name: includeFoldersAsPrefixes
-          in: query
-          required: false
-          description: >-
-            Only applicable if delimiter is set to /. If true, will
-            also include folders and managed folders (besides objects)
-            in the returned prefixes.
-          schema:
-            type: boolean
-        - name: includeTrailingDelimiter
-          in: query
-          required: false
-          description: >-
-            If true, objects that end in exactly one instance of
-            delimiter will have their metadata included in items in
-            addition to prefixes.
-          schema:
-            type: boolean
-        - name: matchGlob
-          in: query
-          required: false
-          description: >-
-            Filter results to objects and prefixes that match this glob
-            pattern. Supports *, **, ?, and [...] character classes.
-          schema:
-            type: string
-        - name: maxResults
-          in: query
-          required: false
-          description: >-
-            Maximum number of items plus prefixes to return in a single
-            page of responses. The service may return fewer than this
-            value.
-          schema:
-            type: integer
-            minimum: 1
-            default: 1000
-        - name: pageToken
-          in: query
-          required: false
-          description: >-
-            A previously-returned page token representing part of the
-            larger set of results to view.
-          schema:
-            type: string
-        - name: prefix
-          in: query
-          required: false
-          description: >-
-            Filter results to objects whose names begin with this
-            prefix.
-          schema:
-            type: string
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - name: softDeleted
-          in: query
-          required: false
-          description: >-
-            If true, only lists soft-deleted object versions.
-          schema:
-            type: boolean
-        - name: startOffset
-          in: query
-          required: false
-          description: >-
-            Filter results to objects whose names are lexicographically
-            equal to or after startOffset.
-          schema:
-            type: string
-        - name: versions
-          in: query
-          required: false
-          description: >-
-            If true, lists all versions of an object as distinct results.
-            The default is false.
-          schema:
-            type: boolean
-            default: false
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: delimiter
+        in: query
+        required: false
+        description: >-
+          Returns results in a directory-like mode. Items will
+          contain only objects whose names, aside from the prefix,
+          do not contain delimiter. Objects whose names, aside from
+          the prefix, contain delimiter will have their name truncated
+          after the delimiter, returned in prefixes. Duplicate prefixes
+          are omitted.
+        schema:
+          type: string
+        example: /
+      - name: endOffset
+        in: query
+        required: false
+        description: >-
+          Filter results to objects whose names are lexicographically
+          before endOffset. If startOffset is also set, the objects
+          listed have names between startOffset (inclusive) and
+          endOffset (exclusive).
+        schema:
+          type: string
+      - name: includeFoldersAsPrefixes
+        in: query
+        required: false
+        description: >-
+          Only applicable if delimiter is set to /. If true, will
+          also include folders and managed folders (besides objects)
+          in the returned prefixes.
+        schema:
+          type: boolean
+      - name: includeTrailingDelimiter
+        in: query
+        required: false
+        description: >-
+          If true, objects that end in exactly one instance of
+          delimiter will have their metadata included in items in
+          addition to prefixes.
+        schema:
+          type: boolean
+      - name: matchGlob
+        in: query
+        required: false
+        description: >-
+          Filter results to objects and prefixes that match this glob
+          pattern. Supports *, **, ?, and [...] character classes.
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        description: >-
+          Maximum number of items plus prefixes to return in a single
+          page of responses. The service may return fewer than this
+          value.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1000
+      - name: pageToken
+        in: query
+        required: false
+        description: >-
+          A previously-returned page token representing part of the
+          larger set of results to view.
+        schema:
+          type: string
+      - name: prefix
+        in: query
+        required: false
+        description: >-
+          Filter results to objects whose names begin with this
+          prefix.
+        schema:
+          type: string
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - name: softDeleted
+        in: query
+        required: false
+        description: >-
+          If true, only lists soft-deleted object versions.
+        schema:
+          type: boolean
+      - name: startOffset
+        in: query
+        required: false
+        description: >-
+          Filter results to objects whose names are lexicographically
+          equal to or after startOffset.
+        schema:
+          type: string
+      - name: versions
+        in: query
+        required: false
+        description: >-
+          If true, lists all versions of an object as distinct results.
+          The default is false.
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with a list of objects.
@@ -802,98 +832,101 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/{object}:
     get:
       operationId: getObject
-      summary: Google Cloud Storage Get an object
+      summary: Google Cloud Storage Get an Object
       description: >-
         Retrieves an object or its metadata. The authenticated user must
         have the storage.objects.get permission for the object. By default,
         this returns the object metadata. Use alt=media to download the
         object data.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - name: alt
-          in: query
-          required: false
-          description: >-
-            Data format for the response. Use json for metadata or
-            media to download the object data.
-          schema:
-            type: string
-            enum:
-              - json
-              - media
-            default: json
-        - name: generation
-          in: query
-          required: false
-          description: >-
-            If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation matches the given value. Setting to 0
-            makes the operation succeed only if there are no live
-            versions of the object.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - name: softDeleted
-          in: query
-          required: false
-          description: >-
-            If true, retrieves the soft-deleted version of the object.
-          schema:
-            type: boolean
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - name: alt
+        in: query
+        required: false
+        description: >-
+          Data format for the response. Use json for metadata or
+          media to download the object data.
+        schema:
+          type: string
+          enum:
+          - json
+          - media
+          default: json
+      - name: generation
+        in: query
+        required: false
+        description: >-
+          If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation matches the given value. Setting to 0
+          makes the operation succeed only if there are no live
+          versions of the object.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - name: softDeleted
+        in: query
+        required: false
+        description: >-
+          If true, retrieves the soft-deleted version of the object.
+        schema:
+          type: boolean
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: >-
@@ -919,87 +952,90 @@ paths:
           $ref: '#/components/responses/NotFound'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateObject
-      summary: Google Cloud Storage Update an object
+      summary: Google Cloud Storage Update an Object
       description: >-
         Updates an object's metadata. This method replaces all mutable
         metadata fields of the object with the values in the request body.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - name: generation
-          in: query
-          required: false
-          description: >-
-            If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: predefinedAcl
-          in: query
-          required: false
-          description: Apply a predefined set of access controls to the object.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to full.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: full
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - name: generation
+        in: query
+        required: false
+        description: >-
+          If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: predefinedAcl
+        in: query
+        required: false
+        description: Apply a predefined set of access controls to the object.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to full.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: full
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1023,87 +1059,90 @@ paths:
           $ref: '#/components/responses/NotFound'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: patchObject
-      summary: Google Cloud Storage Patch an object
+      summary: Google Cloud Storage Patch an Object
       description: >-
         Patches an object's metadata. This method supports patch
         semantics where only the specified fields are updated.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - name: generation
-          in: query
-          required: false
-          description: >-
-            If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: predefinedAcl
-          in: query
-          required: false
-          description: Apply a predefined set of access controls to the object.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to full.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: full
-        - $ref: '#/components/parameters/fields'
-        - $ref: '#/components/parameters/prettyPrint'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - name: generation
+        in: query
+        required: false
+        description: >-
+          If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: predefinedAcl
+        in: query
+        required: false
+        description: Apply a predefined set of access controls to the object.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to full.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: full
+      - $ref: '#/components/parameters/fields'
+      - $ref: '#/components/parameters/prettyPrint'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1127,65 +1166,68 @@ paths:
           $ref: '#/components/responses/NotFound'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteObject
-      summary: Google Cloud Storage Delete an object
+      summary: Google Cloud Storage Delete an Object
       description: >-
         Deletes an object and its metadata. Deletions are permanent if
         versioning is not enabled for the bucket, or if the object is
         not the latest version. When versioning is enabled, deleting the
         latest version creates a delete marker.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - name: generation
-          in: query
-          required: false
-          description: >-
-            If present, permanently deletes a specific revision of
-            this object.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the object's
-            current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - name: generation
+        in: query
+        required: false
+        description: >-
+          If present, permanently deletes a specific revision of
+          this object.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the object's
+          current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '204':
           description: Object deleted successfully. No content returned.
@@ -1200,44 +1242,47 @@ paths:
         '412':
           $ref: '#/components/responses/PreconditionFailed'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/{object}/compose:
     post:
       operationId: composeObject
-      summary: Google Cloud Storage Compose objects
+      summary: Google Cloud Storage Compose Objects
       description: >-
         Concatenates a list of existing objects into a new object in the
         same bucket. The composed object can contain no more than 32
         source objects. The destination object's metadata is identical
         to that of the first source object unless overridden.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: object
-          in: path
-          required: true
-          description: Name of the destination object.
-          schema:
-            type: string
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: object
+        in: path
+        required: true
+        description: Name of the destination object.
+        schema:
+          type: string
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1262,149 +1307,152 @@ paths:
         '412':
           $ref: '#/components/responses/PreconditionFailed'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/{object}/copyTo/b/{destinationBucket}/o/{destinationObject}:
     post:
       operationId: copyObject
-      summary: Google Cloud Storage Copy an object
+      summary: Google Cloud Storage Copy an Object
       description: >-
         Copies a source object to a destination object. Optionally
         overrides metadata. This method creates a copy of an object
         as a new object in the destination bucket.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - name: bucket
-          in: path
-          required: true
-          description: Name of the source bucket.
-          schema:
-            type: string
-        - name: object
-          in: path
-          required: true
-          description: >-
-            Name of the source object. For information about how to
-            URL-encode object names, see Encoding URI path parts.
-          schema:
-            type: string
-        - name: destinationBucket
-          in: path
-          required: true
-          description: Name of the destination bucket.
-          schema:
-            type: string
-        - name: destinationObject
-          in: path
-          required: true
-          description: Name of the destination object.
-          schema:
-            type: string
-        - name: destinationPredefinedAcl
-          in: query
-          required: false
-          description: >-
-            Apply a predefined set of access controls to the
-            destination object.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - name: sourceGeneration
-          in: query
-          required: false
-          description: >-
-            If present, selects a specific revision of the source object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - name: bucket
+        in: path
+        required: true
+        description: Name of the source bucket.
+        schema:
+          type: string
+      - name: object
+        in: path
+        required: true
+        description: >-
+          Name of the source object. For information about how to
+          URL-encode object names, see Encoding URI path parts.
+        schema:
+          type: string
+      - name: destinationBucket
+        in: path
+        required: true
+        description: Name of the destination bucket.
+        schema:
+          type: string
+      - name: destinationObject
+        in: path
+        required: true
+        description: Name of the destination object.
+        schema:
+          type: string
+      - name: destinationPredefinedAcl
+        in: query
+        required: false
+        description: >-
+          Apply a predefined set of access controls to the
+          destination object.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - name: sourceGeneration
+        in: query
+        required: false
+        description: >-
+          If present, selects a specific revision of the source object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: false
         content:
@@ -1429,10 +1477,13 @@ paths:
         '412':
           $ref: '#/components/responses/PreconditionFailed'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/{object}/rewriteTo/b/{destinationBucket}/o/{destinationObject}:
     post:
       operationId: rewriteObject
-      summary: Google Cloud Storage Rewrite an object
+      summary: Google Cloud Storage Rewrite an Object
       description: >-
         Rewrites a source object to a destination object. Optionally
         overrides metadata. This method can copy objects across
@@ -1440,164 +1491,164 @@ paths:
         an object's encryption key. For large objects, this method may
         require multiple calls.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - name: bucket
-          in: path
-          required: true
-          description: Name of the source bucket.
-          schema:
-            type: string
-        - name: object
-          in: path
-          required: true
-          description: Name of the source object.
-          schema:
-            type: string
-        - name: destinationBucket
-          in: path
-          required: true
-          description: Name of the destination bucket.
-          schema:
-            type: string
-        - name: destinationObject
-          in: path
-          required: true
-          description: Name of the destination object.
-          schema:
-            type: string
-        - name: destinationKmsKeyName
-          in: query
-          required: false
-          description: >-
-            Resource name of the Cloud KMS key that will be used to
-            encrypt the destination object.
-          schema:
-            type: string
-        - name: destinationPredefinedAcl
-          in: query
-          required: false
-          description: >-
-            Apply a predefined set of access controls to the
-            destination object.
-          schema:
-            type: string
-            enum:
-              - authenticatedRead
-              - bucketOwnerFullControl
-              - bucketOwnerRead
-              - private
-              - projectPrivate
-              - publicRead
-        - name: ifGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the destination
-            object's current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceGenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current generation matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceGenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current generation does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current metageneration matches the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifSourceMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            Makes the operation conditional on whether the source
-            object's current metageneration does not match the given value.
-          schema:
-            type: integer
-            format: int64
-        - name: maxBytesRewrittenPerCall
-          in: query
-          required: false
-          description: >-
-            The maximum number of bytes that will be rewritten per
-            rewrite request. Allows throttling of large copies.
-          schema:
-            type: integer
-            format: int64
-        - name: projection
-          in: query
-          required: false
-          description: Set of properties to return. Defaults to noAcl.
-          schema:
-            type: string
-            enum:
-              - full
-              - noAcl
-            default: noAcl
-        - name: rewriteToken
-          in: query
-          required: false
-          description: >-
-            Include this field only if the previous rewrite response
-            included a rewriteToken. Provides a token for resuming a
-            previously started rewrite operation.
-          schema:
-            type: string
-        - name: sourceGeneration
-          in: query
-          required: false
-          description: >-
-            If present, selects a specific revision of the source object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - name: bucket
+        in: path
+        required: true
+        description: Name of the source bucket.
+        schema:
+          type: string
+      - name: object
+        in: path
+        required: true
+        description: Name of the source object.
+        schema:
+          type: string
+      - name: destinationBucket
+        in: path
+        required: true
+        description: Name of the destination bucket.
+        schema:
+          type: string
+      - name: destinationObject
+        in: path
+        required: true
+        description: Name of the destination object.
+        schema:
+          type: string
+      - name: destinationKmsKeyName
+        in: query
+        required: false
+        description: >-
+          Resource name of the Cloud KMS key that will be used to
+          encrypt the destination object.
+        schema:
+          type: string
+      - name: destinationPredefinedAcl
+        in: query
+        required: false
+        description: >-
+          Apply a predefined set of access controls to the
+          destination object.
+        schema:
+          type: string
+          enum:
+          - authenticatedRead
+          - bucketOwnerFullControl
+          - bucketOwnerRead
+          - private
+          - projectPrivate
+          - publicRead
+      - name: ifGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the destination
+          object's current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceGenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current generation matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceGenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current generation does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current metageneration matches the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifSourceMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          Makes the operation conditional on whether the source
+          object's current metageneration does not match the given value.
+        schema:
+          type: integer
+          format: int64
+      - name: maxBytesRewrittenPerCall
+        in: query
+        required: false
+        description: >-
+          The maximum number of bytes that will be rewritten per
+          rewrite request. Allows throttling of large copies.
+        schema:
+          type: integer
+          format: int64
+      - name: projection
+        in: query
+        required: false
+        description: Set of properties to return. Defaults to noAcl.
+        schema:
+          type: string
+          enum:
+          - full
+          - noAcl
+          default: noAcl
+      - name: rewriteToken
+        in: query
+        required: false
+        description: >-
+          Include this field only if the previous rewrite response
+          included a rewriteToken. Provides a token for resuming a
+          previously started rewrite operation.
+        schema:
+          type: string
+      - name: sourceGeneration
+        in: query
+        required: false
+        description: >-
+          If present, selects a specific revision of the source object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: false
         content:
@@ -1625,25 +1676,28 @@ paths:
         '412':
           $ref: '#/components/responses/PreconditionFailed'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/watchAll:
     post:
       operationId: watchAllObjects
-      summary: Google Cloud Storage Watch for object changes
+      summary: Google Cloud Storage Watch for Object Changes
       description: >-
         Watch for changes on all objects in a bucket. This method
         creates a notification channel that sends a notification
         whenever an object is created, updated, or deleted.
       tags:
-        - Objects
+      - Objects
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: prefix
-          in: query
-          required: false
-          description: Limits notifications to objects with names beginning with this prefix.
-          schema:
-            type: string
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: prefix
+        in: query
+        required: false
+        description: Limits notifications to objects with names beginning with this prefix.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1666,18 +1720,21 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/acl:
     get:
       operationId: listBucketAccessControls
-      summary: Google Cloud Storage List bucket ACL entries
+      summary: Google Cloud Storage List Bucket Acl Entries
       description: >-
         Retrieves ACL entries on the specified bucket. The authenticated
         user must have the storage.buckets.getIamPolicy permission.
       tags:
-        - BucketAccessControls
+      - BucketAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with bucket ACL entries.
@@ -1699,17 +1756,20 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: insertBucketAccessControl
-      summary: Google Cloud Storage Create a bucket ACL entry
+      summary: Google Cloud Storage Create a Bucket Acl Entry
       description: >-
         Creates a new ACL entry on the specified bucket. The authenticated
         user must have the storage.buckets.setIamPolicy permission.
       tags:
-        - BucketAccessControls
+      - BucketAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1732,19 +1792,22 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/acl/{entity}:
     get:
       operationId: getBucketAccessControl
-      summary: Google Cloud Storage Get a bucket ACL entry
+      summary: Google Cloud Storage Get a Bucket Acl Entry
       description: >-
         Returns the ACL entry for the specified entity on the specified
         bucket.
       tags:
-        - BucketAccessControls
+      - BucketAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with the bucket ACL entry.
@@ -1758,16 +1821,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateBucketAccessControl
-      summary: Google Cloud Storage Update a bucket ACL entry
+      summary: Google Cloud Storage Update a Bucket Acl Entry
       description: Updates an ACL entry on the specified bucket.
       tags:
-        - BucketAccessControls
+      - BucketAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1789,16 +1855,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: patchBucketAccessControl
-      summary: Google Cloud Storage Patch a bucket ACL entry
+      summary: Google Cloud Storage Patch a Bucket Acl Entry
       description: Patches an ACL entry on the specified bucket.
       tags:
-        - BucketAccessControls
+      - BucketAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1820,18 +1889,21 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteBucketAccessControl
-      summary: Google Cloud Storage Delete a bucket ACL entry
+      summary: Google Cloud Storage Delete a Bucket Acl Entry
       description: >-
         Permanently deletes the ACL entry for the specified entity on
         the specified bucket.
       tags:
-        - BucketAccessControls
+      - BucketAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '204':
           description: Bucket ACL entry deleted successfully.
@@ -1842,36 +1914,39 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/defaultObjectAcl:
     get:
       operationId: listDefaultObjectAccessControls
-      summary: Google Cloud Storage List default object ACL entries
+      summary: Google Cloud Storage List Default Object Acl Entries
       description: >-
         Retrieves default object ACL entries on the specified bucket.
         These are applied to new objects when no ACL is provided.
       tags:
-        - DefaultObjectAccessControls
+      - DefaultObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - name: ifMetagenerationMatch
-          in: query
-          required: false
-          description: >-
-            If present, only returns the default ACL listing if the
-            bucket's current metageneration matches this value.
-          schema:
-            type: integer
-            format: int64
-        - name: ifMetagenerationNotMatch
-          in: query
-          required: false
-          description: >-
-            If present, only returns the default ACL listing if the
-            bucket's current metageneration does not match this value.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: >-
+          If present, only returns the default ACL listing if the
+          bucket's current metageneration matches this value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: >-
+          If present, only returns the default ACL listing if the
+          bucket's current metageneration does not match this value.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with default object ACL entries.
@@ -1893,16 +1968,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: insertDefaultObjectAccessControl
-      summary: Google Cloud Storage Create a default object ACL entry
+      summary: Google Cloud Storage Create a Default Object Acl Entry
       description: >-
         Creates a new default object ACL entry on the specified bucket.
       tags:
-        - DefaultObjectAccessControls
+      - DefaultObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1925,19 +2003,22 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/defaultObjectAcl/{entity}:
     get:
       operationId: getDefaultObjectAccessControl
-      summary: Google Cloud Storage Get a default object ACL entry
+      summary: Google Cloud Storage Get a Default Object Acl Entry
       description: >-
         Returns the default object ACL entry for the specified entity
         on the specified bucket.
       tags:
-        - DefaultObjectAccessControls
+      - DefaultObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with the default object ACL entry.
@@ -1951,16 +2032,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateDefaultObjectAccessControl
-      summary: Google Cloud Storage Update a default object ACL entry
+      summary: Google Cloud Storage Update a Default Object Acl Entry
       description: Updates a default object ACL entry on the specified bucket.
       tags:
-        - DefaultObjectAccessControls
+      - DefaultObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -1982,16 +2066,19 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: patchDefaultObjectAccessControl
-      summary: Google Cloud Storage Patch a default object ACL entry
+      summary: Google Cloud Storage Patch a Default Object Acl Entry
       description: Patches a default object ACL entry on the specified bucket.
       tags:
-        - DefaultObjectAccessControls
+      - DefaultObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -2013,18 +2100,21 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteDefaultObjectAccessControl
-      summary: Google Cloud Storage Delete a default object ACL entry
+      summary: Google Cloud Storage Delete a Default Object Acl Entry
       description: >-
         Permanently deletes the default object ACL entry for the
         specified entity on the specified bucket.
       tags:
-        - DefaultObjectAccessControls
+      - DefaultObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/entity'
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
       responses:
         '204':
           description: Default object ACL entry deleted successfully.
@@ -2035,25 +2125,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/{object}/acl:
     get:
       operationId: listObjectAccessControls
-      summary: Google Cloud Storage List object ACL entries
+      summary: Google Cloud Storage List Object Acl Entries
       description: >-
         Retrieves ACL entries on the specified object.
       tags:
-        - ObjectAccessControls
+      - ObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - name: generation
-          in: query
-          required: false
-          description: If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - name: generation
+        in: query
+        required: false
+        description: If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with object ACL entries.
@@ -2075,23 +2168,26 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: insertObjectAccessControl
-      summary: Google Cloud Storage Create an object ACL entry
+      summary: Google Cloud Storage Create an Object Acl Entry
       description: Creates a new ACL entry on the specified object.
       tags:
-        - ObjectAccessControls
+      - ObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - name: generation
-          in: query
-          required: false
-          description: If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - name: generation
+        in: query
+        required: false
+        description: If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -2114,25 +2210,28 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /b/{bucket}/o/{object}/acl/{entity}:
     get:
       operationId: getObjectAccessControl
-      summary: Google Cloud Storage Get an object ACL entry
+      summary: Google Cloud Storage Get an Object Acl Entry
       description: Returns the ACL entry for the specified entity on the specified object.
       tags:
-        - ObjectAccessControls
+      - ObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - $ref: '#/components/parameters/entity'
-        - name: generation
-          in: query
-          required: false
-          description: If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - $ref: '#/components/parameters/entity'
+      - name: generation
+        in: query
+        required: false
+        description: If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '200':
           description: Successful response with the object ACL entry.
@@ -2146,24 +2245,27 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateObjectAccessControl
-      summary: Google Cloud Storage Update an object ACL entry
+      summary: Google Cloud Storage Update an Object Acl Entry
       description: Updates an ACL entry on the specified object.
       tags:
-        - ObjectAccessControls
+      - ObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - $ref: '#/components/parameters/entity'
-        - name: generation
-          in: query
-          required: false
-          description: If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - $ref: '#/components/parameters/entity'
+      - name: generation
+        in: query
+        required: false
+        description: If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -2185,24 +2287,27 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     patch:
       operationId: patchObjectAccessControl
-      summary: Google Cloud Storage Patch an object ACL entry
+      summary: Google Cloud Storage Patch an Object Acl Entry
       description: Patches an ACL entry on the specified object.
       tags:
-        - ObjectAccessControls
+      - ObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - $ref: '#/components/parameters/entity'
-        - name: generation
-          in: query
-          required: false
-          description: If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - $ref: '#/components/parameters/entity'
+      - name: generation
+        in: query
+        required: false
+        description: If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       requestBody:
         required: true
         content:
@@ -2224,26 +2329,29 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteObjectAccessControl
-      summary: Google Cloud Storage Delete an object ACL entry
+      summary: Google Cloud Storage Delete an Object Acl Entry
       description: >-
         Permanently deletes the ACL entry for the specified entity on
         the specified object.
       tags:
-        - ObjectAccessControls
+      - ObjectAccessControls
       parameters:
-        - $ref: '#/components/parameters/bucketName'
-        - $ref: '#/components/parameters/objectName'
-        - $ref: '#/components/parameters/entity'
-        - name: generation
-          in: query
-          required: false
-          description: If present, selects a specific revision of this object.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/userProject'
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/objectName'
+      - $ref: '#/components/parameters/entity'
+      - name: generation
+        in: query
+        required: false
+        description: If present, selects a specific revision of this object.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
       responses:
         '204':
           description: Object ACL entry deleted successfully.
@@ -2254,15 +2362,18 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /channels/stop:
     post:
       operationId: stopChannel
-      summary: Google Cloud Storage Stop a notification channel
+      summary: Google Cloud Storage Stop a Notification Channel
       description: >-
         Stop receiving object change notifications through a previously
         created watch channel.
       tags:
-        - Objects
+      - Objects
       requestBody:
         required: true
         content:
@@ -2281,6 +2392,9 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     oauth2:
@@ -2420,21 +2534,24 @@ components:
           description: The kind of item this is. For buckets, this is always storage#bucket.
           default: storage#bucket
           readOnly: true
+          example: example_value
         id:
           type: string
           description: The ID of the bucket. For buckets, this is the same as the name.
           readOnly: true
           examples:
-            - my-bucket
+          - my-bucket
         selfLink:
           type: string
           format: uri
           description: The URI of this bucket.
           readOnly: true
+          example: https://www.example.com
         projectNumber:
           type: string
           description: The project number of the project the bucket belongs to.
           readOnly: true
+          example: example_value
         name:
           type: string
           description: >-
@@ -2444,64 +2561,69 @@ components:
           minLength: 3
           maxLength: 63
           examples:
-            - my-bucket
-            - example-project-data
+          - my-bucket
+          - example-project-data
         timeCreated:
           type: string
           format: date-time
           description: The creation time of the bucket in RFC 3339 format.
           readOnly: true
           examples:
-            - '2024-01-15T09:00:00.000Z'
+          - '2024-01-15T09:00:00.000Z'
         updated:
           type: string
           format: date-time
           description: The modification time of the bucket in RFC 3339 format.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         metageneration:
           type: string
           description: >-
             The metadata generation of this bucket. Used for preconditions
             and for detecting changes in metadata.
           readOnly: true
+          example: example_value
         location:
           type: string
           description: >-
             The location of the bucket. Object data for objects in the
             bucket resides in physical storage within this region.
           examples:
-            - US
-            - US-EAST1
-            - EUROPE-WEST1
+          - US
+          - US-EAST1
+          - EUROPE-WEST1
         locationType:
           type: string
           description: The type of location the bucket resides in.
           enum:
-            - multi-region
-            - region
-            - dual-region
+          - multi-region
+          - region
+          - dual-region
           readOnly: true
+          example: multi-region
         storageClass:
           type: string
           description: >-
             The default storage class of the bucket, used for newly
             created objects.
           enum:
-            - STANDARD
-            - NEARLINE
-            - COLDLINE
-            - ARCHIVE
+          - STANDARD
+          - NEARLINE
+          - COLDLINE
+          - ARCHIVE
           examples:
-            - STANDARD
+          - STANDARD
         etag:
           type: string
           description: HTTP 1.1 Entity tag for the bucket.
           readOnly: true
+          example: example_value
         defaultEventBasedHold:
           type: boolean
           description: >-
             Whether or not to automatically apply an event-based hold
             to new objects added to the bucket.
+          example: true
         rpo:
           type: string
           description: >-
@@ -2509,13 +2631,15 @@ components:
             Set to ASYNC_TURBO to turn on Turbo Replication for
             dual-region buckets.
           enum:
-            - DEFAULT
-            - ASYNC_TURBO
+          - DEFAULT
+          - ASYNC_TURBO
+          example: DEFAULT
         acl:
           type: array
           description: Access controls on the bucket.
           items:
             $ref: '#/components/schemas/BucketAccessControl'
+          example: []
         defaultObjectAcl:
           type: array
           description: >-
@@ -2523,6 +2647,7 @@ components:
             is provided.
           items:
             $ref: '#/components/schemas/ObjectAccessControl'
+          example: []
         iamConfiguration:
           type: object
           description: The bucket's IAM configuration.
@@ -2549,8 +2674,9 @@ components:
               description: >-
                 The bucket's public access prevention configuration.
               enum:
-                - inherited
-                - enforced
+              - inherited
+              - enforced
+          example: example_value
         encryption:
           type: object
           description: Encryption configuration for a bucket.
@@ -2561,6 +2687,7 @@ components:
                 A Cloud KMS key that will be used to encrypt objects
                 inserted into this bucket, if no encryption method
                 is specified.
+          example: example_value
         lifecycle:
           type: object
           description: >-
@@ -2580,9 +2707,9 @@ components:
                         type: string
                         description: Type of the action.
                         enum:
-                          - Delete
-                          - SetStorageClass
-                          - AbortIncompleteMultipartUpload
+                        - Delete
+                        - SetStorageClass
+                        - AbortIncompleteMultipartUpload
                       storageClass:
                         type: string
                         description: >-
@@ -2657,6 +2784,7 @@ components:
                         description: >-
                           Relevant only for versioned objects. The number
                           of newer versions of an object.
+          example: example_value
         logging:
           type: object
           description: The bucket's logging configuration.
@@ -2669,6 +2797,7 @@ components:
               description: >-
                 A prefix for log object names. Defaults to the name
                 of the source bucket.
+          example: example_value
         versioning:
           type: object
           description: >-
@@ -2679,6 +2808,7 @@ components:
             enabled:
               type: boolean
               description: Whether versioning is enabled.
+          example: example_value
         website:
           type: object
           description: The bucket's website configuration for static website hosting.
@@ -2695,6 +2825,7 @@ components:
                 If the requested object path is missing and there is
                 no mainPageSuffix, the service returns the named
                 object as the content for a 404 Not Found result.
+          example: example_value
         cors:
           type: array
           description: >-
@@ -2730,6 +2861,7 @@ components:
                 description: >-
                   The value in seconds to return in the
                   Access-Control-Max-Age header.
+          example: []
         retentionPolicy:
           type: object
           description: >-
@@ -2757,6 +2889,7 @@ components:
                 the policy cannot be removed or the retention period
                 shortened.
               readOnly: true
+          example: example_value
         softDeletePolicy:
           type: object
           description: The bucket's soft delete policy.
@@ -2774,6 +2907,7 @@ components:
                 The time from which the soft delete policy became or
                 will become effective.
               readOnly: true
+          example: example_value
         autoclass:
           type: object
           description: >-
@@ -2796,8 +2930,8 @@ components:
                 The storage class that objects in the bucket will
                 eventually transition to if not accessed.
               enum:
-                - NEARLINE
-                - ARCHIVE
+              - NEARLINE
+              - ARCHIVE
             terminalStorageClassUpdateTime:
               type: string
               format: date-time
@@ -2805,6 +2939,7 @@ components:
                 The time at which the terminal storage class was last
                 updated.
               readOnly: true
+          example: example_value
         hierarchicalNamespace:
           type: object
           description: >-
@@ -2815,6 +2950,7 @@ components:
               type: boolean
               description: >-
                 Whether hierarchical namespace is enabled for the bucket.
+          example: example_value
         labels:
           type: object
           description: >-
@@ -2823,6 +2959,7 @@ components:
             RFC 1035.
           additionalProperties:
             type: string
+          example: example_value
         customPlacementConfig:
           type: object
           description: >-
@@ -2835,14 +2972,16 @@ components:
                 type: string
               description: >-
                 The list of regional locations in which data is placed.
+          example: example_value
         satisfiesPZS:
           type: boolean
           description: >-
             Whether the bucket satisfies the zone separation
             requirements for compliance.
           readOnly: true
+          example: true
       required:
-        - name
+      - name
 
     Object:
       type: object
@@ -2855,55 +2994,63 @@ components:
           description: The kind of item this is. For objects, this is always storage#object.
           default: storage#object
           readOnly: true
+          example: example_value
         id:
           type: string
           description: >-
             The ID of the object, including the bucket name, object
             name, and generation number.
           readOnly: true
+          example: abc123
         selfLink:
           type: string
           format: uri
           description: The link to this object.
           readOnly: true
+          example: https://www.example.com
         mediaLink:
           type: string
           format: uri
           description: The link to download the object's data.
           readOnly: true
+          example: https://www.example.com
         name:
           type: string
           description: The name of the object.
           examples:
-            - my-object.txt
-            - images/photo.jpg
+          - my-object.txt
+          - images/photo.jpg
         bucket:
           type: string
           description: The name of the bucket containing this object.
+          example: example_value
         generation:
           type: string
           description: >-
             The content generation of this object. Used for object
             versioning.
           readOnly: true
+          example: example_value
         metageneration:
           type: string
           description: >-
             The version of the metadata for this object. Used for
             preconditions and detecting metadata changes.
           readOnly: true
+          example: example_value
         contentType:
           type: string
           description: Content-Type of the object data.
           examples:
-            - application/octet-stream
-            - text/plain
-            - image/jpeg
+          - application/octet-stream
+          - text/plain
+          - image/jpeg
         timeCreated:
           type: string
           format: date-time
           description: The creation time of the object in RFC 3339 format.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         updated:
           type: string
           format: date-time
@@ -2911,6 +3058,7 @@ components:
             The modification time of the object metadata in RFC 3339
             format.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         timeDeleted:
           type: ['string', 'null']
           format: date-time
@@ -2918,12 +3066,15 @@ components:
             The deletion time of the object in RFC 3339 format. Set
             only when the object is noncurrent.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         temporaryHold:
           type: boolean
           description: Whether the object is under a temporary hold.
+          example: true
         eventBasedHold:
           type: boolean
           description: Whether the object is under an event-based hold.
+          example: true
         retentionExpirationTime:
           type: ['string', 'null']
           format: date-time
@@ -2931,14 +3082,16 @@ components:
             The earliest time that the object can be deleted or replaced,
             based on the retention policy.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         storageClass:
           type: string
           description: Storage class of the object.
           enum:
-            - STANDARD
-            - NEARLINE
-            - COLDLINE
-            - ARCHIVE
+          - STANDARD
+          - NEARLINE
+          - COLDLINE
+          - ARCHIVE
+          example: STANDARD
         timeStorageClassUpdated:
           type: string
           format: date-time
@@ -2946,56 +3099,67 @@ components:
             The time at which the object's storage class was last
             changed.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         size:
           type: string
           description: Content-Length of the data in bytes.
           readOnly: true
+          example: example_value
         md5Hash:
           type: string
           description: >-
             MD5 hash of the data, encoded using base64. Not available
             for composite objects.
           readOnly: true
+          example: example_value
         crc32c:
           type: string
           description: CRC32c checksum, encoded using base64.
           readOnly: true
+          example: example_value
         etag:
           type: string
           description: HTTP 1.1 Entity tag for the object.
           readOnly: true
+          example: example_value
         componentCount:
           type: integer
           description: >-
             Number of underlying components that make up a composite
             object.
           readOnly: true
+          example: 10
         contentEncoding:
           type: string
           description: Content-Encoding of the object data.
+          example: example_value
         contentDisposition:
           type: string
           description: Content-Disposition of the object data.
+          example: example_value
         contentLanguage:
           type: string
           description: Content-Language of the object data.
+          example: example_value
         cacheControl:
           type: string
           description: Cache-Control directive for the object data.
           examples:
-            - public, max-age=3600
-            - no-cache
+          - public, max-age=3600
+          - no-cache
         metadata:
           type: object
           description: >-
             User-provided metadata in key/value pairs.
           additionalProperties:
             type: string
+          example: example_value
         acl:
           type: array
           description: Access controls on the object.
           items:
             $ref: '#/components/schemas/ObjectAccessControl'
+          example: []
         owner:
           type: object
           description: The owner of the object.
@@ -3007,6 +3171,7 @@ components:
             entityId:
               type: string
               description: The ID for the entity.
+          example: example_value
         customerEncryption:
           type: object
           description: >-
@@ -3021,11 +3186,13 @@ components:
               type: string
               description: >-
                 SHA256 hash of the encryption key.
+          example: example_value
         kmsKeyName:
           type: string
           description: >-
             Cloud KMS key used to encrypt the object, if one has been
             specified.
+          example: example_value
         customTime:
           type: string
           format: date-time
@@ -3033,12 +3200,14 @@ components:
             A timestamp in RFC 3339 format specified by the user for
             an object. Typically set to enable lifecycle management
             conditions based on custom time.
+          example: '2026-01-15T10:30:00Z'
         softDeleteTime:
           type: ['string', 'null']
           format: date-time
           description: >-
             The time at which the object was soft-deleted, if applicable.
           readOnly: true
+          example: '2026-01-15T10:30:00Z'
         hardDeleteTime:
           type: ['string', 'null']
           format: date-time
@@ -3047,6 +3216,7 @@ components:
             deleted.
           readOnly: true
 
+          example: '2026-01-15T10:30:00Z'
     BucketList:
       type: object
       description: A list of buckets.
@@ -3055,17 +3225,20 @@ components:
           type: string
           description: The kind of item this is.
           default: storage#buckets
+          example: example_value
         nextPageToken:
           type: string
           description: >-
             The continuation token. Provide this value as the pageToken
             in a subsequent request to return the next page of results.
+          example: example_value
         items:
           type: array
           description: The list of buckets.
           items:
             $ref: '#/components/schemas/Bucket'
 
+          example: []
     ObjectList:
       type: object
       description: A list of objects.
@@ -3074,11 +3247,13 @@ components:
           type: string
           description: The kind of item this is.
           default: storage#objects
+          example: example_value
         nextPageToken:
           type: string
           description: >-
             The continuation token. Provide this value as the pageToken
             in a subsequent request to return the next page of results.
+          example: example_value
         prefixes:
           type: array
           description: >-
@@ -3086,12 +3261,14 @@ components:
             to and including the requested delimiter.
           items:
             type: string
+          example: []
         items:
           type: array
           description: The list of objects.
           items:
             $ref: '#/components/schemas/Object'
 
+          example: []
     BucketAccessControl:
       type: object
       description: An access-control entry for a bucket.
@@ -3101,18 +3278,22 @@ components:
           description: The kind of item this is.
           default: storage#bucketAccessControl
           readOnly: true
+          example: example_value
         id:
           type: string
           description: The ID of the access-control entry.
           readOnly: true
+          example: abc123
         selfLink:
           type: string
           format: uri
           description: The link to this access-control entry.
           readOnly: true
+          example: https://www.example.com
         bucket:
           type: string
           description: The name of the bucket.
+          example: example_value
         entity:
           type: string
           description: >-
@@ -3120,30 +3301,36 @@ components:
             forms: user-userId, user-email, group-groupId, group-email,
             domain-domain, project-team-projectId, allUsers, or
             allAuthenticatedUsers.
+          example: example_value
         role:
           type: string
           description: The access permission for the entity.
           enum:
-            - OWNER
-            - WRITER
-            - READER
+          - OWNER
+          - WRITER
+          - READER
+          example: OWNER
         email:
           type: string
           format: email
           description: The email address associated with the entity, if any.
           readOnly: true
+          example: user@example.com
         domain:
           type: string
           description: The domain associated with the entity, if any.
           readOnly: true
+          example: example_value
         entityId:
           type: string
           description: The ID for the entity, if any.
           readOnly: true
+          example: '500123'
         etag:
           type: string
           description: HTTP 1.1 Entity tag for the access-control entry.
           readOnly: true
+          example: example_value
         projectTeam:
           type: object
           description: The project team associated with the entity, if any.
@@ -3156,12 +3343,13 @@ components:
               type: string
               description: The team.
               enum:
-                - editors
-                - owners
-                - viewers
+              - editors
+              - owners
+              - viewers
+          example: example_value
       required:
-        - entity
-        - role
+      - entity
+      - role
 
     ObjectAccessControl:
       type: object
@@ -3172,24 +3360,30 @@ components:
           description: The kind of item this is.
           default: storage#objectAccessControl
           readOnly: true
+          example: example_value
         id:
           type: string
           description: The ID of the access-control entry.
           readOnly: true
+          example: abc123
         selfLink:
           type: string
           format: uri
           description: The link to this access-control entry.
           readOnly: true
+          example: https://www.example.com
         bucket:
           type: string
           description: The name of the bucket.
+          example: example_value
         object:
           type: string
           description: The name of the object.
+          example: example_value
         generation:
           type: string
           description: The content generation of the object.
+          example: example_value
         entity:
           type: string
           description: >-
@@ -3197,29 +3391,35 @@ components:
             forms: user-userId, user-email, group-groupId, group-email,
             domain-domain, project-team-projectId, allUsers, or
             allAuthenticatedUsers.
+          example: example_value
         role:
           type: string
           description: The access permission for the entity.
           enum:
-            - OWNER
-            - READER
+          - OWNER
+          - READER
+          example: OWNER
         email:
           type: string
           format: email
           description: The email address associated with the entity, if any.
           readOnly: true
+          example: user@example.com
         domain:
           type: string
           description: The domain associated with the entity, if any.
           readOnly: true
+          example: example_value
         entityId:
           type: string
           description: The ID for the entity, if any.
           readOnly: true
+          example: '500123'
         etag:
           type: string
           description: HTTP 1.1 Entity tag for the access-control entry.
           readOnly: true
+          example: example_value
         projectTeam:
           type: object
           description: The project team associated with the entity, if any.
@@ -3232,12 +3432,13 @@ components:
               type: string
               description: The team.
               enum:
-                - editors
-                - owners
-                - viewers
+              - editors
+              - owners
+              - viewers
+          example: example_value
       required:
-        - entity
-        - role
+      - entity
+      - role
 
     Policy:
       type: object
@@ -3247,20 +3448,24 @@ components:
           type: string
           description: The kind of item this is.
           default: storage#policy
+          example: example_value
         resourceId:
           type: string
           description: The ID of the resource to which this policy belongs.
+          example: '500123'
         version:
           type: integer
           description: >-
             The version of the policy. Valid values are 1 and 3. Any
             request that specifies conditional role bindings must specify
             version 3.
+          example: 10
         etag:
           type: string
           description: >-
             HTTP 1.1 Entity tag for the policy. Used for optimistic
             concurrency control.
+          example: example_value
         bindings:
           type: array
           description: A list of members bound to a role.
@@ -3293,6 +3498,7 @@ components:
                       The condition expression in Common Expression
                       Language (CEL) syntax.
 
+          example: []
     ComposeRequest:
       type: object
       description: A request to compose objects.
@@ -3301,6 +3507,7 @@ components:
           type: string
           description: The kind of item this is.
           default: storage#composeRequest
+          example: example_value
         destination:
           $ref: '#/components/schemas/Object'
         sourceObjects:
@@ -3327,8 +3534,9 @@ components:
                     description: >-
                       Only perform the composition if the generation
                       of the source object matches this value.
+          example: []
       required:
-        - sourceObjects
+      - sourceObjects
 
     Channel:
       type: object
@@ -3340,52 +3548,62 @@ components:
           description: >-
             Identifies this as a notification channel.
           default: api#channel
+          example: example_value
         id:
           type: string
           description: >-
             A UUID or similar unique string that identifies this channel.
+          example: abc123
         resourceId:
           type: string
           description: >-
             An opaque value that identifies the watched resource.
+          example: '500123'
         resourceUri:
           type: string
           format: uri
           description: A version-specific identifier for the watched resource.
+          example: https://www.example.com
         token:
           type: string
           description: >-
             An arbitrary string delivered to the target address with
             each notification.
+          example: example_value
         expiration:
           type: string
           description: >-
             Date and time of notification channel expiration,
             expressed in milliseconds since the epoch.
+          example: example_value
         type:
           type: string
           description: The type of delivery mechanism used for this channel.
           enum:
-            - web_hook
+          - web_hook
+          example: web_hook
         address:
           type: string
           format: uri
           description: >-
             The address where notifications are delivered for this
             channel.
+          example: https://www.example.com
         params:
           type: object
           description: Additional parameters controlling delivery channel behavior.
           additionalProperties:
             type: string
+          example: example_value
         payload:
           type: boolean
           description: >-
             Whether the payload of each notification event is expected.
+          example: true
       required:
-        - id
-        - type
-        - address
+      - id
+      - type
+      - address
 
     RewriteResponse:
       type: object
@@ -3395,24 +3613,29 @@ components:
           type: string
           description: The kind of item this is.
           default: storage#rewriteResponse
+          example: example_value
         totalBytesRewritten:
           type: string
           description: >-
             The total bytes rewritten so far.
+          example: example_value
         objectSize:
           type: string
           description: >-
             The total size of the object being copied.
+          example: example_value
         done:
           type: boolean
           description: >-
             Whether the rewrite is complete. If false, call the
             rewrite method again with the returned rewriteToken.
+          example: true
         rewriteToken:
           type: string
           description: >-
             A token to use in subsequent rewrite requests. Present
             only when the rewrite is not yet complete.
+          example: example_value
         resource:
           $ref: '#/components/schemas/Object'
 
@@ -3444,3 +3667,4 @@ components:
                     type: string
                   location:
                     type: string
+          example: example_value

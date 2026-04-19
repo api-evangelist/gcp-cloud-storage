@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RewriteResponse",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "totalBytesRewritten": {
+      "type": "string"
+    },
+    "objectSize": {
+      "type": "string"
+    },
+    "done": {
+      "type": "boolean"
+    },
+    "rewriteToken": {
+      "type": "string"
+    }
+  }
+}

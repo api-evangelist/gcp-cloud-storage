@@ -1,0 +1,281 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Cloud Storage Management"
+  description: "Unified workflow for managing cloud storage buckets, objects, access controls, and IAM policies. Used by cloud engineers and data platform teams."
+  tags:
+    - Google Cloud
+    - Cloud Storage
+    - Object Storage
+    - Data Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GCP_OAUTH2_TOKEN: GCP_OAUTH2_TOKEN
+
+capability:
+  consumes:
+    - import: cloud-storage
+      location: ./shared/cloud-storage-json.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: cloud-storage-api
+      description: "Unified REST API for Google Cloud Storage management."
+      resources:
+        - path: /v1/buckets
+          name: buckets
+          description: "Bucket management."
+          operations:
+            - method: GET
+              name: list-buckets
+              description: "List buckets."
+              call: "cloud-storage.list-buckets"
+              with:
+                project: "rest.project"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-bucket
+              description: "Create a bucket."
+              call: "cloud-storage.create-bucket"
+              with:
+                project: "rest.project"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/buckets/{id}
+          name: bucket-details
+          description: "Individual bucket management."
+          operations:
+            - method: GET
+              name: get-bucket
+              description: "Get bucket details."
+              call: "cloud-storage.get-bucket"
+              with:
+                bucket: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-bucket
+              description: "Update a bucket."
+              call: "cloud-storage.update-bucket"
+              with:
+                bucket: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-bucket
+              description: "Delete a bucket."
+              call: "cloud-storage.delete-bucket"
+              with:
+                bucket: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/buckets/{id}/iam
+          name: bucket-iam
+          description: "Bucket IAM management."
+          operations:
+            - method: GET
+              name: get-bucket-iam-policy
+              description: "Get IAM policy."
+              call: "cloud-storage.get-bucket-iam-policy"
+              with:
+                bucket: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: set-bucket-iam-policy
+              description: "Set IAM policy."
+              call: "cloud-storage.set-bucket-iam-policy"
+              with:
+                bucket: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/buckets/{bucketId}/objects
+          name: objects
+          description: "Object management."
+          operations:
+            - method: GET
+              name: list-objects
+              description: "List objects."
+              call: "cloud-storage.list-objects"
+              with:
+                bucket: "rest.bucketId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/buckets/{bucketId}/objects/{objectId}
+          name: object-details
+          description: "Individual object management."
+          operations:
+            - method: GET
+              name: get-object
+              description: "Get object metadata."
+              call: "cloud-storage.get-object"
+              with:
+                bucket: "rest.bucketId"
+                object: "rest.objectId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-object
+              description: "Update object metadata."
+              call: "cloud-storage.update-object"
+              with:
+                bucket: "rest.bucketId"
+                object: "rest.objectId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-object
+              description: "Delete an object."
+              call: "cloud-storage.delete-object"
+              with:
+                bucket: "rest.bucketId"
+                object: "rest.objectId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: cloud-storage-mcp
+      transport: http
+      description: "MCP server for AI-assisted cloud storage management."
+      tools:
+        - name: list-buckets
+          description: "List storage buckets in a project."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cloud-storage.list-buckets"
+          with:
+            project: "tools.project"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-bucket
+          description: "Get bucket details."
+          hints:
+            readOnly: true
+          call: "cloud-storage.get-bucket"
+          with:
+            bucket: "tools.bucket"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-bucket
+          description: "Create a new storage bucket."
+          hints:
+            readOnly: false
+          call: "cloud-storage.create-bucket"
+          with:
+            project: "tools.project"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-bucket
+          description: "Delete a storage bucket."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "cloud-storage.delete-bucket"
+          with:
+            bucket: "tools.bucket"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-objects
+          description: "List objects in a bucket."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "cloud-storage.list-objects"
+          with:
+            bucket: "tools.bucket"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-object
+          description: "Get object metadata."
+          hints:
+            readOnly: true
+          call: "cloud-storage.get-object"
+          with:
+            bucket: "tools.bucket"
+            object: "tools.object"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-object
+          description: "Delete an object."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "cloud-storage.delete-object"
+          with:
+            bucket: "tools.bucket"
+            object: "tools.object"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: copy-object
+          description: "Copy an object to another location."
+          hints:
+            readOnly: false
+          call: "cloud-storage.copy-object"
+          with:
+            bucket: "tools.sourceBucket"
+            object: "tools.sourceObject"
+            destinationBucket: "tools.destinationBucket"
+            destinationObject: "tools.destinationObject"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: compose-objects
+          description: "Compose multiple objects into one."
+          hints:
+            readOnly: false
+          call: "cloud-storage.compose-objects"
+          with:
+            bucket: "tools.bucket"
+            object: "tools.destinationObject"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-bucket-iam-policy
+          description: "Get bucket IAM policy."
+          hints:
+            readOnly: true
+          call: "cloud-storage.get-bucket-iam-policy"
+          with:
+            bucket: "tools.bucket"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: set-bucket-iam-policy
+          description: "Set bucket IAM policy."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "cloud-storage.set-bucket-iam-policy"
+          with:
+            bucket: "tools.bucket"
+          outputParameters:
+            - type: object
+              mapping: "$."

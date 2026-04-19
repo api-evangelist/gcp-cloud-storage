@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RewriteResponse",
+  "type": "object",
+  "description": "A rewrite response.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "The kind of item this is."
+    },
+    "totalBytesRewritten": {
+      "type": "string",
+      "description": "The total bytes rewritten so far."
+    },
+    "objectSize": {
+      "type": "string",
+      "description": "The total size of the object being copied."
+    },
+    "done": {
+      "type": "boolean",
+      "description": "Whether the rewrite is complete. If false, call the rewrite method again with the returned rewriteToken."
+    },
+    "rewriteToken": {
+      "type": "string",
+      "description": "A token to use in subsequent rewrite requests. Present only when the rewrite is not yet complete."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Channel",
+  "type": "object",
+  "description": "A notification channel used to watch for resource changes.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Identifies this as a notification channel."
+    },
+    "id": {
+      "type": "string",
+      "description": "A UUID or similar unique string that identifies this channel."
+    },
+    "resourceId": {
+      "type": "string",
+      "description": "An opaque value that identifies the watched resource."
+    },
+    "resourceUri": {
+      "type": "string",
+      "description": "A version-specific identifier for the watched resource."
+    },
+    "token": {
+      "type": "string",
+      "description": "An arbitrary string delivered to the target address with each notification."
+    },
+    "expiration": {
+      "type": "string",
+      "description": "Date and time of notification channel expiration, expressed in milliseconds since the epoch."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of delivery mechanism used for this channel."
+    },
+    "address": {
+      "type": "string",
+      "description": "The address where notifications are delivered for this channel."
+    },
+    "params": {
+      "type": "object",
+      "description": "Additional parameters controlling delivery channel behavior."
+    },
+    "payload": {
+      "type": "boolean",
+      "description": "Whether the payload of each notification event is expected."
+    }
+  }
+}

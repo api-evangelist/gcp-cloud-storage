@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bucket",
+  "type": "object",
+  "description": "A bucket is a container for objects stored in Cloud Storage. Buckets are associated with a project and have globally unique names.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "The kind of item this is. For buckets, this is always storage#bucket."
+    },
+    "id": {
+      "type": "string",
+      "description": "The ID of the bucket. For buckets, this is the same as the name."
+    },
+    "selfLink": {
+      "type": "string",
+      "description": "The URI of this bucket."
+    },
+    "projectNumber": {
+      "type": "string",
+      "description": "The project number of the project the bucket belongs to."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the bucket. Bucket names must be globally unique and conform to naming requirements (3-63 characters, lowercase letters, numbers, hyphens, and dots)."
+    },
+    "timeCreated": {
+      "type": "string",
+      "description": "The creation time of the bucket in RFC 3339 format."
+    },
+    "updated": {
+      "type": "string",
+      "description": "The modification time of the bucket in RFC 3339 format."
+    },
+    "metageneration": {
+      "type": "string",
+      "description": "The metadata generation of this bucket. Used for preconditions and for detecting changes in metadata."
+    },
+    "location": {
+      "type": "string",
+      "description": "The location of the bucket. Object data for objects in the bucket resides in physical storage within this region."
+    },
+    "locationType": {
+      "type": "string",
+      "description": "The type of location the bucket resides in."
+    },
+    "storageClass": {
+      "type": "string",
+      "description": "The default storage class of the bucket, used for newly created objects."
+    },
+    "etag": {
+      "type": "string",
+      "description": "HTTP 1.1 Entity tag for the bucket."
+    },
+    "defaultEventBasedHold": {
+      "type": "boolean",
+      "description": "Whether or not to automatically apply an event-based hold to new objects added to the bucket."
+    },
+    "rpo": {
+      "type": "string",
+      "description": "The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication for dual-region buckets."
+    },
+    "acl": {
+      "type": "array",
+      "description": "Access controls on the bucket."
+    },
+    "defaultObjectAcl": {
+      "type": "array",
+      "description": "Default access controls to apply to new objects when no ACL is provided."
+    },
+    "iamConfiguration": {
+      "type": "object",
+      "description": "The bucket's IAM configuration."
+    },
+    "encryption": {
+      "type": "object",
+      "description": "Encryption configuration for a bucket."
+    },
+    "lifecycle": {
+      "type": "object",
+      "description": "The bucket's lifecycle configuration. Lifecycle rules automatically manage objects based on conditions."
+    },
+    "logging": {
+      "type": "object",
+      "description": "The bucket's logging configuration."
+    },
+    "versioning": {
+      "type": "object",
+      "description": "The bucket's versioning configuration. When enabled, Cloud Storage retains a noncurrent object version when the live object is deleted or overwritten."
+    },
+    "website": {
+      "type": "object",
+      "description": "The bucket's website configuration for static website hosting."
+    },
+    "cors": {
+      "type": "array",
+      "description": "The bucket's Cross-Origin Resource Sharing (CORS) configuration."
+    },
+    "retentionPolicy": {
+      "type": "object",
+      "description": "The bucket's retention policy, which defines the minimum age an object must reach before it can be deleted or replaced."
+    },
+    "softDeletePolicy": {
+      "type": "object",
+      "description": "The bucket's soft delete policy."
+    },
+    "autoclass": {
+      "type": "object",
+      "description": "The bucket's Autoclass configuration. Autoclass automatically transitions objects to appropriate storage classes based on access patterns."
+    },
+    "hierarchicalNamespace": {
+      "type": "object",
+      "description": "The bucket's hierarchical namespace configuration for folder support."
+    },
+    "labels": {
+      "type": "object",
+      "description": "User-provided labels, in key/value pairs. Keys and values must both be 63 characters or less and must conform to RFC 1035."
+    },
+    "customPlacementConfig": {
+      "type": "object",
+      "description": "The bucket's custom placement configuration for dual-region buckets."
+    },
+    "satisfiesPZS": {
+      "type": "boolean",
+      "description": "Whether the bucket satisfies the zone separation requirements for compliance."
+    }
+  }
+}

@@ -1,0 +1,293 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Cloud Storage JSON API"
+  description: "Google Cloud Storage JSON API for managing buckets, objects, and access controls."
+  tags:
+    - Google Cloud
+    - Cloud Storage
+    - Object Storage
+    - Buckets
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GCP_OAUTH2_TOKEN: GCP_OAUTH2_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: cloud-storage
+      baseUri: https://storage.googleapis.com/storage/v1
+      description: "Google Cloud Storage JSON API for bucket and object management."
+      authentication:
+        type: bearer
+        token: "{{GCP_OAUTH2_TOKEN}}"
+      resources:
+        - name: buckets
+          path: /b
+          description: "Bucket management."
+          operations:
+            - name: list-buckets
+              method: GET
+              description: "List buckets for a project."
+              inputParameters:
+                - name: project
+                  in: query
+                  type: string
+                  required: true
+                  description: "Project ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-bucket
+              method: POST
+              description: "Create a new bucket."
+              inputParameters:
+                - name: project
+                  in: query
+                  type: string
+                  required: true
+                  description: "Project ID."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+        - name: bucket-details
+          path: /b/{bucket}
+          description: "Individual bucket management."
+          operations:
+            - name: get-bucket
+              method: GET
+              description: "Get bucket metadata."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-bucket
+              method: PUT
+              description: "Update bucket metadata."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+            - name: delete-bucket
+              method: DELETE
+              description: "Delete a bucket."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: bucket-iam
+          path: /b/{bucket}/iam
+          description: "Bucket IAM policy management."
+          operations:
+            - name: get-bucket-iam-policy
+              method: GET
+              description: "Get bucket IAM policy."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: set-bucket-iam-policy
+              method: PUT
+              description: "Set bucket IAM policy."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  bindings: "{{tools.bindings}}"
+        - name: objects
+          path: /b/{bucket}/o
+          description: "Object management."
+          operations:
+            - name: list-objects
+              method: GET
+              description: "List objects in a bucket."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: object-details
+          path: /b/{bucket}/o/{object}
+          description: "Individual object management."
+          operations:
+            - name: get-object
+              method: GET
+              description: "Get object metadata."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+                - name: object
+                  in: path
+                  type: string
+                  required: true
+                  description: "Object name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-object
+              method: PUT
+              description: "Update object metadata."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+                - name: object
+                  in: path
+                  type: string
+                  required: true
+                  description: "Object name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  metadata: "{{tools.metadata}}"
+            - name: delete-object
+              method: DELETE
+              description: "Delete an object."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Bucket name."
+                - name: object
+                  in: path
+                  type: string
+                  required: true
+                  description: "Object name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: object-copy
+          path: /b/{bucket}/o/{object}/copyTo/b/{destinationBucket}/o/{destinationObject}
+          description: "Object copy operations."
+          operations:
+            - name: copy-object
+              method: POST
+              description: "Copy an object to another location."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Source bucket."
+                - name: object
+                  in: path
+                  type: string
+                  required: true
+                  description: "Source object."
+                - name: destinationBucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Destination bucket."
+                - name: destinationObject
+                  in: path
+                  type: string
+                  required: true
+                  description: "Destination object."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: object-compose
+          path: /b/{bucket}/o/{object}/compose
+          description: "Object composition."
+          operations:
+            - name: compose-objects
+              method: POST
+              description: "Compose multiple objects into one."
+              inputParameters:
+                - name: bucket
+                  in: path
+                  type: string
+                  required: true
+                  description: "Destination bucket."
+                - name: object
+                  in: path
+                  type: string
+                  required: true
+                  description: "Destination object."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  sourceObjects: "{{tools.sourceObjects}}"

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Bucket",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "projectNumber": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "timeCreated": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "metageneration": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "locationType": {
+      "type": "string"
+    },
+    "storageClass": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "defaultEventBasedHold": {
+      "type": "boolean"
+    },
+    "rpo": {
+      "type": "string"
+    },
+    "acl": {
+      "type": "array"
+    },
+    "defaultObjectAcl": {
+      "type": "array"
+    },
+    "iamConfiguration": {
+      "type": "object"
+    },
+    "encryption": {
+      "type": "object"
+    },
+    "lifecycle": {
+      "type": "object"
+    },
+    "logging": {
+      "type": "object"
+    },
+    "versioning": {
+      "type": "object"
+    },
+    "website": {
+      "type": "object"
+    },
+    "cors": {
+      "type": "array"
+    },
+    "retentionPolicy": {
+      "type": "object"
+    },
+    "softDeletePolicy": {
+      "type": "object"
+    },
+    "autoclass": {
+      "type": "object"
+    },
+    "hierarchicalNamespace": {
+      "type": "object"
+    },
+    "labels": {
+      "type": "object"
+    },
+    "customPlacementConfig": {
+      "type": "object"
+    },
+    "satisfiesPZS": {
+      "type": "boolean"
+    }
+  }
+}

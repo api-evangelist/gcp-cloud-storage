@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BucketList",
+  "type": "object",
+  "description": "A list of buckets.",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "The kind of item this is."
+    },
+    "nextPageToken": {
+      "type": "string",
+      "description": "The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results."
+    },
+    "items": {
+      "type": "array",
+      "description": "The list of buckets."
+    }
+  }
+}

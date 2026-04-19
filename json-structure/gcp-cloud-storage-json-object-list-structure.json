@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ObjectList",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "nextPageToken": {
+      "type": "string"
+    },
+    "prefixes": {
+      "type": "array"
+    },
+    "items": {
+      "type": "array"
+    }
+  }
+}

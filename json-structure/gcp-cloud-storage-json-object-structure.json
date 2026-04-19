@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Object",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "selfLink": {
+      "type": "string"
+    },
+    "mediaLink": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "bucket": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "string"
+    },
+    "metageneration": {
+      "type": "string"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "timeCreated": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "timeDeleted": {
+      "type": "['string', 'null']"
+    },
+    "temporaryHold": {
+      "type": "boolean"
+    },
+    "eventBasedHold": {
+      "type": "boolean"
+    },
+    "retentionExpirationTime": {
+      "type": "['string', 'null']"
+    },
+    "storageClass": {
+      "type": "string"
+    },
+    "timeStorageClassUpdated": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    },
+    "md5Hash": {
+      "type": "string"
+    },
+    "crc32c": {
+      "type": "string"
+    },
+    "etag": {
+      "type": "string"
+    },
+    "componentCount": {
+      "type": "integer"
+    },
+    "contentEncoding": {
+      "type": "string"
+    },
+    "contentDisposition": {
+      "type": "string"
+    },
+    "contentLanguage": {
+      "type": "string"
+    },
+    "cacheControl": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "acl": {
+      "type": "array"
+    },
+    "owner": {
+      "type": "object"
+    },
+    "customerEncryption": {
+      "type": "object"
+    },
+    "kmsKeyName": {
+      "type": "string"
+    },
+    "customTime": {
+      "type": "string"
+    },
+    "softDeleteTime": {
+      "type": "['string', 'null']"
+    },
+    "hardDeleteTime": {
+      "type": "['string', 'null']"
+    }
+  }
+}

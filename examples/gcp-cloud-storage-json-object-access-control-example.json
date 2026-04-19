@@ -1,0 +1,15 @@
+{
+  "kind": "example_value",
+  "id": "abc123",
+  "selfLink": "example_value",
+  "bucket": "example_value",
+  "object": "example_value",
+  "generation": "example_value",
+  "entity": "example_value",
+  "role": "example_value",
+  "email": "user@example.com",
+  "domain": "example_value",
+  "entityId": "500123",
+  "etag": "example_value",
+  "projectTeam": "example_value"
+}
