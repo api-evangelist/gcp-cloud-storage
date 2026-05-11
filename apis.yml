@@ -170,6 +170,10 @@ common:
         description: Transfer data between on-premises storage, other clouds, and Cloud Storage.
       - name: Cloud CDN
         description: Cache and serve Cloud Storage content through Google's global edge network.
+  - type: Integrations
+    url: https://cloud.google.com/marketplace
+integrations:
+  - name: Become a Partner
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
