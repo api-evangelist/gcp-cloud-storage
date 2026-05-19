@@ -1,0 +1,250 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Storage JSON API — DefaultObjectAccessControls
+  description: 'Google Cloud Storage JSON API — DefaultObjectAccessControls. 6 operations. Lead operation: Google Cloud Storage
+    List Default Object Acl Entries. Self-contained Naftiko capability covering one Gcp Cloud Storage business surface.'
+  tags:
+  - Gcp Cloud Storage
+  - DefaultObjectAccessControls
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GCP_CLOUD_STORAGE_API_KEY: GCP_CLOUD_STORAGE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: json-defaultobjectaccesscontrols
+    baseUri: https://storage.googleapis.com/storage/v1
+    description: Google Cloud Storage JSON API — DefaultObjectAccessControls business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: b-bucket-defaultObjectAcl
+      path: /b/{bucket}/defaultObjectAcl
+      operations:
+      - name: listdefaultobjectaccesscontrols
+        method: GET
+        description: Google Cloud Storage List Default Object Acl Entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ifMetagenerationMatch
+          in: query
+          type: integer
+          description: If present, only returns the default ACL listing if the bucket's current metageneration matches this
+            value.
+        - name: ifMetagenerationNotMatch
+          in: query
+          type: integer
+          description: If present, only returns the default ACL listing if the bucket's current metageneration does not match
+            this value.
+      - name: insertdefaultobjectaccesscontrol
+        method: POST
+        description: Google Cloud Storage Create a Default Object Acl Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: b-bucket-defaultObjectAcl-entity
+      path: /b/{bucket}/defaultObjectAcl/{entity}
+      operations:
+      - name: getdefaultobjectaccesscontrol
+        method: GET
+        description: Google Cloud Storage Get a Default Object Acl Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedefaultobjectaccesscontrol
+        method: PUT
+        description: Google Cloud Storage Update a Default Object Acl Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: patchdefaultobjectaccesscontrol
+        method: PATCH
+        description: Google Cloud Storage Patch a Default Object Acl Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedefaultobjectaccesscontrol
+        method: DELETE
+        description: Google Cloud Storage Delete a Default Object Acl Entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.GCP_CLOUD_STORAGE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: json-defaultobjectaccesscontrols-rest
+    port: 8080
+    description: REST adapter for Google Cloud Storage JSON API — DefaultObjectAccessControls. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/b/{bucket}/defaultobjectacl
+      name: b-bucket-defaultobjectacl
+      description: REST surface for b-bucket-defaultObjectAcl.
+      operations:
+      - method: GET
+        name: listdefaultobjectaccesscontrols
+        description: Google Cloud Storage List Default Object Acl Entries
+        call: json-defaultobjectaccesscontrols.listdefaultobjectaccesscontrols
+        with:
+          ifMetagenerationMatch: rest.ifMetagenerationMatch
+          ifMetagenerationNotMatch: rest.ifMetagenerationNotMatch
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: insertdefaultobjectaccesscontrol
+        description: Google Cloud Storage Create a Default Object Acl Entry
+        call: json-defaultobjectaccesscontrols.insertdefaultobjectaccesscontrol
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/b/{bucket}/defaultobjectacl/{entity}
+      name: b-bucket-defaultobjectacl-entity
+      description: REST surface for b-bucket-defaultObjectAcl-entity.
+      operations:
+      - method: GET
+        name: getdefaultobjectaccesscontrol
+        description: Google Cloud Storage Get a Default Object Acl Entry
+        call: json-defaultobjectaccesscontrols.getdefaultobjectaccesscontrol
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatedefaultobjectaccesscontrol
+        description: Google Cloud Storage Update a Default Object Acl Entry
+        call: json-defaultobjectaccesscontrols.updatedefaultobjectaccesscontrol
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchdefaultobjectaccesscontrol
+        description: Google Cloud Storage Patch a Default Object Acl Entry
+        call: json-defaultobjectaccesscontrols.patchdefaultobjectaccesscontrol
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedefaultobjectaccesscontrol
+        description: Google Cloud Storage Delete a Default Object Acl Entry
+        call: json-defaultobjectaccesscontrols.deletedefaultobjectaccesscontrol
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: json-defaultobjectaccesscontrols-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Storage JSON API — DefaultObjectAccessControls. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: google-cloud-storage-list-default
+      description: Google Cloud Storage List Default Object Acl Entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: json-defaultobjectaccesscontrols.listdefaultobjectaccesscontrols
+      with:
+        ifMetagenerationMatch: tools.ifMetagenerationMatch
+        ifMetagenerationNotMatch: tools.ifMetagenerationNotMatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-storage-create-default
+      description: Google Cloud Storage Create a Default Object Acl Entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: json-defaultobjectaccesscontrols.insertdefaultobjectaccesscontrol
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-storage-get-default
+      description: Google Cloud Storage Get a Default Object Acl Entry
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: json-defaultobjectaccesscontrols.getdefaultobjectaccesscontrol
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-storage-update-default
+      description: Google Cloud Storage Update a Default Object Acl Entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: json-defaultobjectaccesscontrols.updatedefaultobjectaccesscontrol
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-storage-patch-default
+      description: Google Cloud Storage Patch a Default Object Acl Entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: json-defaultobjectaccesscontrols.patchdefaultobjectaccesscontrol
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-storage-delete-default
+      description: Google Cloud Storage Delete a Default Object Acl Entry
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: json-defaultobjectaccesscontrols.deletedefaultobjectaccesscontrol
+      outputParameters:
+      - type: object
+        mapping: $.
