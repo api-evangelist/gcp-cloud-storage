@@ -108,7 +108,7 @@ common:
     url: https://github.com/GoogleCloudPlatform
   - type: GettingStarted
     url: https://cloud.google.com/storage/docs/quickstarts
-  - type: SDK
+  - type: SDKs
     url: https://cloud.google.com/storage/docs/reference/libraries
   - type: Console
     url: https://console.cloud.google.com/storage
