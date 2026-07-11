@@ -104,6 +104,8 @@ apis:
       - type: Support
         url: https://cloud.google.com/storage/docs/getting-support
 common:
+  - type: OAuthScopes
+    url: scopes/gcp-cloud-storage-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/GoogleCloudPlatform
   - type: GettingStarted

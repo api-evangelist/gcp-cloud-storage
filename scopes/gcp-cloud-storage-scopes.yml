@@ -1,0 +1,42 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gcp-cloud-storage-json-api-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/gcp-cloud-storage-json-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+  description: OAuth 2.0 authentication for Google Cloud APIs
+scopes:
+- scope: https://www.googleapis.com/auth/cloud-platform
+  description: View and manage your data across Google Cloud services
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml
+- scope: https://www.googleapis.com/auth/cloud-platform.read-only
+  description: View your data across Google Cloud services
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml
+- scope: https://www.googleapis.com/auth/devstorage.full_control
+  description: Full control of Cloud Storage resources
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml
+- scope: https://www.googleapis.com/auth/devstorage.read_only
+  description: View your data in Cloud Storage
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml
+- scope: https://www.googleapis.com/auth/devstorage.read_write
+  description: Manage your data in Cloud Storage
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml
