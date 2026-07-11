@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gcp-cloud-storage-json-api-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+    scopes: 5
+  description: OAuth 2.0 authentication for Google Cloud APIs
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token authentication using a Google Cloud access token obtained via service
+    account or user credentials.
+  sources:
+  - openapi/gcp-cloud-storage-json-api-openapi.yml

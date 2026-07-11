@@ -104,6 +104,12 @@ apis:
       - type: Support
         url: https://cloud.google.com/storage/docs/getting-support
 common:
+  - type: VulnerabilityDisclosure
+    url: security/gcp-cloud-storage-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/gcp-cloud-storage-domain-security.yml
+  - type: Authentication
+    url: authentication/gcp-cloud-storage-authentication.yml
   - type: OAuthScopes
     url: scopes/gcp-cloud-storage-scopes.yml
   - type: GitHubOrganization
