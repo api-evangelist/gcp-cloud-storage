@@ -2,13 +2,14 @@
   "repo": "gcp-cloud-storage",
   "feeds": [
     {
-      "source": "https://cloud.google.com/blog/products/storage-data-transfer",
-      "feed_url": "",
+      "source": "https://console.cloud.google.com/storage",
+      "feed_url": "https://console.cloud.google.com/storage",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:43:12Z",
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
