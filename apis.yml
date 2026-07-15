@@ -104,6 +104,8 @@ apis:
       - type: Support
         url: https://cloud.google.com/storage/docs/getting-support
 common:
+  - type: AgenticAccess
+    url: agentic-access/gcp-cloud-storage-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/gcp-cloud-storage-vulnerability-disclosure.yml
   - type: DomainSecurity
