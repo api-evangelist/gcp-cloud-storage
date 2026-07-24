@@ -1,0 +1,405 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Storage JSON BucketAccessControls DefaultObjectAccessControls API
+  description: RESTful API for managing Google Cloud Storage resources including buckets and objects. Cloud Storage allows you to store and retrieve data on Google's infrastructure with high durability, availability, and scalability. The JSON API provides programmatic access to create, configure, and manage storage buckets, upload and download objects, control access permissions, and manage object metadata.
+  version: v1
+  contact:
+    name: Google Cloud Storage
+    url: https://cloud.google.com/storage/docs/json_api
+  termsOfService: https://cloud.google.com/terms
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+- url: https://storage.googleapis.com/storage/v1
+  description: Google Cloud Storage JSON API v1
+security:
+- oauth2: []
+- bearerAuth: []
+tags:
+- name: DefaultObjectAccessControls
+  description: Operations for managing default object access controls on buckets
+paths:
+  /b/{bucket}/defaultObjectAcl:
+    get:
+      operationId: listDefaultObjectAccessControls
+      summary: Google Cloud Storage List Default Object Acl Entries
+      description: Retrieves default object ACL entries on the specified bucket. These are applied to new objects when no ACL is provided.
+      tags:
+      - DefaultObjectAccessControls
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - name: ifMetagenerationMatch
+        in: query
+        required: false
+        description: If present, only returns the default ACL listing if the bucket's current metageneration matches this value.
+        schema:
+          type: integer
+          format: int64
+      - name: ifMetagenerationNotMatch
+        in: query
+        required: false
+        description: If present, only returns the default ACL listing if the bucket's current metageneration does not match this value.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/userProject'
+      responses:
+        '200':
+          description: Successful response with default object ACL entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  kind:
+                    type: string
+                    default: storage#objectAccessControls
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ObjectAccessControl'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: insertDefaultObjectAccessControl
+      summary: Google Cloud Storage Create a Default Object Acl Entry
+      description: Creates a new default object ACL entry on the specified bucket.
+      tags:
+      - DefaultObjectAccessControls
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/userProject'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectAccessControl'
+      responses:
+        '200':
+          description: Default object ACL entry created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectAccessControl'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /b/{bucket}/defaultObjectAcl/{entity}:
+    get:
+      operationId: getDefaultObjectAccessControl
+      summary: Google Cloud Storage Get a Default Object Acl Entry
+      description: Returns the default object ACL entry for the specified entity on the specified bucket.
+      tags:
+      - DefaultObjectAccessControls
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
+      responses:
+        '200':
+          description: Successful response with the default object ACL entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectAccessControl'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateDefaultObjectAccessControl
+      summary: Google Cloud Storage Update a Default Object Acl Entry
+      description: Updates a default object ACL entry on the specified bucket.
+      tags:
+      - DefaultObjectAccessControls
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectAccessControl'
+      responses:
+        '200':
+          description: Default object ACL entry updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectAccessControl'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    patch:
+      operationId: patchDefaultObjectAccessControl
+      summary: Google Cloud Storage Patch a Default Object Acl Entry
+      description: Patches a default object ACL entry on the specified bucket.
+      tags:
+      - DefaultObjectAccessControls
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectAccessControl'
+      responses:
+        '200':
+          description: Default object ACL entry patched successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectAccessControl'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteDefaultObjectAccessControl
+      summary: Google Cloud Storage Delete a Default Object Acl Entry
+      description: Permanently deletes the default object ACL entry for the specified entity on the specified bucket.
+      tags:
+      - DefaultObjectAccessControls
+      parameters:
+      - $ref: '#/components/parameters/bucketName'
+      - $ref: '#/components/parameters/entity'
+      - $ref: '#/components/parameters/userProject'
+      responses:
+        '204':
+          description: Default object ACL entry deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized. Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not Found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    ObjectAccessControl:
+      type: object
+      description: An access-control entry for an object.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#objectAccessControl
+          readOnly: true
+          example: example_value
+        id:
+          type: string
+          description: The ID of the access-control entry.
+          readOnly: true
+          example: abc123
+        selfLink:
+          type: string
+          format: uri
+          description: The link to this access-control entry.
+          readOnly: true
+          example: https://www.example.com
+        bucket:
+          type: string
+          description: The name of the bucket.
+          example: example_value
+        object:
+          type: string
+          description: The name of the object.
+          example: example_value
+        generation:
+          type: string
+          description: The content generation of the object.
+          example: example_value
+        entity:
+          type: string
+          description: 'The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers.'
+          example: example_value
+        role:
+          type: string
+          description: The access permission for the entity.
+          enum:
+          - OWNER
+          - READER
+          example: OWNER
+        email:
+          type: string
+          format: email
+          description: The email address associated with the entity, if any.
+          readOnly: true
+          example: user@example.com
+        domain:
+          type: string
+          description: The domain associated with the entity, if any.
+          readOnly: true
+          example: example_value
+        entityId:
+          type: string
+          description: The ID for the entity, if any.
+          readOnly: true
+          example: '500123'
+        etag:
+          type: string
+          description: HTTP 1.1 Entity tag for the access-control entry.
+          readOnly: true
+          example: example_value
+        projectTeam:
+          type: object
+          description: The project team associated with the entity, if any.
+          readOnly: true
+          properties:
+            projectNumber:
+              type: string
+              description: The project number.
+            team:
+              type: string
+              description: The team.
+              enum:
+              - editors
+              - owners
+              - viewers
+          example: example_value
+      required:
+      - entity
+      - role
+    Error:
+      type: object
+      description: An error response from the Cloud Storage JSON API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable description of the error.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+                  message:
+                    type: string
+                  locationType:
+                    type: string
+                  location:
+                    type: string
+          example: example_value
+  parameters:
+    entity:
+      name: entity
+      in: path
+      required: true
+      description: 'The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers.'
+      schema:
+        type: string
+      example: user-example@gmail.com
+    bucketName:
+      name: bucket
+      in: path
+      required: true
+      description: Name of the bucket. Bucket names must be globally unique and comply with naming requirements.
+      schema:
+        type: string
+      example: my-bucket
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for Google Cloud APIs
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/devstorage.full_control: Full control of Cloud Storage resources
+            https://www.googleapis.com/auth/devstorage.read_only: View your data in Cloud Storage
+            https://www.googleapis.com/auth/devstorage.read_write: Manage your data in Cloud Storage
+            https://www.googleapis.com/auth/cloud-platform: View and manage your data across Google Cloud services
+            https://www.googleapis.com/auth/cloud-platform.read-only: View your data across Google Cloud services
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Google Cloud access token obtained via service account or user credentials.
+externalDocs:
+  description: Google Cloud Storage JSON API Documentation
+  url: https://cloud.google.com/storage/docs/json_api/v1
