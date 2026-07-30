@@ -2,6 +2,19 @@ name: Google Cloud Storage
 description: >-
   Object storage service offering high durability, availability, and scalability for storing and accessing data on
   Google Cloud Platform.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://cloud.google.com/images/social-icon-google-cloud-1200-630.png
 url: https://cloud.google.com/storage
 created: '2024-01-01'
@@ -17,93 +30,294 @@ tags:
   - Object Storage
   - Storage
 apis:
-  - name: Google Cloud Storage JSON API
-    description: RESTful API for interacting with Google Cloud Storage buckets and objects.
-    image: https://cloud.google.com/images/storage/storage-icon.svg
-    humanURL: https://cloud.google.com/storage/docs/json_api
-    baseURL: https://storage.googleapis.com/storage/v1
-    tags:
-      - Buckets
-      - Objects
-      - Access Control
-      - IAM
-      - Storage
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/storage/docs/json_api
-      - type: OpenAPI
-        url: https://storage.googleapis.com/$discovery/rest?version=v1
-      - type: OpenAPI
-        url: openapi/gcp-cloud-storage-json-api-openapi.yml
-      - type: Authentication
-        url: https://cloud.google.com/storage/docs/authentication
-      - type: Pricing
-        url: https://cloud.google.com/storage/pricing
-      - type: RateLimits
-        url: https://cloud.google.com/storage/quotas
-      - type: StatusPage
-        url: https://status.cloud.google.com/
-      - type: TermsOfService
-        url: https://cloud.google.com/terms
-      - type: APIReference
-        url: https://cloud.google.com/storage/docs/json_api/v1
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-bucket-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-bucket-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-bucket-list-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-channel-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-compose-request-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-error-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-object-access-control-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-object-list-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-object-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-policy-schema.json
-      - type: JSONSchema
-        url: json-schema/gcp-cloud-storage-json-rewrite-response-schema.json
-      - type: JSONLD
-        url: json-ld/gcp-cloud-storage-context.jsonld
-      - type: JSONLD
-        url: json-ld/gcp-cloud-storage-json-context.jsonld
-    contact:
-      - type: Support
-        url: https://cloud.google.com/storage/docs/getting-support
-  - name: Google Cloud Storage XML API
-    description: Amazon S3-compatible XML API for Google Cloud Storage.
-    image: https://cloud.google.com/images/storage/storage-icon.svg
-    humanURL: https://cloud.google.com/storage/docs/xml-api
-    baseURL: https://storage.googleapis.com
-    tags:
-      - S3 Compatible
-      - XML
-      - Interoperability
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/storage/docs/xml-api/overview
-      - type: Authentication
-        url: https://cloud.google.com/storage/docs/authentication/hmackeys
-      - type: APIReference
-        url: https://cloud.google.com/storage/docs/xml-api/reference-methods
-      - type: Pricing
-        url: https://cloud.google.com/storage/pricing
-      - type: RateLimits
-        url: https://cloud.google.com/storage/quotas
-      - type: TermsOfService
-        url: https://cloud.google.com/terms
-    contact:
-      - type: Support
-        url: https://cloud.google.com/storage/docs/getting-support
+- name: Google Cloud Storage XML API
+  description: Amazon S3-compatible XML API for Google Cloud Storage.
+  image: https://cloud.google.com/images/storage/storage-icon.svg
+  humanURL: https://cloud.google.com/storage/docs/xml-api
+  baseURL: https://storage.googleapis.com
+  tags:
+  - S3 Compatible
+  - XML
+  - Interoperability
+  properties:
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/xml-api/overview
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication/hmackeys
+  - type: APIReference
+    url: https://cloud.google.com/storage/docs/xml-api/reference-methods
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  contact:
+  - type: Support
+    url: https://cloud.google.com/storage/docs/getting-support
+- aid: gcp-cloud-storage:gcp-cloud-storage-bucketaccesscontrols-api
+  name: Google Cloud Storage BucketAccessControls API
+  description: Operations for managing bucket-level access control lists
+  humanURL: https://cloud.google.com/storage/docs/json_api
+  baseURL: https://storage.googleapis.com/storage/v1
+  tags:
+  - BucketAccessControls
+  properties:
+  - type: OpenAPI
+    url: openapi/gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: APIReference
+    url: https://cloud.google.com/storage/docs/json_api/v1
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-channel-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-compose-request-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-error-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-rewrite-response-schema.json
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-context.jsonld
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-json-context.jsonld
+- aid: gcp-cloud-storage:gcp-cloud-storage-buckets-api
+  name: Google Cloud Storage Buckets API
+  description: Operations for managing Cloud Storage buckets
+  humanURL: https://cloud.google.com/storage/docs/json_api
+  baseURL: https://storage.googleapis.com/storage/v1
+  tags:
+  - Buckets
+  properties:
+  - type: OpenAPI
+    url: openapi/gcp-cloud-storage-buckets-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: APIReference
+    url: https://cloud.google.com/storage/docs/json_api/v1
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-channel-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-compose-request-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-error-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-rewrite-response-schema.json
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-context.jsonld
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-json-context.jsonld
+- aid: gcp-cloud-storage:gcp-cloud-storage-defaultobjectaccesscontrols-api
+  name: Google Cloud Storage DefaultObjectAccessControls API
+  description: Operations for managing default object access controls on buckets
+  humanURL: https://cloud.google.com/storage/docs/json_api
+  baseURL: https://storage.googleapis.com/storage/v1
+  tags:
+  - DefaultObjectAccessControls
+  properties:
+  - type: OpenAPI
+    url: openapi/gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: APIReference
+    url: https://cloud.google.com/storage/docs/json_api/v1
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-channel-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-compose-request-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-error-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-rewrite-response-schema.json
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-context.jsonld
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-json-context.jsonld
+- aid: gcp-cloud-storage:gcp-cloud-storage-objectaccesscontrols-api
+  name: Google Cloud Storage ObjectAccessControls API
+  description: Operations for managing object-level access control lists
+  humanURL: https://cloud.google.com/storage/docs/json_api
+  baseURL: https://storage.googleapis.com/storage/v1
+  tags:
+  - ObjectAccessControls
+  properties:
+  - type: OpenAPI
+    url: openapi/gcp-cloud-storage-objectaccesscontrols-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: APIReference
+    url: https://cloud.google.com/storage/docs/json_api/v1
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-channel-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-compose-request-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-error-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-rewrite-response-schema.json
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-context.jsonld
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-json-context.jsonld
+- aid: gcp-cloud-storage:gcp-cloud-storage-objects-api
+  name: Google Cloud Storage Objects API
+  description: Operations for managing objects within Cloud Storage buckets
+  humanURL: https://cloud.google.com/storage/docs/json_api
+  baseURL: https://storage.googleapis.com/storage/v1
+  tags:
+  - Objects
+  properties:
+  - type: OpenAPI
+    url: openapi/gcp-cloud-storage-objects-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/storage/docs/json_api
+  - type: Authentication
+    url: https://cloud.google.com/storage/docs/authentication
+  - type: Pricing
+    url: https://cloud.google.com/storage/pricing
+  - type: RateLimits
+    url: https://cloud.google.com/storage/quotas
+  - type: StatusPage
+    url: https://status.cloud.google.com/
+  - type: TermsOfService
+    url: https://cloud.google.com/terms
+  - type: APIReference
+    url: https://cloud.google.com/storage/docs/json_api/v1
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-bucket-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-channel-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-compose-request-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-error-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-access-control-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-list-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-object-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-policy-schema.json
+  - type: JSONSchema
+    url: json-schema/gcp-cloud-storage-json-rewrite-response-schema.json
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-context.jsonld
+  - type: JSONLD
+    url: json-ld/gcp-cloud-storage-json-context.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-cloud-storage/overview
   - type: AgenticAccess
     url: agentic-access/gcp-cloud-storage-agentic-access.yml
   - type: VulnerabilityDisclosure
