@@ -1,0 +1,2590 @@
+{
+  "info": {
+    "_postman_id": "aebef106-300a-4699-b1e2-26dfcbc1bfc3",
+    "name": "Google Cloud Storage JSON BucketAccessControls ObjectAccessControls API",
+    "description": "RESTful API for managing Google Cloud Storage resources including buckets and objects. Cloud Storage allows you to store and retrieve data on Google's infrastructure with high durability, availability, and scalability. The JSON API provides programmatic access to create, configure, and manage storage buckets, upload and download objects, control access permissions, and manage object metadata.\n\nContact Support:\n Name: Google Cloud Storage",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:50.000Z",
+    "updatedAt": "2026-07-28T01:43:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aebef106-300a-4699-b1e2-26dfcbc1bfc3"
+  },
+  "item": [
+    {
+      "name": "b",
+      "item": [
+        {
+          "name": "{bucket}",
+          "item": [
+            {
+              "name": "o",
+              "item": [
+                {
+                  "name": "{object}",
+                  "item": [
+                    {
+                      "name": "acl",
+                      "item": [
+                        {
+                          "name": "{entity}",
+                          "item": [
+                            {
+                              "name": "Google Cloud Storage Get an Object Acl Entry",
+                              "id": "0e8249c8-8863-4fe4-9165-5da2be664806",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl",
+                                    ":entity"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "8ed88149-7fd4-441d-ba85-0abd7dd79a1d",
+                                      "key": "bucket",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                                    },
+                                    {
+                                      "id": "d5ff00a9-4379-48cf-be42-0b68f893e8e0",
+                                      "key": "object",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+                                    },
+                                    {
+                                      "id": "828d1cd4-42e3-441a-9d80-ba9f31e29e6d",
+                                      "key": "entity",
+                                      "value": "<string>",
+                                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                                    }
+                                  ]
+                                },
+                                "description": "Returns the ACL entry for the specified entity on the specified object."
+                              },
+                              "response": [
+                                {
+                                  "id": "7ad0b327-92ef-4005-be27-6edaa0c126eb",
+                                  "name": "Successful response with the object ACL entry.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-7ad0b327-92ef-4005-be27-6edaa0c126eb"
+                                },
+                                {
+                                  "id": "57987043-dc98-4edd-bf31-561b3ff6165e",
+                                  "name": "Unauthorized. Authentication credentials were missing or invalid.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-57987043-dc98-4edd-bf31-561b3ff6165e"
+                                },
+                                {
+                                  "id": "301da5b0-6064-46ea-a6cb-e50ffdf582e0",
+                                  "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-301da5b0-6064-46ea-a6cb-e50ffdf582e0"
+                                },
+                                {
+                                  "id": "a329394a-842a-41bd-9163-18c71fa0eacf",
+                                  "name": "Not Found. The specified resource does not exist.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-a329394a-842a-41bd-9163-18c71fa0eacf"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-0e8249c8-8863-4fe4-9165-5da2be664806"
+                            },
+                            {
+                              "name": "Google Cloud Storage Update an Object Acl Entry",
+                              "id": "34f9a637-fbd6-456d-9878-d8f984537e66",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl",
+                                    ":entity"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b35657f1-6d19-4d94-aee4-04cc6644d60a",
+                                      "key": "bucket",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                                    },
+                                    {
+                                      "id": "312101c0-670b-492d-ba98-712a9ed64d30",
+                                      "key": "object",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+                                    },
+                                    {
+                                      "id": "3f07ba8d-74fb-4f2b-9a7c-529375df6a13",
+                                      "key": "entity",
+                                      "value": "<string>",
+                                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                                    }
+                                  ]
+                                },
+                                "description": "Updates an ACL entry on the specified object."
+                              },
+                              "response": [
+                                {
+                                  "id": "4a73d3fa-195c-4a91-a0e8-26b6a92c63cb",
+                                  "name": "Object ACL entry updated successfully.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-4a73d3fa-195c-4a91-a0e8-26b6a92c63cb"
+                                },
+                                {
+                                  "id": "bdc8ff8b-c8b9-4f1d-bbd6-4c5a7ab38b7c",
+                                  "name": "Bad Request. The request was malformed or contained invalid parameters.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-bdc8ff8b-c8b9-4f1d-bbd6-4c5a7ab38b7c"
+                                },
+                                {
+                                  "id": "3a35957d-ebac-47f4-a90b-2073d210dfd1",
+                                  "name": "Unauthorized. Authentication credentials were missing or invalid.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-3a35957d-ebac-47f4-a90b-2073d210dfd1"
+                                },
+                                {
+                                  "id": "f2b37854-6325-44ea-9703-d3fe778bd21a",
+                                  "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-f2b37854-6325-44ea-9703-d3fe778bd21a"
+                                },
+                                {
+                                  "id": "f65e3165-2135-415f-a79c-ebcfde03929c",
+                                  "name": "Not Found. The specified resource does not exist.",
+                                  "originalRequest": {
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-f65e3165-2135-415f-a79c-ebcfde03929c"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-34f9a637-fbd6-456d-9878-d8f984537e66"
+                            },
+                            {
+                              "name": "Google Cloud Storage Patch an Object Acl Entry",
+                              "id": "fa792d39-a83e-4799-8fbd-5bf913786050",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl",
+                                    ":entity"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "47e77539-541a-46d0-ab96-fdeeb90e1982",
+                                      "key": "bucket",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                                    },
+                                    {
+                                      "id": "1d2a5ceb-0b39-4cc3-827e-aa06d025b3e7",
+                                      "key": "object",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+                                    },
+                                    {
+                                      "id": "3aa13138-38dd-42f5-89ad-251393825334",
+                                      "key": "entity",
+                                      "value": "<string>",
+                                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                                    }
+                                  ]
+                                },
+                                "description": "Patches an ACL entry on the specified object."
+                              },
+                              "response": [
+                                {
+                                  "id": "b733d1ca-cb03-4466-83ea-36b9a41b7f9f",
+                                  "name": "Object ACL entry patched successfully.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-b733d1ca-cb03-4466-83ea-36b9a41b7f9f"
+                                },
+                                {
+                                  "id": "f2c1dd09-b870-4791-ac3a-f683dc44a0fd",
+                                  "name": "Bad Request. The request was malformed or contained invalid parameters.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-f2c1dd09-b870-4791-ac3a-f683dc44a0fd"
+                                },
+                                {
+                                  "id": "33d78e70-b2f0-4aaa-9fea-1d506b534640",
+                                  "name": "Unauthorized. Authentication credentials were missing or invalid.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-33d78e70-b2f0-4aaa-9fea-1d506b534640"
+                                },
+                                {
+                                  "id": "53478e0d-f8fc-4093-8f36-4e0f700398a4",
+                                  "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-53478e0d-f8fc-4093-8f36-4e0f700398a4"
+                                },
+                                {
+                                  "id": "636c3ba1-857e-4c5e-a63d-2576bd41384f",
+                                  "name": "Not Found. The specified resource does not exist.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-636c3ba1-857e-4c5e-a63d-2576bd41384f"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-fa792d39-a83e-4799-8fbd-5bf913786050"
+                            },
+                            {
+                              "name": "Google Cloud Storage Delete an Object Acl Entry",
+                              "id": "6e810873-a3e9-4238-b0ce-4f35a1062a60",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl",
+                                    ":entity"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "dc66a5d2-e743-4f57-a3ef-4fab672da1c8",
+                                      "key": "bucket",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                                    },
+                                    {
+                                      "id": "79720a81-c252-4b3a-a98e-cc2656f7b9a5",
+                                      "key": "object",
+                                      "value": "<string>",
+                                      "description": "(Required) Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+                                    },
+                                    {
+                                      "id": "e517bf20-39b3-4b98-b5b6-e6de659f1585",
+                                      "key": "entity",
+                                      "value": "<string>",
+                                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                                    }
+                                  ]
+                                },
+                                "description": "Permanently deletes the ACL entry for the specified entity on the specified object."
+                              },
+                              "response": [
+                                {
+                                  "id": "447b519a-b2d9-44f0-ba59-8e83e8e5f9b5",
+                                  "name": "Object ACL entry deleted successfully.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-447b519a-b2d9-44f0-ba59-8e83e8e5f9b5"
+                                },
+                                {
+                                  "id": "b710ffab-e5c9-43e3-99bb-8830328986ef",
+                                  "name": "Unauthorized. Authentication credentials were missing or invalid.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-b710ffab-e5c9-43e3-99bb-8830328986ef"
+                                },
+                                {
+                                  "id": "a805db50-3c4e-47d8-a0c0-14c7f723b05b",
+                                  "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-a805db50-3c4e-47d8-a0c0-14c7f723b05b"
+                                },
+                                {
+                                  "id": "409c3fbe-c85d-40d3-99d8-59389f6f7dd9",
+                                  "name": "Not Found. The specified resource does not exist.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/b/:bucket/o/:object/acl/:entity?generation=<long>&userProject=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "b",
+                                        ":bucket",
+                                        "o",
+                                        ":object",
+                                        "acl",
+                                        ":entity"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "If present, selects a specific revision of this object.",
+                                          "key": "generation",
+                                          "value": "<long>"
+                                        },
+                                        {
+                                          "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                          "key": "userProject",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "bucket"
+                                        },
+                                        {
+                                          "key": "object"
+                                        },
+                                        {
+                                          "key": "entity"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:51.000Z",
+                                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                                  "uid": "35240-409c3fbe-c85d-40d3-99d8-59389f6f7dd9"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-6e810873-a3e9-4238-b0ce-4f35a1062a60"
+                            }
+                          ],
+                          "id": "c8f6fd97-3435-4bcb-aeb9-791880713fc4",
+                          "createdAt": "2026-07-28T01:43:51.000Z",
+                          "updatedAt": "2026-07-28T01:43:51.000Z",
+                          "uid": "35240-c8f6fd97-3435-4bcb-aeb9-791880713fc4"
+                        },
+                        {
+                          "name": "Google Cloud Storage List Object Acl Entries",
+                          "id": "e082dc1f-746b-48c2-bc1f-242712f5d4bc",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "b",
+                                ":bucket",
+                                "o",
+                                ":object",
+                                "acl"
+                              ],
+                              "query": [
+                                {
+                                  "description": "If present, selects a specific revision of this object.",
+                                  "key": "generation",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                  "key": "userProject",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bad8a1e0-e378-4220-84ec-48069d1989fc",
+                                  "key": "bucket",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                                },
+                                {
+                                  "id": "7b8305aa-6c17-424f-82c9-ba132ec3f11d",
+                                  "key": "object",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+                                }
+                              ]
+                            },
+                            "description": "Retrieves ACL entries on the specified object."
+                          },
+                          "response": [
+                            {
+                              "id": "cb2d8587-e6e6-4870-8c6d-3087a4a98a07",
+                              "name": "Successful response with object ACL entries.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"kind\": \"storage#objectAccessControls\",\n  \"items\": [\n    {\n      \"entity\": \"<string>\",\n      \"role\": \"READER\",\n      \"kind\": \"storage#objectAccessControl\",\n      \"id\": \"<string>\",\n      \"selfLink\": \"<uri>\",\n      \"bucket\": \"<string>\",\n      \"object\": \"<string>\",\n      \"generation\": \"<string>\",\n      \"email\": \"<email>\",\n      \"domain\": \"<string>\",\n      \"entityId\": \"<string>\",\n      \"etag\": \"<string>\",\n      \"projectTeam\": {\n        \"projectNumber\": \"<string>\",\n        \"team\": \"viewers\"\n      }\n    },\n    {\n      \"entity\": \"<string>\",\n      \"role\": \"OWNER\",\n      \"kind\": \"storage#objectAccessControl\",\n      \"id\": \"<string>\",\n      \"selfLink\": \"<uri>\",\n      \"bucket\": \"<string>\",\n      \"object\": \"<string>\",\n      \"generation\": \"<string>\",\n      \"email\": \"<email>\",\n      \"domain\": \"<string>\",\n      \"entityId\": \"<string>\",\n      \"etag\": \"<string>\",\n      \"projectTeam\": {\n        \"projectNumber\": \"<string>\",\n        \"team\": \"editors\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-cb2d8587-e6e6-4870-8c6d-3087a4a98a07"
+                            },
+                            {
+                              "id": "e544a987-ed2d-4bb1-8892-f1d73f9a81ec",
+                              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-e544a987-ed2d-4bb1-8892-f1d73f9a81ec"
+                            },
+                            {
+                              "id": "469fdf8b-e5a6-4e5e-81a8-ed62f0c5d04e",
+                              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-469fdf8b-e5a6-4e5e-81a8-ed62f0c5d04e"
+                            },
+                            {
+                              "id": "566e7203-fb6c-4632-b3e3-7f47b011d26c",
+                              "name": "Not Found. The specified resource does not exist.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-566e7203-fb6c-4632-b3e3-7f47b011d26c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:51.000Z",
+                          "updatedAt": "2026-07-28T01:43:51.000Z",
+                          "uid": "35240-e082dc1f-746b-48c2-bc1f-242712f5d4bc"
+                        },
+                        {
+                          "name": "Google Cloud Storage Create an Object Acl Entry",
+                          "id": "c1f6856d-b7fa-4b67-a2a8-5efd61040b4d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "b",
+                                ":bucket",
+                                "o",
+                                ":object",
+                                "acl"
+                              ],
+                              "query": [
+                                {
+                                  "description": "If present, selects a specific revision of this object.",
+                                  "key": "generation",
+                                  "value": "<long>"
+                                },
+                                {
+                                  "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                  "key": "userProject",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "454cec89-a4d3-43a8-9d0d-36be82f23e32",
+                                  "key": "bucket",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                                },
+                                {
+                                  "id": "85c577ef-815c-469e-aefa-128e7784825b",
+                                  "key": "object",
+                                  "value": "<string>",
+                                  "description": "(Required) Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+                                }
+                              ]
+                            },
+                            "description": "Creates a new ACL entry on the specified object."
+                          },
+                          "response": [
+                            {
+                              "id": "ba087c04-5383-41c9-bd79-a8317aee2142",
+                              "name": "Object ACL entry created successfully.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-ba087c04-5383-41c9-bd79-a8317aee2142"
+                            },
+                            {
+                              "id": "ab6226d6-2028-47c9-b065-2a8f73497d25",
+                              "name": "Bad Request. The request was malformed or contained invalid parameters.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-ab6226d6-2028-47c9-b065-2a8f73497d25"
+                            },
+                            {
+                              "id": "a3cfc8eb-739b-40c0-84af-1d6c5093587a",
+                              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-a3cfc8eb-739b-40c0-84af-1d6c5093587a"
+                            },
+                            {
+                              "id": "95e3398f-7610-4e99-80d6-0e98b5e6ea7e",
+                              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-95e3398f-7610-4e99-80d6-0e98b5e6ea7e"
+                            },
+                            {
+                              "id": "0e64ccb6-e204-45ba-b99d-784ead55892f",
+                              "name": "Not Found. The specified resource does not exist.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"READER\",\n  \"kind\": \"storage#objectAccessControl\",\n  \"id\": \"<string>\",\n  \"selfLink\": \"<uri>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\",\n  \"email\": \"<email>\",\n  \"domain\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"projectTeam\": {\n    \"projectNumber\": \"<string>\",\n    \"team\": \"owners\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/b/:bucket/o/:object/acl?generation=<long>&userProject=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "b",
+                                    ":bucket",
+                                    "o",
+                                    ":object",
+                                    "acl"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "If present, selects a specific revision of this object.",
+                                      "key": "generation",
+                                      "value": "<long>"
+                                    },
+                                    {
+                                      "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                                      "key": "userProject",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "bucket"
+                                    },
+                                    {
+                                      "key": "object"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"errors\": [\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"domain\": \"<string>\",\n        \"reason\": \"<string>\",\n        \"message\": \"<string>\",\n        \"locationType\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T01:43:51.000Z",
+                              "updatedAt": "2026-07-28T01:43:51.000Z",
+                              "uid": "35240-0e64ccb6-e204-45ba-b99d-784ead55892f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:51.000Z",
+                          "updatedAt": "2026-07-28T01:43:51.000Z",
+                          "uid": "35240-c1f6856d-b7fa-4b67-a2a8-5efd61040b4d"
+                        }
+                      ],
+                      "id": "16cac34d-ceb7-4b0e-b016-f5c126ed36fc",
+                      "createdAt": "2026-07-28T01:43:51.000Z",
+                      "updatedAt": "2026-07-28T01:43:51.000Z",
+                      "uid": "35240-16cac34d-ceb7-4b0e-b016-f5c126ed36fc"
+                    }
+                  ],
+                  "id": "8607ede4-8c95-44be-bbf0-8aa440f7b271",
+                  "createdAt": "2026-07-28T01:43:51.000Z",
+                  "updatedAt": "2026-07-28T01:43:51.000Z",
+                  "uid": "35240-8607ede4-8c95-44be-bbf0-8aa440f7b271"
+                }
+              ],
+              "id": "b6805b3d-8a82-4735-841b-ee0e880a3cd0",
+              "createdAt": "2026-07-28T01:43:51.000Z",
+              "updatedAt": "2026-07-28T01:43:51.000Z",
+              "uid": "35240-b6805b3d-8a82-4735-841b-ee0e880a3cd0"
+            }
+          ],
+          "id": "63f6b8a9-3b42-450a-8014-7b6fbc351ef2",
+          "createdAt": "2026-07-28T01:43:51.000Z",
+          "updatedAt": "2026-07-28T01:43:51.000Z",
+          "uid": "35240-63f6b8a9-3b42-450a-8014-7b6fbc351ef2"
+        }
+      ],
+      "id": "9b86939f-b6b5-4855-bb89-cdce505eb70f",
+      "createdAt": "2026-07-28T01:43:51.000Z",
+      "updatedAt": "2026-07-28T01:43:51.000Z",
+      "uid": "35240-9b86939f-b6b5-4855-bb89-cdce505eb70f"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/devstorage.full_control https://www.googleapis.com/auth/devstorage.read_only https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloud-platform.read-only",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://storage.googleapis.com/storage/v1"
+    }
+  ]
+}

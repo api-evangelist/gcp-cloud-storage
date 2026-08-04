@@ -1,0 +1,22 @@
+{
+  "provider": "gcp-cloud-storage",
+  "sources": [
+    "gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml",
+    "gcp-cloud-storage-buckets-api-openapi.yml",
+    "gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml",
+    "gcp-cloud-storage-objectaccesscontrols-api-openapi.yml",
+    "gcp-cloud-storage-objects-api-openapi.yml"
+  ],
+  "outputs": [
+    "gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml",
+    "gcp-cloud-storage-buckets-api-openapi.yml",
+    "gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml",
+    "gcp-cloud-storage-objectaccesscontrols-api-openapi.yml",
+    "gcp-cloud-storage-objects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
