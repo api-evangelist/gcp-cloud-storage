@@ -2,6 +2,7 @@ name: Google Cloud Storage
 description: >-
   Object storage service offering high durability, availability, and scalability for storing and accessing data on
   Google Cloud Platform.
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: self-serve
