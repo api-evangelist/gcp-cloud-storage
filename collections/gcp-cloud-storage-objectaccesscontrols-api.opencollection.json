@@ -1,0 +1,288 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Storage JSON BucketAccessControls ObjectAccessControls API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ObjectAccessControls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Storage List Object Acl Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://storage.googleapis.com/storage/v1/b/:bucket/o/:object/acl",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "my-bucket",
+                "type": "path",
+                "description": "Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+              },
+              {
+                "name": "object",
+                "value": "my-object.txt",
+                "type": "path",
+                "description": "Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+              },
+              {
+                "name": "generation",
+                "value": "",
+                "type": "query",
+                "description": "If present, selects a specific revision of this object."
+              },
+              {
+                "name": "userProject",
+                "value": "",
+                "type": "query",
+                "description": "The project to be billed for this request. Required for Requester Pays buckets."
+              }
+            ]
+          },
+          "docs": "Retrieves ACL entries on the specified object."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Storage Create an Object Acl Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://storage.googleapis.com/storage/v1/b/:bucket/o/:object/acl",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "my-bucket",
+                "type": "path",
+                "description": "Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+              },
+              {
+                "name": "object",
+                "value": "my-object.txt",
+                "type": "path",
+                "description": "Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+              },
+              {
+                "name": "generation",
+                "value": "",
+                "type": "query",
+                "description": "If present, selects a specific revision of this object."
+              },
+              {
+                "name": "userProject",
+                "value": "",
+                "type": "query",
+                "description": "The project to be billed for this request. Required for Requester Pays buckets."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new ACL entry on the specified object."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Storage Get an Object Acl Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://storage.googleapis.com/storage/v1/b/:bucket/o/:object/acl/:entity",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "my-bucket",
+                "type": "path",
+                "description": "Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+              },
+              {
+                "name": "object",
+                "value": "my-object.txt",
+                "type": "path",
+                "description": "Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+              },
+              {
+                "name": "entity",
+                "value": "user-example@gmail.com",
+                "type": "path",
+                "description": "The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+              },
+              {
+                "name": "generation",
+                "value": "",
+                "type": "query",
+                "description": "If present, selects a specific revision of this object."
+              },
+              {
+                "name": "userProject",
+                "value": "",
+                "type": "query",
+                "description": "The project to be billed for this request. Required for Requester Pays buckets."
+              }
+            ]
+          },
+          "docs": "Returns the ACL entry for the specified entity on the specified object."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Storage Update an Object Acl Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://storage.googleapis.com/storage/v1/b/:bucket/o/:object/acl/:entity",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "my-bucket",
+                "type": "path",
+                "description": "Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+              },
+              {
+                "name": "object",
+                "value": "my-object.txt",
+                "type": "path",
+                "description": "Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+              },
+              {
+                "name": "entity",
+                "value": "user-example@gmail.com",
+                "type": "path",
+                "description": "The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+              },
+              {
+                "name": "generation",
+                "value": "",
+                "type": "query",
+                "description": "If present, selects a specific revision of this object."
+              },
+              {
+                "name": "userProject",
+                "value": "",
+                "type": "query",
+                "description": "The project to be billed for this request. Required for Requester Pays buckets."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an ACL entry on the specified object."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Storage Patch an Object Acl Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://storage.googleapis.com/storage/v1/b/:bucket/o/:object/acl/:entity",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "my-bucket",
+                "type": "path",
+                "description": "Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+              },
+              {
+                "name": "object",
+                "value": "my-object.txt",
+                "type": "path",
+                "description": "Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+              },
+              {
+                "name": "entity",
+                "value": "user-example@gmail.com",
+                "type": "path",
+                "description": "The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+              },
+              {
+                "name": "generation",
+                "value": "",
+                "type": "query",
+                "description": "If present, selects a specific revision of this object."
+              },
+              {
+                "name": "userProject",
+                "value": "",
+                "type": "query",
+                "description": "The project to be billed for this request. Required for Requester Pays buckets."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Patches an ACL entry on the specified object."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Storage Delete an Object Acl Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://storage.googleapis.com/storage/v1/b/:bucket/o/:object/acl/:entity",
+            "params": [
+              {
+                "name": "bucket",
+                "value": "my-bucket",
+                "type": "path",
+                "description": "Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+              },
+              {
+                "name": "object",
+                "value": "my-object.txt",
+                "type": "path",
+                "description": "Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts."
+              },
+              {
+                "name": "entity",
+                "value": "user-example@gmail.com",
+                "type": "path",
+                "description": "The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+              },
+              {
+                "name": "generation",
+                "value": "",
+                "type": "query",
+                "description": "If present, selects a specific revision of this object."
+              },
+              {
+                "name": "userProject",
+                "value": "",
+                "type": "query",
+                "description": "The project to be billed for this request. Required for Requester Pays buckets."
+              }
+            ]
+          },
+          "docs": "Permanently deletes the ACL entry for the specified entity on the specified object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

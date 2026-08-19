@@ -1,0 +1,2306 @@
+{
+  "item": [
+    {
+      "id": "0db1786f-11b1-46b4-88df-74aeba643b1b",
+      "name": "DefaultObjectAccessControls",
+      "description": {
+        "content": "Operations for managing default object access controls on buckets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40b23c38-9f59-4534-86d7-bb9bce5f4fd3",
+          "name": "Google Cloud Storage List Default Object Acl Entries",
+          "request": {
+            "name": "Google Cloud Storage List Default Object Acl Entries",
+            "description": {
+              "content": "Retrieves default object ACL entries on the specified bucket. These are applied to new objects when no ACL is provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "b",
+                ":bucket",
+                "defaultObjectAcl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ifMetagenerationMatch",
+                  "value": "<long>",
+                  "description": "If present, only returns the default ACL listing if the bucket's current metageneration matches this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "ifMetagenerationNotMatch",
+                  "value": "<long>",
+                  "description": "If present, only returns the default ACL listing if the bucket's current metageneration does not match this value."
+                },
+                {
+                  "disabled": false,
+                  "key": "userProject",
+                  "value": "<string>",
+                  "description": "The project to be billed for this request. Required for Requester Pays buckets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucket",
+                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "795374f9-1eaf-4a05-8db7-4673e7c61b8d",
+              "name": "Successful response with default object ACL entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ifMetagenerationMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "ifMetagenerationNotMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"storage#objectAccessControls\",\n  \"items\": [\n    {\n      \"entity\": \"example_value\",\n      \"role\": \"OWNER\",\n      \"kind\": \"example_value\",\n      \"id\": \"abc123\",\n      \"selfLink\": \"https://www.example.com\",\n      \"bucket\": \"example_value\",\n      \"object\": \"example_value\",\n      \"generation\": \"example_value\",\n      \"email\": \"user@example.com\",\n      \"domain\": \"example_value\",\n      \"entityId\": \"500123\",\n      \"etag\": \"example_value\",\n      \"projectTeam\": {\n        \"projectNumber\": \"string\",\n        \"team\": \"viewers\"\n      }\n    },\n    {\n      \"entity\": \"example_value\",\n      \"role\": \"OWNER\",\n      \"kind\": \"example_value\",\n      \"id\": \"abc123\",\n      \"selfLink\": \"https://www.example.com\",\n      \"bucket\": \"example_value\",\n      \"object\": \"example_value\",\n      \"generation\": \"example_value\",\n      \"email\": \"user@example.com\",\n      \"domain\": \"example_value\",\n      \"entityId\": \"500123\",\n      \"etag\": \"example_value\",\n      \"projectTeam\": {\n        \"projectNumber\": \"string\",\n        \"team\": \"editors\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fc0da22-38b0-49d7-b081-c3c0649c34c0",
+              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ifMetagenerationMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "ifMetagenerationNotMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8929,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80923a52-6db5-405f-8f2a-23580349762c",
+              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ifMetagenerationMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "ifMetagenerationNotMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8929,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49a3d9e8-f39b-4e6c-93db-385babf06078",
+              "name": "Not Found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ifMetagenerationMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "ifMetagenerationNotMatch",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8929,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f18e406-e086-4d6f-a239-8548cefea96d",
+          "name": "Google Cloud Storage Create a Default Object Acl Entry",
+          "request": {
+            "name": "Google Cloud Storage Create a Default Object Acl Entry",
+            "description": {
+              "content": "Creates a new default object ACL entry on the specified bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "b",
+                ":bucket",
+                "defaultObjectAcl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userProject",
+                  "value": "<string>",
+                  "description": "The project to be billed for this request. Required for Requester Pays buckets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucket",
+                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e46ee8c1-08a2-42bd-85f5-814be820441f",
+              "name": "Default object ACL entry created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"kind\": \"example_value\",\n  \"id\": \"abc123\",\n  \"selfLink\": \"https://www.example.com\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\",\n  \"email\": \"user@example.com\",\n  \"domain\": \"example_value\",\n  \"entityId\": \"500123\",\n  \"etag\": \"example_value\",\n  \"projectTeam\": {\n    \"projectNumber\": \"string\",\n    \"team\": \"editors\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2dad2f7-fa3b-4560-a436-090b1e14899f",
+              "name": "Bad Request. The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 8929,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18de44d0-9598-4dfd-876e-e626c4e55a86",
+              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54a77b04-faa3-4f83-b018-488edd8647bb",
+              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7141a824-183a-4bcf-b50e-89460ea1f86f",
+              "name": "Not Found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08bdfa65-5b07-4d06-a6bb-5969695862d2",
+          "name": "Google Cloud Storage Get a Default Object Acl Entry",
+          "request": {
+            "name": "Google Cloud Storage Get a Default Object Acl Entry",
+            "description": {
+              "content": "Returns the default object ACL entry for the specified entity on the specified bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "b",
+                ":bucket",
+                "defaultObjectAcl",
+                ":entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userProject",
+                  "value": "<string>",
+                  "description": "The project to be billed for this request. Required for Requester Pays buckets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucket",
+                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de2fb5fd-4cd4-4d7b-8799-1e62f102e355",
+              "name": "Successful response with the default object ACL entry.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"kind\": \"example_value\",\n  \"id\": \"abc123\",\n  \"selfLink\": \"https://www.example.com\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\",\n  \"email\": \"user@example.com\",\n  \"domain\": \"example_value\",\n  \"entityId\": \"500123\",\n  \"etag\": \"example_value\",\n  \"projectTeam\": {\n    \"projectNumber\": \"string\",\n    \"team\": \"editors\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2319dd7-a973-440d-baa3-3f0b21e70a49",
+              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd604d3c-962a-4f3b-91f7-5755de32cd88",
+              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9578c96a-3750-4039-a3ab-16fa9029febc",
+              "name": "Not Found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df31709c-22fa-4dab-81f5-cfa764324e69",
+          "name": "Google Cloud Storage Update a Default Object Acl Entry",
+          "request": {
+            "name": "Google Cloud Storage Update a Default Object Acl Entry",
+            "description": {
+              "content": "Updates a default object ACL entry on the specified bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "b",
+                ":bucket",
+                "defaultObjectAcl",
+                ":entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userProject",
+                  "value": "<string>",
+                  "description": "The project to be billed for this request. Required for Requester Pays buckets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucket",
+                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb10f34c-622d-4bb2-90e7-937e0dc58dbb",
+              "name": "Default object ACL entry updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"kind\": \"example_value\",\n  \"id\": \"abc123\",\n  \"selfLink\": \"https://www.example.com\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\",\n  \"email\": \"user@example.com\",\n  \"domain\": \"example_value\",\n  \"entityId\": \"500123\",\n  \"etag\": \"example_value\",\n  \"projectTeam\": {\n    \"projectNumber\": \"string\",\n    \"team\": \"editors\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e95172c0-da99-4209-9d19-431ef2d33d7c",
+              "name": "Bad Request. The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcfdf21c-f935-4383-bef5-8c0184e9d37d",
+              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6df010dc-104e-4f02-b68e-f7283cc264c8",
+              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0f973eb-48da-4b76-8997-436d92302350",
+              "name": "Not Found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60e40339-fa3f-430f-ab78-0932d42d3fd5",
+          "name": "Google Cloud Storage Patch a Default Object Acl Entry",
+          "request": {
+            "name": "Google Cloud Storage Patch a Default Object Acl Entry",
+            "description": {
+              "content": "Patches a default object ACL entry on the specified bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "b",
+                ":bucket",
+                "defaultObjectAcl",
+                ":entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userProject",
+                  "value": "<string>",
+                  "description": "The project to be billed for this request. Required for Requester Pays buckets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucket",
+                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entity\": \"<string>\",\n  \"role\": \"<string>\",\n  \"bucket\": \"<string>\",\n  \"object\": \"<string>\",\n  \"generation\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4367c090-9408-431d-977e-06085bfe17e8",
+              "name": "Default object ACL entry patched successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"kind\": \"example_value\",\n  \"id\": \"abc123\",\n  \"selfLink\": \"https://www.example.com\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\",\n  \"email\": \"user@example.com\",\n  \"domain\": \"example_value\",\n  \"entityId\": \"500123\",\n  \"etag\": \"example_value\",\n  \"projectTeam\": {\n    \"projectNumber\": \"string\",\n    \"team\": \"editors\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5039370-5709-4b17-8e31-50f723d07cfd",
+              "name": "Bad Request. The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff7aa46b-4251-43b3-8409-3a8b72619f1f",
+              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6838b4b7-35cd-463e-8d03-aac31fad9147",
+              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3380dcd1-9328-476f-82a6-ebe2a5addea3",
+              "name": "Not Found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entity\": \"example_value\",\n  \"role\": \"OWNER\",\n  \"bucket\": \"example_value\",\n  \"object\": \"example_value\",\n  \"generation\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd06789e-02f8-47c5-aad1-6533ae57ccd6",
+          "name": "Google Cloud Storage Delete a Default Object Acl Entry",
+          "request": {
+            "name": "Google Cloud Storage Delete a Default Object Acl Entry",
+            "description": {
+              "content": "Permanently deletes the default object ACL entry for the specified entity on the specified bucket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "b",
+                ":bucket",
+                "defaultObjectAcl",
+                ":entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userProject",
+                  "value": "<string>",
+                  "description": "The project to be billed for this request. Required for Requester Pays buckets."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bucket",
+                  "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity",
+                  "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71f33209-e02b-4fa6-9477-5b262c065adc",
+              "name": "Default object ACL entry deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e60075d-2567-477a-90bc-30f116491357",
+              "name": "Unauthorized. Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3310c294-5ff5-4aaa-a6e5-aabfc73baeb4",
+              "name": "Forbidden. The authenticated user does not have permission to perform the requested operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb058851-baf8-4369-9797-5c2e93f5aefc",
+              "name": "Not Found. The specified resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "b",
+                    ":bucket",
+                    "defaultObjectAcl",
+                    ":entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userProject",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bucket",
+                      "description": "(Required) Name of the bucket. Bucket names must be globally unique and comply with naming requirements."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity",
+                      "description": "(Required) The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 280,\n    \"message\": \"string\",\n    \"errors\": [\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      },\n      {\n        \"domain\": \"string\",\n        \"reason\": \"string\",\n        \"message\": \"string\",\n        \"locationType\": \"string\",\n        \"location\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://storage.googleapis.com/storage/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/devstorage.full_control https://www.googleapis.com/auth/devstorage.read_only https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloud-platform.read-only"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d1cfba64-1246-4bab-9895-6777fa41244d",
+    "name": "Google Cloud Storage JSON BucketAccessControls DefaultObjectAccessControls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing Google Cloud Storage resources including buckets and objects. Cloud Storage allows you to store and retrieve data on Google's infrastructure with high durability, availability, and scalability. The JSON API provides programmatic access to create, configure, and manage storage buckets, upload and download objects, control access permissions, and manage object metadata.\n\nContact Support:\n Name: Google Cloud Storage",
+      "type": "text/plain"
+    }
+  }
+}
