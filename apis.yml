@@ -2,6 +2,18 @@ name: Google Cloud Storage
 description: >-
   Object storage service offering high durability, availability, and scalability for storing and accessing data on
   Google Cloud Platform.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
@@ -317,6 +329,9 @@ apis:
   - type: JSONLD
     url: json-ld/gcp-cloud-storage-json-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/gcp-cloud-storage-capability-edges.yml
+    name: Google Cloud Storage Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-cloud-storage/overview
   - type: AgenticAccess
