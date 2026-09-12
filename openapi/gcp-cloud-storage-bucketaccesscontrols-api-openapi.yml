@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google Cloud Storage JSON BucketAccessControls API
+  title: Google Cloud Storage JSON Bucket Access Controls API
   description: RESTful API for managing Google Cloud Storage resources including buckets and objects. Cloud Storage allows you to store and retrieve data on Google's infrastructure with high durability, availability, and scalability. The JSON API provides programmatic access to create, configure, and manage storage buckets, upload and download objects, control access permissions, and manage object metadata.
   version: v1
   contact:
@@ -212,8 +212,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+    NotFound:
+      description: Not Found. The specified resource does not exist.
       content:
         application/json:
           schema:
@@ -224,13 +224,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Not Found. The specified resource does not exist.
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   parameters:
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
     entity:
       name: entity
       in: path
@@ -247,43 +254,7 @@ components:
       schema:
         type: string
       example: my-bucket
-    userProject:
-      name: userProject
-      in: query
-      required: false
-      description: The project to be billed for this request. Required for Requester Pays buckets.
-      schema:
-        type: string
   schemas:
-    Error:
-      type: object
-      description: An error response from the Cloud Storage JSON API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable description of the error.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  domain:
-                    type: string
-                  reason:
-                    type: string
-                  message:
-                    type: string
-                  locationType:
-                    type: string
-                  location:
-                    type: string
-          example: example_value
     BucketAccessControl:
       type: object
       description: An access-control entry for a bucket.
@@ -361,6 +332,35 @@ components:
       required:
       - entity
       - role
+    Error:
+      type: object
+      description: An error response from the Cloud Storage JSON API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable description of the error.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+                  message:
+                    type: string
+                  locationType:
+                    type: string
+                  location:
+                    type: string
+          example: example_value
   securitySchemes:
     oauth2:
       type: oauth2

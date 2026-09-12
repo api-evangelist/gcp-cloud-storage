@@ -329,6 +329,8 @@ apis:
   - type: JSONLD
     url: json-ld/gcp-cloud-storage-json-context.jsonld
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: CapabilityMap
     url: capabilities/gcp-cloud-storage-capability-edges.yml
     name: Google Cloud Storage Business Capability Map
@@ -416,3 +418,5 @@ maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
     url: https://apievangelist.com
+x-parent: google-cloud-platform
+x-relationship: product

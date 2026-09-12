@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud Storage JSON BucketAccessControls Objects API
   description: RESTful API for managing Google Cloud Storage resources including buckets and objects. Cloud Storage allows you to store and retrieve data on Google's infrastructure with high durability, availability, and scalability. The JSON API provides programmatic access to create, configure, and manage storage buckets, upload and download objects, control access permissions, and manage object metadata.
@@ -916,6 +916,37 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not Found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PreconditionFailed:
+      description: Precondition Failed. The condition set in the conditional request header was not met.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized. Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     ObjectAccessControl:
       type: object
@@ -1001,6 +1032,113 @@ components:
       required:
       - entity
       - role
+    RewriteResponse:
+      type: object
+      description: A rewrite response.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#rewriteResponse
+          example: example_value
+        totalBytesRewritten:
+          type: string
+          description: The total bytes rewritten so far.
+          example: example_value
+        objectSize:
+          type: string
+          description: The total size of the object being copied.
+          example: example_value
+        done:
+          type: boolean
+          description: Whether the rewrite is complete. If false, call the rewrite method again with the returned rewriteToken.
+          example: true
+        rewriteToken:
+          type: string
+          description: A token to use in subsequent rewrite requests. Present only when the rewrite is not yet complete.
+          example: example_value
+        resource:
+          $ref: '#/components/schemas/Object'
+    Channel:
+      type: object
+      description: A notification channel used to watch for resource changes.
+      properties:
+        kind:
+          type: string
+          description: Identifies this as a notification channel.
+          default: api#channel
+          example: example_value
+        id:
+          type: string
+          description: A UUID or similar unique string that identifies this channel.
+          example: abc123
+        resourceId:
+          type: string
+          description: An opaque value that identifies the watched resource.
+          example: '500123'
+        resourceUri:
+          type: string
+          format: uri
+          description: A version-specific identifier for the watched resource.
+          example: https://www.example.com
+        token:
+          type: string
+          description: An arbitrary string delivered to the target address with each notification.
+          example: example_value
+        expiration:
+          type: string
+          description: Date and time of notification channel expiration, expressed in milliseconds since the epoch.
+          example: example_value
+        type:
+          type: string
+          description: The type of delivery mechanism used for this channel.
+          enum:
+          - web_hook
+          example: web_hook
+        address:
+          type: string
+          format: uri
+          description: The address where notifications are delivered for this channel.
+          example: https://www.example.com
+        params:
+          type: object
+          description: Additional parameters controlling delivery channel behavior.
+          additionalProperties:
+            type: string
+          example: example_value
+        payload:
+          type: boolean
+          description: Whether the payload of each notification event is expected.
+          example: true
+      required:
+      - id
+      - type
+      - address
+    ObjectList:
+      type: object
+      description: A list of objects.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#objects
+          example: example_value
+        nextPageToken:
+          type: string
+          description: The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results.
+          example: example_value
+        prefixes:
+          type: array
+          description: The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.
+          items:
+            type: string
+          example: []
+        items:
+          type: array
+          description: The list of objects.
+          items:
+            $ref: '#/components/schemas/Object'
+          example: []
     Object:
       type: object
       description: An object in Cloud Storage. Objects are the individual pieces of data that you store in Cloud Storage.
@@ -1210,113 +1348,6 @@ components:
           description: The time at which the soft-deleted object will be permanently deleted.
           readOnly: true
           example: '2026-01-15T10:30:00Z'
-    Channel:
-      type: object
-      description: A notification channel used to watch for resource changes.
-      properties:
-        kind:
-          type: string
-          description: Identifies this as a notification channel.
-          default: api#channel
-          example: example_value
-        id:
-          type: string
-          description: A UUID or similar unique string that identifies this channel.
-          example: abc123
-        resourceId:
-          type: string
-          description: An opaque value that identifies the watched resource.
-          example: '500123'
-        resourceUri:
-          type: string
-          format: uri
-          description: A version-specific identifier for the watched resource.
-          example: https://www.example.com
-        token:
-          type: string
-          description: An arbitrary string delivered to the target address with each notification.
-          example: example_value
-        expiration:
-          type: string
-          description: Date and time of notification channel expiration, expressed in milliseconds since the epoch.
-          example: example_value
-        type:
-          type: string
-          description: The type of delivery mechanism used for this channel.
-          enum:
-          - web_hook
-          example: web_hook
-        address:
-          type: string
-          format: uri
-          description: The address where notifications are delivered for this channel.
-          example: https://www.example.com
-        params:
-          type: object
-          description: Additional parameters controlling delivery channel behavior.
-          additionalProperties:
-            type: string
-          example: example_value
-        payload:
-          type: boolean
-          description: Whether the payload of each notification event is expected.
-          example: true
-      required:
-      - id
-      - type
-      - address
-    RewriteResponse:
-      type: object
-      description: A rewrite response.
-      properties:
-        kind:
-          type: string
-          description: The kind of item this is.
-          default: storage#rewriteResponse
-          example: example_value
-        totalBytesRewritten:
-          type: string
-          description: The total bytes rewritten so far.
-          example: example_value
-        objectSize:
-          type: string
-          description: The total size of the object being copied.
-          example: example_value
-        done:
-          type: boolean
-          description: Whether the rewrite is complete. If false, call the rewrite method again with the returned rewriteToken.
-          example: true
-        rewriteToken:
-          type: string
-          description: A token to use in subsequent rewrite requests. Present only when the rewrite is not yet complete.
-          example: example_value
-        resource:
-          $ref: '#/components/schemas/Object'
-    ObjectList:
-      type: object
-      description: A list of objects.
-      properties:
-        kind:
-          type: string
-          description: The kind of item this is.
-          default: storage#objects
-          example: example_value
-        nextPageToken:
-          type: string
-          description: The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results.
-          example: example_value
-        prefixes:
-          type: array
-          description: The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.
-          items:
-            type: string
-          example: []
-        items:
-          type: array
-          description: The list of objects.
-          items:
-            $ref: '#/components/schemas/Object'
-          example: []
     Error:
       type: object
       description: An error response from the Cloud Storage JSON API.
@@ -1380,38 +1411,22 @@ components:
           example: []
       required:
       - sourceObjects
-  responses:
-    PreconditionFailed:
-      description: Precondition Failed. The condition set in the conditional request header was not met.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized. Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Not Found. The specified resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request. The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
+    prettyPrint:
+      name: prettyPrint
+      in: query
+      required: false
+      description: Returns response with indentations and line breaks. Default is true. When set to false, can reduce the response payload size.
+      schema:
+        type: boolean
+        default: true
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
     objectName:
       name: object
       in: path
@@ -1428,21 +1443,6 @@ components:
       schema:
         type: string
       example: my-bucket
-    userProject:
-      name: userProject
-      in: query
-      required: false
-      description: The project to be billed for this request. Required for Requester Pays buckets.
-      schema:
-        type: string
-    prettyPrint:
-      name: prettyPrint
-      in: query
-      required: false
-      description: Returns response with indentations and line breaks. Default is true. When set to false, can reduce the response payload size.
-      schema:
-        type: boolean
-        default: true
     fields:
       name: fields
       in: query
