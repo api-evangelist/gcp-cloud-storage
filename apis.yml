@@ -328,6 +328,8 @@ apis:
   - type: JSONLD
     url: json-ld/gcp-cloud-storage-json-context.jsonld
 common:
+- type: RateLimits
+  url: rate-limits/gcp-cloud-storage-rate-limits.yml
 - type: Plans
   url: plans/gcp-cloud-storage-plans-pricing.yml
 - type: Website
