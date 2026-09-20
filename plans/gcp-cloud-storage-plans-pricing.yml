@@ -1,166 +1,160 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Google Cloud Storage
-providerId: gcp-cloud-storage
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Archival
-  - Backup
-  - Blob Storage
-  - Cloud Storage
-  - Data
-  - File Storage
-  - Google Cloud
-  - Object Storage
-  - Storage
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://cloud.google.com/storage/pricing
+sources:
+- https://cloud.google.com/storage/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+published: true
+note: Extensive usage-based Cloud Storage price list (storage per GiB-hour, operations per 1,000, retrieval,
+  replication, network egress, Storage Intelligence, Rapid Cache/Bucket). Prices vary by region; representative
+  us-central1/region rows captured. Page also offers 'Contact sales' for custom quotes.
+plan_count: 23
+currency: USD
 plans:
-  - id: gcp-cloud-storage-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Google Cloud Storage API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Google Cloud Storage JSON API
-      - name: Google Cloud Storage XML API
-  - id: gcp-cloud-storage-pro
-    name: Professional
-    type: paid
-    description: Production tier for Google Cloud Storage. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Google Cloud Storage JSON API
-      - name: Google Cloud Storage XML API
-  - id: gcp-cloud-storage-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Google Cloud Storage. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://storage.googleapis.com/storage/v1
-          - https://storage.googleapis.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Google Cloud Storage JSON API
-      - name: Google Cloud Storage XML API
-maintainers:
-  - name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+- name: Standard storage (region, e.g. us-central1)
+  price_text: $0.000027397 / 1 gibibyte hour, per 1 month / account
+  price: 2.7397e-05
+  currency: USD
+  period: per-use
+  unit: gibibyte hour
+- name: Nearline storage (region)
+  price_text: $0.000013699 / 1 gibibyte hour
+  price: 1.3699e-05
+  currency: USD
+  period: per-use
+  unit: gibibyte hour
+- name: Coldline storage (region)
+  price_text: $0.000005479 / 1 gibibyte hour
+  price: 5.479e-06
+  currency: USD
+  period: per-use
+  unit: gibibyte hour
+- name: Archive storage (region)
+  price_text: $0.000001644 / 1 gibibyte hour
+  price: 1.644e-06
+  currency: USD
+  period: per-use
+  unit: gibibyte hour
+- name: Rapid Cache storage (region)
+  price_text: $0.0001233 / 1 gibibyte hour
+  price: 0.0001233
+  currency: USD
+  period: per-use
+  unit: gibibyte hour
+- name: Rapid storage (zonal)
+  price_text: $0.000150685 / 1 gibibyte hour
+  price: 0.000150685
+  currency: USD
+  period: per-use
+  unit: gibibyte hour
+- name: Class A operations, flat namespace, Standard (single region)
+  price_text: $0.005
+  price: 0.005
+  currency: USD
+  period: per-use
+  unit: per 1,000 operations
+- name: Class B operations, flat namespace, Standard (single region)
+  price_text: $0.0004
+  price: 0.0004
+  currency: USD
+  period: per-use
+  unit: per 1,000 operations
+- name: Nearline retrieval fee
+  price_text: $0.01 / 1 gibibyte
+  price: 0.01
+  currency: USD
+  period: per-use
+  unit: gibibyte
+- name: Coldline retrieval fee
+  price_text: $0.02 / 1 gibibyte
+  price: 0.02
+  currency: USD
+  period: per-use
+  unit: gibibyte
+- name: Archive retrieval fee
+  price_text: $0.05 / 1 gibibyte
+  price: 0.05
+  currency: USD
+  period: per-use
+  unit: gibibyte
+- name: Bucket tags
+  price_text: $0.005 per month
+  price: 0.005
+  currency: USD
+  period: month
+  unit: per tag
+- name: Autoclass management fee
+  price_text: $0.0025 for every 1000 objects stored for 30 days
+  price: 0.0025
+  currency: USD
+  period: month
+  unit: per 1000 objects
+- name: Storage Intelligence Standard tier
+  price_text: $2.5 per million objects per month
+  price: 2.5
+  currency: USD
+  period: month
+  unit: per million objects
+- name: Bucket relocation
+  price_text: $0.04 per GB
+  price: 0.04
+  currency: USD
+  period: per-use
+  unit: GB
+- name: Inventory Reports (region)
+  price_text: $0.0025
+  price: 0.0025
+  currency: USD
+  period: per-use
+  unit: per one million objects
+- name: Inventory Reports (multi/dual-region)
+  price_text: $0.0028
+  price: 0.0028
+  currency: USD
+  period: per-use
+  unit: per one million objects
+- name: Rapid Cache ingest
+  price_text: $0.0032 / 1 gibibyte
+  price: 0.0032
+  currency: USD
+  period: per-use
+  unit: gibibyte
+- name: Rapid Cache operations
+  price_text: $0.0002 / 1,000 count
+  price: 0.0002
+  currency: USD
+  period: per-use
+  unit: 1,000 requests
+- name: Rapid Cache data transfer out
+  price_text: $0.0006 / 1 gibibyte
+  price: 0.0006
+  currency: USD
+  period: per-use
+  unit: gibibyte
+- name: Object Contexts
+  price_text: $3 per million per month
+  price: 3
+  currency: USD
+  period: month
+  unit: per million contexts
+- name: Network egress worldwide 0-10 TiB
+  price_text: $0.12 / 1 gibibyte, per 1 month / account
+  price: 0.12
+  currency: USD
+  period: per-use
+  unit: gibibyte
+- name: Always Free tier
+  price_text: Free
+  currency: USD
+  period: month
+  included_quota: Standard storage 5 GB-months; Class A Operations 5,000; Class B Operations 50,000; Data
+    transfer 100 GB from North America
+  overage: usage beyond these Always Free limits is charged according to the pricing tables above
+rate_limit_statements:
+- A single list operation can retrieve a maximum of 1000 objects per bucket.

@@ -328,6 +328,8 @@ apis:
   - type: JSONLD
     url: json-ld/gcp-cloud-storage-json-context.jsonld
 common:
+- type: Plans
+  url: plans/gcp-cloud-storage-plans-pricing.yml
 - type: Website
   url: https://www.google.com/
 - type: CapabilityMap
