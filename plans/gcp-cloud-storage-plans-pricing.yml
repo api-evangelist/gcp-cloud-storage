@@ -10,6 +10,10 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: developer-api
 pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
 published: true
 note: Extensive usage-based Cloud Storage price list (storage per GiB-hour, operations per 1,000, retrieval,
   replication, network egress, Storage Intelligence, Rapid Cache/Bucket). Prices vary by region; representative
