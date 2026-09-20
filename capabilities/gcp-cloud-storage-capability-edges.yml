@@ -1,0 +1,59 @@
+slug: gcp-cloud-storage
+provider: Google Cloud Storage
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Buckets
+  spec_file: gcp-cloud-storage-buckets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: POST /b  insertBucket  Google Cloud Storage Create a Bucket
+  reason: Creating and configuring cloud object-storage buckets is cloud storage infrastructure management.
+- tag: Objects
+  spec_file: gcp-cloud-storage-objects-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.75
+  evidence: GET /b/{bucket}/o  listObjects  Google Cloud Storage List Objects
+  reason: Object CRUD/copy/rewrite in cloud object storage is storage infrastructure operation; generic
+    data-plane storage rather than a data governance capability.
+- tag: BucketAccessControls
+  spec_file: gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /b/{bucket}/acl  insertBucketAccessControl  Google Cloud Storage Create a Bucket Acl
+    Entry
+  reason: ACL entry management on storage buckets is access control administration; maps to Identity &
+    Access Management. Could also be seen as infrastructure config, hence 0.7.
+- tag: DefaultObjectAccessControls
+  spec_file: gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /b/{bucket}/defaultObjectAcl  insertDefaultObjectAccessControl
+  reason: Default object ACL entries govern who may access stored objects — access control administration.
+- tag: ObjectAccessControls
+  spec_file: gcp-cloud-storage-objectaccesscontrols-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /b/{bucket}/o/{object}/acl  insertObjectAccessControl  Create an Object Acl Entry
+  reason: Per-object ACL management is access permission administration on stored data.
