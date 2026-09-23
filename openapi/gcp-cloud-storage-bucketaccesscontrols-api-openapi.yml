@@ -218,34 +218,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized. Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     Forbidden:
       description: Forbidden. The authenticated user does not have permission to perform the requested operation.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized. Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    userProject:
-      name: userProject
-      in: query
-      required: false
-      description: The project to be billed for this request. Required for Requester Pays buckets.
-      schema:
-        type: string
-    entity:
-      name: entity
-      in: path
-      required: true
-      description: 'The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers.'
-      schema:
-        type: string
-      example: user-example@gmail.com
     bucketName:
       name: bucket
       in: path
@@ -254,6 +239,21 @@ components:
       schema:
         type: string
       example: my-bucket
+    entity:
+      name: entity
+      in: path
+      required: true
+      description: 'The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers.'
+      schema:
+        type: string
+      example: user-example@gmail.com
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
   schemas:
     BucketAccessControl:
       type: object

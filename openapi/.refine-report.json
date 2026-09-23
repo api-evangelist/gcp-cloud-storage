@@ -1,11 +1,7 @@
 {
   "provider": "gcp-cloud-storage",
   "sources": [
-    "gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml",
-    "gcp-cloud-storage-buckets-api-openapi.yml",
-    "gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml",
-    "gcp-cloud-storage-objectaccesscontrols-api-openapi.yml",
-    "gcp-cloud-storage-objects-api-openapi.yml"
+    "_original/gcp-cloud-storage-json-api-openapi.yml"
   ],
   "outputs": [
     "gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml",
@@ -18,12 +14,15 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "gcp-cloud-storage-buckets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "gcp-cloud-storage-objectaccesscontrols-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "gcp-cloud-storage-objects-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gcp-cloud-storage-json-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "gcp-cloud-storage-bucketaccesscontrols-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gcp-cloud-storage-buckets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gcp-cloud-storage-defaultobjectaccesscontrols-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gcp-cloud-storage-objectaccesscontrols-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gcp-cloud-storage-objects-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
