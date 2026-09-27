@@ -253,64 +253,36 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    BadRequest:
-      description: Bad Request. The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Not Found. The specified resource does not exist.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized. Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    bucketName:
-      name: bucket
-      in: path
-      required: true
-      description: Name of the bucket. Bucket names must be globally unique and comply with naming requirements.
-      schema:
-        type: string
-      example: my-bucket
-    entity:
-      name: entity
-      in: path
-      required: true
-      description: 'The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers.'
-      schema:
-        type: string
-      example: user-example@gmail.com
-    objectName:
-      name: object
-      in: path
-      required: true
-      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
-      schema:
-        type: string
-      example: my-object.txt
-    userProject:
-      name: userProject
-      in: query
-      required: false
-      description: The project to be billed for this request. Required for Requester Pays buckets.
-      schema:
-        type: string
   schemas:
+    Error:
+      type: object
+      description: An error response from the Cloud Storage JSON API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable description of the error.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+                  message:
+                    type: string
+                  locationType:
+                    type: string
+                  location:
+                    type: string
+          example: example_value
     ObjectAccessControl:
       type: object
       description: An access-control entry for an object.
@@ -395,35 +367,63 @@ components:
       required:
       - entity
       - role
-    Error:
-      type: object
-      description: An error response from the Cloud Storage JSON API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable description of the error.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  domain:
-                    type: string
-                  reason:
-                    type: string
-                  message:
-                    type: string
-                  locationType:
-                    type: string
-                  location:
-                    type: string
-          example: example_value
+  responses:
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not Found. The specified resource does not exist.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized. Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    bucketName:
+      name: bucket
+      in: path
+      required: true
+      description: Name of the bucket. Bucket names must be globally unique and comply with naming requirements.
+      schema:
+        type: string
+      example: my-bucket
+    entity:
+      name: entity
+      in: path
+      required: true
+      description: 'The entity holding the permission, in one of the following forms: user-userId, user-email, group-groupId, group-email, domain-domain, project-team-projectId, allUsers, or allAuthenticatedUsers.'
+      schema:
+        type: string
+      example: user-example@gmail.com
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
+    objectName:
+      name: object
+      in: path
+      required: true
+      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
+      schema:
+        type: string
+      example: my-object.txt
   securitySchemes:
     oauth2:
       type: oauth2
