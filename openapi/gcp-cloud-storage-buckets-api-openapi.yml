@@ -1000,53 +1000,6 @@ components:
           items:
             $ref: '#/components/schemas/Bucket'
           example: []
-    Policy:
-      type: object
-      description: An IAM policy for a Cloud Storage resource.
-      properties:
-        kind:
-          type: string
-          description: The kind of item this is.
-          default: storage#policy
-          example: example_value
-        resourceId:
-          type: string
-          description: The ID of the resource to which this policy belongs.
-          example: '500123'
-        version:
-          type: integer
-          description: The version of the policy. Valid values are 1 and 3. Any request that specifies conditional role bindings must specify version 3.
-          example: 10
-        etag:
-          type: string
-          description: HTTP 1.1 Entity tag for the policy. Used for optimistic concurrency control.
-          example: example_value
-        bindings:
-          type: array
-          description: A list of members bound to a role.
-          items:
-            type: object
-            properties:
-              role:
-                type: string
-                description: The role to which members are bound. For example, roles/storage.objectViewer.
-              members:
-                type: array
-                items:
-                  type: string
-                description: The members bound to the role. Each member can be a user, service account, group, or domain.
-              condition:
-                type: object
-                description: The condition that is associated with this binding.
-                properties:
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  expression:
-                    type: string
-                    description: The condition expression in Common Expression Language (CEL) syntax.
-          example: []
     BucketAccessControl:
       type: object
       description: An access-control entry for a bucket.
@@ -1124,6 +1077,53 @@ components:
       required:
       - entity
       - role
+    Policy:
+      type: object
+      description: An IAM policy for a Cloud Storage resource.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#policy
+          example: example_value
+        resourceId:
+          type: string
+          description: The ID of the resource to which this policy belongs.
+          example: '500123'
+        version:
+          type: integer
+          description: The version of the policy. Valid values are 1 and 3. Any request that specifies conditional role bindings must specify version 3.
+          example: 10
+        etag:
+          type: string
+          description: HTTP 1.1 Entity tag for the policy. Used for optimistic concurrency control.
+          example: example_value
+        bindings:
+          type: array
+          description: A list of members bound to a role.
+          items:
+            type: object
+            properties:
+              role:
+                type: string
+                description: The role to which members are bound. For example, roles/storage.objectViewer.
+              members:
+                type: array
+                items:
+                  type: string
+                description: The members bound to the role. Each member can be a user, service account, group, or domain.
+              condition:
+                type: object
+                description: The condition that is associated with this binding.
+                properties:
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  expression:
+                    type: string
+                    description: The condition expression in Common Expression Language (CEL) syntax.
+          example: []
     ObjectAccessControl:
       type: object
       description: An access-control entry for an object.
@@ -1209,14 +1209,8 @@ components:
       - entity
       - role
   responses:
-    PreconditionFailed:
-      description: Precondition Failed. The condition set in the conditional request header was not met.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
       content:
         application/json:
           schema:
@@ -1233,8 +1227,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request. The request was malformed or contained invalid parameters.
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PreconditionFailed:
+      description: Precondition Failed. The condition set in the conditional request header was not met.
       content:
         application/json:
           schema:
@@ -1248,20 +1248,6 @@ components:
       schema:
         type: string
       example: my-bucket
-    userProject:
-      name: userProject
-      in: query
-      required: false
-      description: The project to be billed for this request. Required for Requester Pays buckets.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      required: false
-      description: Selector specifying a subset of fields to include in the response. Use for better performance by retrieving only needed fields.
-      schema:
-        type: string
     prettyPrint:
       name: prettyPrint
       in: query
@@ -1270,6 +1256,20 @@ components:
       schema:
         type: boolean
         default: true
+    fields:
+      name: fields
+      in: query
+      required: false
+      description: Selector specifying a subset of fields to include in the response. Use for better performance by retrieving only needed fields.
+      schema:
+        type: string
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

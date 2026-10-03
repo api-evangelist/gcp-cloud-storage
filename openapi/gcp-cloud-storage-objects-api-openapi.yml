@@ -946,6 +946,58 @@ components:
                   location:
                     type: string
           example: example_value
+    RewriteResponse:
+      type: object
+      description: A rewrite response.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#rewriteResponse
+          example: example_value
+        totalBytesRewritten:
+          type: string
+          description: The total bytes rewritten so far.
+          example: example_value
+        objectSize:
+          type: string
+          description: The total size of the object being copied.
+          example: example_value
+        done:
+          type: boolean
+          description: Whether the rewrite is complete. If false, call the rewrite method again with the returned rewriteToken.
+          example: true
+        rewriteToken:
+          type: string
+          description: A token to use in subsequent rewrite requests. Present only when the rewrite is not yet complete.
+          example: example_value
+        resource:
+          $ref: '#/components/schemas/Object'
+    ObjectList:
+      type: object
+      description: A list of objects.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#objects
+          example: example_value
+        nextPageToken:
+          type: string
+          description: The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results.
+          example: example_value
+        prefixes:
+          type: array
+          description: The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.
+          items:
+            type: string
+          example: []
+        items:
+          type: array
+          description: The list of objects.
+          items:
+            $ref: '#/components/schemas/Object'
+          example: []
     ComposeRequest:
       type: object
       description: A request to compose objects.
@@ -980,31 +1032,6 @@ components:
           example: []
       required:
       - sourceObjects
-    ObjectList:
-      type: object
-      description: A list of objects.
-      properties:
-        kind:
-          type: string
-          description: The kind of item this is.
-          default: storage#objects
-          example: example_value
-        nextPageToken:
-          type: string
-          description: The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results.
-          example: example_value
-        prefixes:
-          type: array
-          description: The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.
-          items:
-            type: string
-          example: []
-        items:
-          type: array
-          description: The list of objects.
-          items:
-            $ref: '#/components/schemas/Object'
-          example: []
     Channel:
       type: object
       description: A notification channel used to watch for resource changes.
@@ -1060,33 +1087,6 @@ components:
       - id
       - type
       - address
-    RewriteResponse:
-      type: object
-      description: A rewrite response.
-      properties:
-        kind:
-          type: string
-          description: The kind of item this is.
-          default: storage#rewriteResponse
-          example: example_value
-        totalBytesRewritten:
-          type: string
-          description: The total bytes rewritten so far.
-          example: example_value
-        objectSize:
-          type: string
-          description: The total size of the object being copied.
-          example: example_value
-        done:
-          type: boolean
-          description: Whether the rewrite is complete. If false, call the rewrite method again with the returned rewriteToken.
-          example: true
-        rewriteToken:
-          type: string
-          description: A token to use in subsequent rewrite requests. Present only when the rewrite is not yet complete.
-          example: example_value
-        resource:
-          $ref: '#/components/schemas/Object'
     ObjectAccessControl:
       type: object
       description: An access-control entry for an object.
@@ -1381,14 +1381,8 @@ components:
           readOnly: true
           example: '2026-01-15T10:30:00Z'
   responses:
-    PreconditionFailed:
-      description: Precondition Failed. The condition set in the conditional request header was not met.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
       content:
         application/json:
           schema:
@@ -1405,43 +1399,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request. The request was malformed or contained invalid parameters.
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PreconditionFailed:
+      description: Precondition Failed. The condition set in the conditional request header was not met.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   parameters:
-    bucketName:
-      name: bucket
-      in: path
-      required: true
-      description: Name of the bucket. Bucket names must be globally unique and comply with naming requirements.
-      schema:
-        type: string
-      example: my-bucket
-    userProject:
-      name: userProject
-      in: query
-      required: false
-      description: The project to be billed for this request. Required for Requester Pays buckets.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      required: false
-      description: Selector specifying a subset of fields to include in the response. Use for better performance by retrieving only needed fields.
-      schema:
-        type: string
-    objectName:
-      name: object
-      in: path
-      required: true
-      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
-      schema:
-        type: string
-      example: my-object.txt
     prettyPrint:
       name: prettyPrint
       in: query
@@ -1450,6 +1420,36 @@ components:
       schema:
         type: boolean
         default: true
+    bucketName:
+      name: bucket
+      in: path
+      required: true
+      description: Name of the bucket. Bucket names must be globally unique and comply with naming requirements.
+      schema:
+        type: string
+      example: my-bucket
+    objectName:
+      name: object
+      in: path
+      required: true
+      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
+      schema:
+        type: string
+      example: my-object.txt
+    fields:
+      name: fields
+      in: query
+      required: false
+      description: Selector specifying a subset of fields to include in the response. Use for better performance by retrieving only needed fields.
+      schema:
+        type: string
+    userProject:
+      name: userProject
+      in: query
+      required: false
+      description: The project to be billed for this request. Required for Requester Pays buckets.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

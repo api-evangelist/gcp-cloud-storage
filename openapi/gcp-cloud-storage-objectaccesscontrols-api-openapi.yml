@@ -368,8 +368,8 @@ components:
       - entity
       - role
   responses:
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
       content:
         application/json:
           schema:
@@ -386,8 +386,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request. The request was malformed or contained invalid parameters.
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
       content:
         application/json:
           schema:
@@ -401,6 +401,14 @@ components:
       schema:
         type: string
       example: my-bucket
+    objectName:
+      name: object
+      in: path
+      required: true
+      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
+      schema:
+        type: string
+      example: my-object.txt
     entity:
       name: entity
       in: path
@@ -416,14 +424,6 @@ components:
       description: The project to be billed for this request. Required for Requester Pays buckets.
       schema:
         type: string
-    objectName:
-      name: object
-      in: path
-      required: true
-      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
-      schema:
-        type: string
-      example: my-object.txt
   securitySchemes:
     oauth2:
       type: oauth2

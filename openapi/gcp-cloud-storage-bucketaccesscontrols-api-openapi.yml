@@ -313,8 +313,8 @@ components:
       - entity
       - role
   responses:
-    Forbidden:
-      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
+    BadRequest:
+      description: Bad Request. The request was malformed or contained invalid parameters.
       content:
         application/json:
           schema:
@@ -331,8 +331,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad Request. The request was malformed or contained invalid parameters.
+    Forbidden:
+      description: Forbidden. The authenticated user does not have permission to perform the requested operation.
       content:
         application/json:
           schema:
