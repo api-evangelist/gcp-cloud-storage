@@ -328,6 +328,8 @@ apis:
   - type: JSONLD
     url: json-ld/gcp-cloud-storage-json-context.jsonld
 common:
+- type: FinOps
+  url: finops/gcp-cloud-storage-finops.yml
 - type: Pricing
   url: https://cloud.google.com/storage/pricing
 - type: RateLimits
