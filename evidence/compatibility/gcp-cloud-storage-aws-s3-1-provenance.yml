@@ -1,0 +1,14 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://cloud.google.com/storage/docs/interoperability
+page: https://cloud.google.com/storage/docs/interoperability
+file: gcp-cloud-storage-aws-s3-1.md
+bytes: 16336
+sha256: 57afaeaf4db37f84bb7d93fe1da936691b1635b2965a72d9b81a0f1cd10f4b08
+anchor: amazon-web-services
+shape: aws-s3
+classification: declares-compatibility
+quote: The Cloud Storage XML API is interoperable with some tools and libraries that work with services such as
+  Amazon Simple Storage Service (Amazon S3). To use these tools and libraries with Cloud Storage, change the request
+  endpoint that the tool or library uses to the Cloud Storage URI https://storage.
+note: text extracted from the provider's own page (tags stripped), saved for evidence

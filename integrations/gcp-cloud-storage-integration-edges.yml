@@ -1,0 +1,20 @@
+edges:
+- partner_name: Amazon Web Services
+  partner: amazon-web-services
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: aws-s3
+  type: docs
+  degree: interoperable-subset
+  evidence: https://cloud.google.com/storage/docs/interoperability
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/gcp-cloud-storage/blob/main/evidence/compatibility/gcp-cloud-storage-aws-s3-1.md
+  quote: The Cloud Storage XML API is interoperable with some tools and libraries that work with services such as
+    Amazon Simple Storage Service (Amazon S3). To use these tools and libraries with Cloud Storage, change the request
+    endpoint that the to
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
