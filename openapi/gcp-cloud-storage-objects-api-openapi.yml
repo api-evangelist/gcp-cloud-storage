@@ -917,6 +917,124 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Channel:
+      type: object
+      description: A notification channel used to watch for resource changes.
+      properties:
+        kind:
+          type: string
+          description: Identifies this as a notification channel.
+          default: api#channel
+          example: example_value
+        id:
+          type: string
+          description: A UUID or similar unique string that identifies this channel.
+          example: abc123
+        resourceId:
+          type: string
+          description: An opaque value that identifies the watched resource.
+          example: '500123'
+        resourceUri:
+          type: string
+          format: uri
+          description: A version-specific identifier for the watched resource.
+          example: https://www.example.com
+        token:
+          type: string
+          description: An arbitrary string delivered to the target address with each notification.
+          example: example_value
+        expiration:
+          type: string
+          description: Date and time of notification channel expiration, expressed in milliseconds since the epoch.
+          example: example_value
+        type:
+          type: string
+          description: The type of delivery mechanism used for this channel.
+          enum:
+          - web_hook
+          example: web_hook
+        address:
+          type: string
+          format: uri
+          description: The address where notifications are delivered for this channel.
+          example: https://www.example.com
+        params:
+          type: object
+          description: Additional parameters controlling delivery channel behavior.
+          additionalProperties:
+            type: string
+          example: example_value
+        payload:
+          type: boolean
+          description: Whether the payload of each notification event is expected.
+          example: true
+      required:
+      - id
+      - type
+      - address
+    ComposeRequest:
+      type: object
+      description: A request to compose objects.
+      properties:
+        kind:
+          type: string
+          description: The kind of item this is.
+          default: storage#composeRequest
+          example: example_value
+        destination:
+          $ref: '#/components/schemas/Object'
+        sourceObjects:
+          type: array
+          description: The list of source objects that will be concatenated into a single object. Maximum 32 objects.
+          maxItems: 32
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The source object's name.
+              generation:
+                type: string
+                description: The generation of the source object.
+              objectPreconditions:
+                type: object
+                properties:
+                  ifGenerationMatch:
+                    type: integer
+                    format: int64
+                    description: Only perform the composition if the generation of the source object matches this value.
+          example: []
+      required:
+      - sourceObjects
+    Error:
+      type: object
+      description: An error response from the Cloud Storage JSON API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable description of the error.
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  domain:
+                    type: string
+                  reason:
+                    type: string
+                  message:
+                    type: string
+                  locationType:
+                    type: string
+                  location:
+                    type: string
+          example: example_value
     ObjectAccessControl:
       type: object
       description: An access-control entry for an object.
@@ -1001,90 +1119,6 @@ components:
       required:
       - entity
       - role
-    Channel:
-      type: object
-      description: A notification channel used to watch for resource changes.
-      properties:
-        kind:
-          type: string
-          description: Identifies this as a notification channel.
-          default: api#channel
-          example: example_value
-        id:
-          type: string
-          description: A UUID or similar unique string that identifies this channel.
-          example: abc123
-        resourceId:
-          type: string
-          description: An opaque value that identifies the watched resource.
-          example: '500123'
-        resourceUri:
-          type: string
-          format: uri
-          description: A version-specific identifier for the watched resource.
-          example: https://www.example.com
-        token:
-          type: string
-          description: An arbitrary string delivered to the target address with each notification.
-          example: example_value
-        expiration:
-          type: string
-          description: Date and time of notification channel expiration, expressed in milliseconds since the epoch.
-          example: example_value
-        type:
-          type: string
-          description: The type of delivery mechanism used for this channel.
-          enum:
-          - web_hook
-          example: web_hook
-        address:
-          type: string
-          format: uri
-          description: The address where notifications are delivered for this channel.
-          example: https://www.example.com
-        params:
-          type: object
-          description: Additional parameters controlling delivery channel behavior.
-          additionalProperties:
-            type: string
-          example: example_value
-        payload:
-          type: boolean
-          description: Whether the payload of each notification event is expected.
-          example: true
-      required:
-      - id
-      - type
-      - address
-    Error:
-      type: object
-      description: An error response from the Cloud Storage JSON API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable description of the error.
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  domain:
-                    type: string
-                  reason:
-                    type: string
-                  message:
-                    type: string
-                  locationType:
-                    type: string
-                  location:
-                    type: string
-          example: example_value
     RewriteResponse:
       type: object
       description: A rewrite response.
@@ -1112,31 +1146,6 @@ components:
           example: example_value
         resource:
           $ref: '#/components/schemas/Object'
-    ObjectList:
-      type: object
-      description: A list of objects.
-      properties:
-        kind:
-          type: string
-          description: The kind of item this is.
-          default: storage#objects
-          example: example_value
-        nextPageToken:
-          type: string
-          description: The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results.
-          example: example_value
-        prefixes:
-          type: array
-          description: The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.
-          items:
-            type: string
-          example: []
-        items:
-          type: array
-          description: The list of objects.
-          items:
-            $ref: '#/components/schemas/Object'
-          example: []
     Object:
       type: object
       description: An object in Cloud Storage. Objects are the individual pieces of data that you store in Cloud Storage.
@@ -1346,49 +1355,46 @@ components:
           description: The time at which the soft-deleted object will be permanently deleted.
           readOnly: true
           example: '2026-01-15T10:30:00Z'
-    ComposeRequest:
+    ObjectList:
       type: object
-      description: A request to compose objects.
+      description: A list of objects.
       properties:
         kind:
           type: string
           description: The kind of item this is.
-          default: storage#composeRequest
+          default: storage#objects
           example: example_value
-        destination:
-          $ref: '#/components/schemas/Object'
-        sourceObjects:
+        nextPageToken:
+          type: string
+          description: The continuation token. Provide this value as the pageToken in a subsequent request to return the next page of results.
+          example: example_value
+        prefixes:
           type: array
-          description: The list of source objects that will be concatenated into a single object. Maximum 32 objects.
-          maxItems: 32
+          description: The list of prefixes of objects matching-but-not-listed up to and including the requested delimiter.
           items:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The source object's name.
-              generation:
-                type: string
-                description: The generation of the source object.
-              objectPreconditions:
-                type: object
-                properties:
-                  ifGenerationMatch:
-                    type: integer
-                    format: int64
-                    description: Only perform the composition if the generation of the source object matches this value.
+            type: string
           example: []
-      required:
-      - sourceObjects
+        items:
+          type: array
+          description: The list of objects.
+          items:
+            $ref: '#/components/schemas/Object'
+          example: []
   responses:
-    NotFound:
-      description: Not Found. The specified resource does not exist.
+    PreconditionFailed:
+      description: Precondition Failed. The condition set in the conditional request header was not met.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Unauthorized. Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not Found. The specified resource does not exist.
       content:
         application/json:
           schema:
@@ -1405,28 +1411,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    PreconditionFailed:
-      description: Precondition Failed. The condition set in the conditional request header was not met.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    objectName:
-      name: object
-      in: path
-      required: true
-      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
-      schema:
-        type: string
-      example: my-object.txt
-    fields:
-      name: fields
-      in: query
-      required: false
-      description: Selector specifying a subset of fields to include in the response. Use for better performance by retrieving only needed fields.
-      schema:
-        type: string
     bucketName:
       name: bucket
       in: path
@@ -1435,6 +1420,14 @@ components:
       schema:
         type: string
       example: my-bucket
+    objectName:
+      name: object
+      in: path
+      required: true
+      description: Name of the object. For information about how to URL-encode object names to be path safe, see Encoding URI path parts.
+      schema:
+        type: string
+      example: my-object.txt
     userProject:
       name: userProject
       in: query
@@ -1450,6 +1443,13 @@ components:
       schema:
         type: boolean
         default: true
+    fields:
+      name: fields
+      in: query
+      required: false
+      description: Selector specifying a subset of fields to include in the response. Use for better performance by retrieving only needed fields.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
