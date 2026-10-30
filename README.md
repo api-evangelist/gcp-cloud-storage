@@ -1,4 +1,4 @@
-# Google Cloud Storage (gcp-cloud-storage)
+# Google Cloud Storage
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,115 +66,215 @@
 
 Object storage service offering high durability, availability, and scalability for storing and accessing data on Google Cloud Platform.
 
-**APIs.json:** [https://cloud.google.com/storage](https://cloud.google.com/storage)
+**Areas:** Archival · Backup · Blob Storage · Cloud Storage · Data · File Storage · Google Cloud · Object Storage · Storage
 
-## Tags
+## Google Cloud Storage on APIs.io
 
-- Archival
-- Backup
-- Blob Storage
-- Cloud Storage
-- Data
-- File Storage
-- Google Cloud
-- Object Storage
-- Storage
+Everything profiled for Google Cloud Storage is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/gcp-cloud-storage/](https://apis.io/providers/gcp-cloud-storage/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+- [Google Cloud Storage XML API](https://apis.io/apis/gcp-cloud-storage/google-cloud-storage-xml-api/) — Amazon S3-compatible XML API for Google Cloud Storage.
+- [Google Cloud Storage BucketAccessControls API](https://apis.io/apis/gcp-cloud-storage/gcp-cloud-storage-bucketaccesscontrols-api/) — Operations for managing bucket-level access control lists
+- [Google Cloud Storage Buckets API](https://apis.io/apis/gcp-cloud-storage/gcp-cloud-storage-buckets-api/) — Operations for managing Cloud Storage buckets
+- [Google Cloud Storage DefaultObjectAccessControls API](https://apis.io/apis/gcp-cloud-storage/gcp-cloud-storage-defaultobjectaccesscontrols-api/) — Operations for managing default object access controls on buckets
+- [Google Cloud Storage ObjectAccessControls API](https://apis.io/apis/gcp-cloud-storage/gcp-cloud-storage-objectaccesscontrols-api/) — Operations for managing object-level access control lists
+- [Google Cloud Storage Objects API](https://apis.io/apis/gcp-cloud-storage/gcp-cloud-storage-objects-api/) — Operations for managing objects within Cloud Storage buckets
 
-## APIs
+### Published properties
 
-### Google Cloud Storage JSON API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-RESTful API for interacting with Google Cloud Storage buckets and objects.
+#### Agentic access (1)
 
-- **Human URL:** [https://cloud.google.com/storage/docs/json_api](https://cloud.google.com/storage/docs/json_api)
-- **Base URL:** `https://storage.googleapis.com/storage/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Gcp Cloud Storage Agentic Access](https://apis.io/agentic-access/gcp-cloud-storage/gcp-cloud-storage-agentic-access/)
 
-- Buckets
-- Objects
-- Access Control
-- IAM
-- Storage
+#### JSON Schema (12)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://cloud.google.com/storage/docs/json_api)
-- [OpenAPI](https://storage.googleapis.com/$discovery/rest?version=v1) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/gcp-cloud-storage-json-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/gcp-cloud-storage-json-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/gcp-cloud-storage-json-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://cloud.google.com/storage/docs/authentication)
+- [Google Cloud Storage Bucket](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-bucket/)
+- [Bucket](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-bucket/)
+- [BucketAccessControl](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-bucket-access-control/)
+- [BucketList](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-bucket-list/)
+- [Channel](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-channel/)
+- [ComposeRequest](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-compose-request/)
+- [Error](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-error/)
+- [Object](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-object/)
+- [ObjectAccessControl](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-object-access-control/)
+- [ObjectList](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-object-list/)
+- [Policy](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-policy/)
+- [RewriteResponse](https://apis.io/schemas/gcp-cloud-storage/gcp-cloud-storage-json-rewrite-response/)
+
+#### JSON Structure (11)
+
+Data models expressed in JSON Structure.
+
+- [Gcp Cloud Storage Json Bucket Access Control Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-bucket-access-control-structure/)
+- [Gcp Cloud Storage Json Bucket List Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-bucket-list-structure/)
+- [Gcp Cloud Storage Json Bucket Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-bucket-structure/)
+- [Gcp Cloud Storage Json Channel Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-channel-structure/)
+- [Gcp Cloud Storage Json Compose Request Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-compose-request-structure/)
+- [Gcp Cloud Storage Json Error Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-error-structure/)
+- [Gcp Cloud Storage Json Object Access Control Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-object-access-control-structure/)
+- [Gcp Cloud Storage Json Object List Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-object-list-structure/)
+- [Gcp Cloud Storage Json Object Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-object-structure/)
+- [Gcp Cloud Storage Json Policy Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-policy-structure/)
+- [Gcp Cloud Storage Json Rewrite Response Structure](https://apis.io/json-structure/gcp-cloud-storage/gcp-cloud-storage-json-rewrite-response-structure/)
+
+#### JSON-LD (2)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Gcp Cloud Storage Context](https://apis.io/jsonld/gcp-cloud-storage/gcp-cloud-storage-context/)
+- [Gcp Cloud Storage Json Context](https://apis.io/jsonld/gcp-cloud-storage/gcp-cloud-storage-json-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [gcp-cloud-storage API Vocabulary](https://apis.io/vocabularies/gcp-cloud-storage/gcp-cloud-storage-vocabulary/)
+
+#### Examples (11)
+
+Example requests and responses.
+
+- [Gcp Cloud Storage Json Bucket Access Control Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-bucket-access-control-example/)
+- [Gcp Cloud Storage Json Bucket Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-bucket-example/)
+- [Gcp Cloud Storage Json Bucket List Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-bucket-list-example/)
+- [Gcp Cloud Storage Json Channel Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-channel-example/)
+- [Gcp Cloud Storage Json Compose Request Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-compose-request-example/)
+- [Gcp Cloud Storage Json Error Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-error-example/)
+- [Gcp Cloud Storage Json Object Access Control Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-object-access-control-example/)
+- [Gcp Cloud Storage Json Object Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-object-example/)
+- [Gcp Cloud Storage Json Object List Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-object-list-example/)
+- [Gcp Cloud Storage Json Policy Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-policy-example/)
+- [Gcp Cloud Storage Json Rewrite Response Example](https://apis.io/examples/gcp-cloud-storage/gcp-cloud-storage-json-rewrite-response-example/)
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [Google Cloud Storage JSON BucketAccessControls API](https://apis.io/collections/gcp-cloud-storage/open-gcp-cloud-storage-bucketaccesscontrols-api/)
+- [Google Cloud Storage JSON BucketAccessControls Buckets API](https://apis.io/collections/gcp-cloud-storage/open-gcp-cloud-storage-buckets-api/)
+- [Google Cloud Storage JSON BucketAccessControls DefaultObjectAccessControls API](https://apis.io/collections/gcp-cloud-storage/open-gcp-cloud-storage-defaultobjectaccesscontrols-api/)
+- [Google Cloud Storage JSON API](https://apis.io/collections/gcp-cloud-storage/open-gcp-cloud-storage-json-api/)
+- [Google Cloud Storage JSON BucketAccessControls ObjectAccessControls API](https://apis.io/collections/gcp-cloud-storage/open-gcp-cloud-storage-objectaccesscontrols-api/)
+- [Google Cloud Storage JSON BucketAccessControls Objects API](https://apis.io/collections/gcp-cloud-storage/open-gcp-cloud-storage-objects-api/)
+- [Google Cloud Storage JSON BucketAccessControls API](https://apis.io/collections/gcp-cloud-storage/postman-gcp-cloud-storage-bucketaccesscontrols-api/)
+- [Google Cloud Storage JSON BucketAccessControls Buckets API](https://apis.io/collections/gcp-cloud-storage/postman-gcp-cloud-storage-buckets-api/)
+- [Google Cloud Storage JSON BucketAccessControls DefaultObjectAccessControls API](https://apis.io/collections/gcp-cloud-storage/postman-gcp-cloud-storage-defaultobjectaccesscontrols-api/)
+- [Google Cloud Storage JSON BucketAccessControls ObjectAccessControls API](https://apis.io/collections/gcp-cloud-storage/postman-gcp-cloud-storage-objectaccesscontrols-api/)
+- [Google Cloud Storage JSON BucketAccessControls Objects API](https://apis.io/collections/gcp-cloud-storage/postman-gcp-cloud-storage-objects-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Cloud Storage — jsonschema rules](https://apis.io/rules/gcp-cloud-storage/gcp-cloud-storage-jsonschema-spectral-rules/)
+- [Google Cloud Storage API Rules](https://apis.io/rules/gcp-cloud-storage/gcp-cloud-storage-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Gcp Cloud Storage Authentication](https://apis.io/security/gcp-cloud-storage/gcp-cloud-storage-authentication/)
+- [Gcp Cloud Storage Domain Security](https://apis.io/security/gcp-cloud-storage/gcp-cloud-storage-domain-security/)
+- [Gcp Cloud Storage Vulnerability Disclosure](https://apis.io/security/gcp-cloud-storage/gcp-cloud-storage-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Gcp Cloud Storage Scopes](https://apis.io/scopes/gcp-cloud-storage/gcp-cloud-storage-scopes/)
+
+#### Plans and pricing (2)
+
+Published plans, tiers and prices.
+
+- [Gcp Cloud Storage Plans Pricing](https://apis.io/plans/gcp-cloud-storage/gcp-cloud-storage-plans-pricing/)
+- [Gcp Cloud Storage Price Estimates](https://apis.io/plans/gcp-cloud-storage/gcp-cloud-storage-price-estimates/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Gcp Cloud Storage Rate Limits](https://apis.io/rate-limits/gcp-cloud-storage/gcp-cloud-storage-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Gcp Cloud Storage Finops](https://apis.io/finops/gcp-cloud-storage/gcp-cloud-storage-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
+- [Documentation](https://cloud.google.com/storage/docs)
+- [Getting started](https://cloud.google.com/storage/docs/quickstarts)
+- [API reference](https://cloud.google.com/storage/docs/apis)
 - [Pricing](https://cloud.google.com/storage/pricing)
-- [Rate Limits](https://cloud.google.com/storage/quotas)
-- [Status Page](https://status.cloud.google.com/)
-- [Terms of Service](https://cloud.google.com/terms)
-- [API Reference](https://cloud.google.com/storage/docs/json_api/v1)
-- [JSON Schema](json-schema/gcp-cloud-storage-bucket-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-bucket-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-bucket-access-control-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-bucket-list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-channel-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-compose-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-error-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-object-access-control-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-object-list-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-object-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-policy-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/gcp-cloud-storage-json-rewrite-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/gcp-cloud-storage-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON-LD](json-ld/gcp-cloud-storage-json-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-
-### Google Cloud Storage XML API
-
-Amazon S3-compatible XML API for Google Cloud Storage.
-
-- **Human URL:** [https://cloud.google.com/storage/docs/xml-api](https://cloud.google.com/storage/docs/xml-api)
-- **Base URL:** `https://storage.googleapis.com`
-
-#### Tags
-
-- S3 Compatible
-- XML
-- Interoperability
-
-#### Properties
-
-- [Documentation](https://cloud.google.com/storage/docs/xml-api/overview)
-- [Authentication](https://cloud.google.com/storage/docs/authentication/hmackeys)
-- [API Reference](https://cloud.google.com/storage/docs/xml-api/reference-methods)
-- [Pricing](https://cloud.google.com/storage/pricing)
-- [Rate Limits](https://cloud.google.com/storage/quotas)
-- [Terms of Service](https://cloud.google.com/terms)
-- [Postman Collection](collections/gcp-cloud-storage-json-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/gcp-cloud-storage-json-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/GoogleCloudPlatform)
-- [Getting Started](https://cloud.google.com/storage/docs/quickstarts)
-- [SDK](https://cloud.google.com/storage/docs/reference/libraries)
-- [Console](https://console.cloud.google.com/storage)
-- [Blog](https://cloud.google.com/blog/products/storage-data-transfer)
 - [Changelog](https://cloud.google.com/storage/docs/release-notes)
-- [Best Practices](https://cloud.google.com/storage/docs/best-practices)
+- [Blog](https://cloud.google.com/blog/products/storage-data-transfer)
 - [Security](https://cloud.google.com/storage/docs/security)
 - [Compliance](https://cloud.google.com/security/compliance)
-- [API Reference](https://cloud.google.com/storage/docs/apis)
-- [C L I](https://cloud.google.com/storage/docs/discover-object-storage-gsutil)
-- [Spectral Rules](rules/gcp-cloud-storage-spectral-rules.yml)
-- [Vocabulary](vocabulary/gcp-cloud-storage-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://cloud.google.com/marketplace)
+- [GitHub](https://github.com/GoogleCloudPlatform)
 
-## Maintainers
+## API Evangelist rating
 
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 63.5** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 65.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 65.8 |
+| Developer ergonomics | 67.9 |
+| Access clarity | 60.5 |
+
+**Agent readiness 33.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 41.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/gcp-cloud-storage/](https://apis.io/providers/gcp-cloud-storage/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Cloud Storage: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/gcp-cloud-storage/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
